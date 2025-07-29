@@ -1,6 +1,7 @@
 /*基本設定*/
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
+@import url('style_hamburger.css');
 .font-bad {
     font-family: "Bad Script", cursive;
 }
@@ -19,120 +20,6 @@ body, html {
     scrollbar-width: none;
     width: 100%;
     overflow: hidden;
-}
-
-
-/*--------------------------------------------------*/
-
-
-/*ハンバーガーメニュー*/
-.hamburger_button{
-    width: 80px;
-    height: 100%;
-    margin-top: 23px;
-    position: sticky;
-    top: 23px;
-    left: 18px;
-    z-index: 9999;
-}
-/*ハンバーガーの線*/
-.hamburger_button span{
-    width: 100%;
-    height: 2px;
-    border-radius: 2px;
-    position: relative;
-    transition: ease-out .8s;
-    display: block;
-    background-color: rgb(110, 106, 92);
-}
-/*ハンバーガーの線の初期位置*/
-.hamburger_button span:nth-child(1){
-    top: 0;
-}
-.hamburger_button span:nth-child(2){
-    margin: 23px 0;
-}
-.hamburger_button span:nth-child(3){
-    top: 0;
-}
-
-/* ハンバーガーメニュークリック時*/
-.header__nav.active{
-    transform: translateX(0) ;
-}
-.hamburger_button.active span:nth-child(1){
-    transition: ease-out .8s;
-    top: 23px;
-    transform: rotate(25deg);
-}
-.hamburger_button.active span:nth-child(2){
-    transition: ease-out .8s;
-    opacity: 0.8;
-    transform: translate(200px, 25px) scaleX(3.5) rotate(180deg); /*translate(x座標, y座標) scaleX(倍) rotate(回転角度)*/
-}
-.hamburger_button.active span:nth-child(3){
-    transition: ease-out .8s;
-    top: -23px;
-    transform: rotate(-25deg);
-}
-.hamburger_button.active .text {
-    transition: ease-out .8s;
-    transform: translateX(-70px);
-}
-/*「MENU」の文字*/
-.TextMask {
-    padding: 2px 5px 0 5px ;
-    overflow: hidden;
-}
-.TextMask .text {
-    font-family: "Bad Script";
-    color: aliceblue;
-    text-shadow: 0px 0px 6px #cee1f3, 0px 0px 10px #9fc5e8;
-    position: relative;
-    top: -30px;
-    transition: ease-out .8s;
-}
-/*マウスが乗った時*/
-.hamburger_button:hover {
-    .TextMask .text {
-        animation: visible .4s ease-out forwards;
-    }
-}
-@keyframes visible {
-    from {
-        top: -30px;
-    }
-    to {
-        top: 0px;
-    }
-}
-/*マウスが離れた時*/
-.hamburger_button:not(:hover) {
-    .TextMask .text {
-        animation: invisible .4s ease-out forwards;
-    }
-}
-@keyframes invisible {
-    from {
-        top: 0px;
-    }
-    to {
-        top: -30px;
-    }
-}
-/*メニューの中身*/
-.hamburger_items {
-    display: none;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    margin: auto;
-}
-/*リストを表示*/
-.hamburger_items.active {
-  display: block;
 }
 
 
@@ -184,6 +71,8 @@ main {
     width: 410px;
     clip-path: circle(50%);
     background: rgb(157, 152, 135);
+}
+#circle5-1 {
 }
 .line1 {
     position: absolute;
