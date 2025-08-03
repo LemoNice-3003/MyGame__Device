@@ -109,9 +109,11 @@ a {
     left: 160px;
     margin: auto;
     z-index: 1;
-    transition: opacity 0.6s ease, transform 1.2s ease;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
 }
 /*リストを表示*/
 .hamburger_items.active {
     opacity: 1;
+    pointer-events: auto;
 }
