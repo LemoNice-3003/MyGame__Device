@@ -62,6 +62,8 @@ function LoadData(content) {
     }
 }
 
+
+
 function kakapo() {
     $(function changeColor(){
         $(".gametitle").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
@@ -81,6 +83,8 @@ function kakapo() {
     });
 }
 
+
+
 function doneNewName() {
     // テキストエリアより文字列を取得
     const txt = document.getElementById('newName').value;
@@ -95,6 +99,7 @@ function doneNewName() {
 }
 
 
+
 document.addEventListener('wheel', function(event) {
     if (event.ctrlKey) {
         event.preventDefault();
@@ -102,15 +107,14 @@ document.addEventListener('wheel', function(event) {
 }, { passive: false });
 
 
+
 const hamburgerMenu = document.querySelector('#js-hamburger');
 const hamburgerItems = document.querySelector('#js-items');
-//const hamburgerContainer = document.querySelector('#js-container');
 
 // ハンバーガーメニューがクリックされたら
 hamburgerMenu.addEventListener('click', function() {
     hamburgerMenu.classList.toggle('active');
     hamburgerItems.classList.toggle('active');
-//    hamburgerContainer.classList.toggle('active');
 });
 
 // $(function(){
