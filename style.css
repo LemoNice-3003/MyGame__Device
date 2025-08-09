@@ -2,6 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
 @import url('style_hamburger.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .font-bad {
     font-family: "Bad Script", cursive;
 }
@@ -15,11 +21,12 @@ a, p, img{
     -moz-user-select: none; /* Firefox向け */
 }
 body, html {
-    background: rgb(187, 180, 156);
-    touch-action: manipulation;
-    scrollbar-width: none;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
+    background: rgb(187, 180, 156);
+    touch-action: none;
+    scrollbar-width: none;
 }
 
 
@@ -35,8 +42,9 @@ main {
 
 #dropArea {
     position: absolute;
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
+    /* z-index: 100; */
 }
 
 .circle {
@@ -48,6 +56,8 @@ main {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease, transform 1.2s ease;
+    z-index: 0;
+    overflow: hidden;
 }
 .circle:hover {
     opacity: 1;
@@ -78,7 +88,50 @@ main {
     clip-path: circle(50%);
     background: rgb(157, 152, 135);
 }
-#circle5-1 {
+#circle5 {
+    position: relative;
+    top: -14vh;
+    right: -95vw;
+}
+.planet {
+    position: absolute;
+    mix-blend-mode: difference;
+    top: 0;
+    left: 0;
+}
+#star {
+    aspect-ratio: 1 / 1;
+    width: 90px;
+    clip-path: circle(50%);
+    background: rgb(157, 152, 135);
+    top: -45px;
+    left: -45px;
+}
+#planet_1 {
+    animation: planet-rotation 3s -11s linear infinite;
+}
+#planet_2 {
+    animation: planet-rotation 6s -21s linear infinite;
+}
+#planet_3 {
+    animation: planet-rotation 9s -31s linear infinite;
+}
+#planet_4 {
+    animation: planet-rotation 17s -41s linear infinite;
+}
+#planet_5 {
+    animation: planet-rotation 29s -51s linear infinite;
+}
+#planet_6 {
+    animation: planet-rotation 43s -71s linear infinite;
+}
+@keyframes planet-rotation {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
 }
 .line1 {
     position: absolute;
@@ -88,6 +141,7 @@ main {
     height: 25px;
     width: 150px;
     display: inline-block;
+    z-index: 0;
 }
 .line1 .block {
     position: relative;
@@ -105,10 +159,11 @@ main {
 }
 .box1 {
     position: absolute;
-    top: 8vh;
+    top: 2vw;
     right: 2vw;
     width: 140px;
     height: 140px;
+    z-index: 0;
 }
 .dot {
     background-image: radial-gradient(rgb(157, 152, 135) 6px, rgb(0, 0, 0, 0) 7px);
@@ -135,6 +190,7 @@ main {
 }
 
 .gametitle {
+    margin-top: 3vh;
     font-size:8vh;
     color: aliceblue;
     text-shadow: 0px 0px 12px #ffffffaa;
@@ -146,9 +202,8 @@ main {
     font-size:4vh;
     color: aliceblue;
     text-shadow: 0px 0px 12px #ffffffaa;
-    letter-spacing: -1px;
     font-weight: 400;
-    margin: -12.5vh 0 10vh;
+    margin: 0 0 10vh;
     animation: rainbow2 .16s linear infinite;
 }
 .kakapo img {
@@ -174,7 +229,7 @@ main {
     box-shadow: 0 0 3px rgb(238, 238, 238, .5) inset;
     border: solid 2px rgb(110, 106, 92);
     border-radius: 12px;
-    z-index: 100;
+    z-index: 101;
 }
 .upload_button img {
     margin-right: 2%;
@@ -194,7 +249,7 @@ main {
     box-shadow: 0 0 3px rgb(238, 238, 238, .5) inset;
     border: solid 2px rgb(110, 106, 92);
     border-radius: 12px;
-    z-index: 100;
+    z-index: 101;
 }
 .newUserBox_text {
     margin-left: .8vw;
@@ -237,10 +292,6 @@ main {
     100% { background-position: -200%; }
 }
 @media (max-width: 999px) { /*スマホモード*/
-    html {
-        width: 100%;
-        height: 100%;
-    }
     .loginbox {
         height: 85vh;
         width: 95vw;
