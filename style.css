@@ -90,39 +90,45 @@ main {
 }
 #circle5 {
     position: relative;
-    top: -14vh;
-    right: -95vw;
+    top: -13vh;
+    right: -97vw;
 }
 .planet {
+    aspect-ratio: 1 / 1;
     position: absolute;
     mix-blend-mode: difference;
     top: 0;
     left: 0;
 }
 #star {
-    aspect-ratio: 1 / 1;
-    width: 90px;
+    height: 12vh;
     clip-path: circle(50%);
     background: rgb(157, 152, 135);
-    top: -45px;
-    left: -45px;
+    top: -6vh;
+    left: -6vh;
 }
 #planet_1 {
+    height: 20vh;
     animation: planet-rotation 3s -11s linear infinite;
 }
 #planet_2 {
+    height: 30vh;
     animation: planet-rotation 6s -21s linear infinite;
 }
 #planet_3 {
+    height: 36vh;
     animation: planet-rotation 9s -31s linear infinite;
 }
 #planet_4 {
+    height: 55vh;
     animation: planet-rotation 17s -41s linear infinite;
 }
 #planet_5 {
+    height: 75vh;
     animation: planet-rotation 29s -51s linear infinite;
 }
 #planet_6 {
+    height: 88vh;
     animation: planet-rotation 43s -71s linear infinite;
 }
 @keyframes planet-rotation {
@@ -135,8 +141,8 @@ main {
 }
 .line1 {
     position: absolute;
-    bottom: 5%;
-    left: 5%;
+    bottom: 5vh;
+    left: 5vw;
     overflow: hidden;
     height: 25px;
     width: 150px;
@@ -159,15 +165,15 @@ main {
 }
 .box1 {
     position: absolute;
+    aspect-ratio: 1 / 1;
     top: 2vw;
     right: 2vw;
-    width: 140px;
-    height: 140px;
+    height: 20vh;
     z-index: 0;
 }
 .dot {
     background-image: radial-gradient(rgb(157, 152, 135) 6px, rgb(0, 0, 0, 0) 7px);
-    background-size: 20px 20px;
+    background-size: 2.9vh 2.9vh;
     mix-blend-mode: difference;
 }
 
@@ -203,7 +209,7 @@ main {
     color: aliceblue;
     text-shadow: 0px 0px 12px #ffffffaa;
     font-weight: 400;
-    margin: 0 0 10vh;
+    margin : -7vh 0 6vh;
     animation: rainbow2 .16s linear infinite;
 }
 .kakapo img {
@@ -219,7 +225,7 @@ main {
     align-items: center;
 }
 .upload_button {
-    aspect-ratio: 9 / 1; /*アスペクト比設定*/
+    aspect-ratio: 9 / 1.2; /*アスペクト比設定*/
     width: 21vw;
     display: flex;
     justify-content: space-between;
@@ -244,6 +250,7 @@ main {
     width: 21vw;
     height: 30vh;
     margin-top: 5%;
+    padding: 2%;
     text-align: left;
     background: rgb(0, 0, 0, 0);
     box-shadow: 0 0 3px rgb(238, 238, 238, .5) inset;
@@ -257,7 +264,8 @@ main {
     color: black;
 }
 #newName {
-    width: 80%;
+    --newName-width: 80%;
+    width: var(--newName-width);
     height: 2.5vh;
     margin-left: 1.5vw;
     padding: 1%;
@@ -268,8 +276,8 @@ main {
     border: solid .5px rgb(60, 75, 87, 1);
 }
 .done_button {
-    aspect-ratio: 3 / 1;
-    width: 4vw;
+    aspect-ratio: 5 / 2;
+    height: 4vh;
     margin-top: 2vh;
     border: solid 1px rgb(110, 106, 92);
     border-radius: 6px;
@@ -292,15 +300,86 @@ main {
     100% { background-position: -200%; }
 }
 @media (max-width: 999px) { /*スマホモード*/
+    .hamburger_button {
+        margin-top: 10%;
+    }
     .loginbox {
-        height: 85vh;
+        height: 75vh;
         width: 95vw;
-        /* top: calc(50% - (95vh / 2));
-        left: calc(50% - (95vw / 2)); */
     }
     @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
-        .upload_button_text {
-            font-size: 1.5vh;
+        #circle1 {
+            width: 12vw;
+            top: 23vh;
+            left: 5vw;
+        }
+        #circle2 {
+            width: 20vw;
+            top: 16vh;
+            left: 9vw;
+        }
+        #circle3 {
+            width: 115vw;
+            top: 77vh;
+            right: -55vw;
+        }
+        #circle4 {
+            width: 47vw;
+            top: -13vh;
+            right: -14vw;
+        }
+        .circle5 {
+            top: -16vh;
+            right: -84vw;
+        }
+        #star {
+            height: 7vh;
+            top: -3.5vh;
+            left: -3.5vh;
+        }
+        #planet_1 {
+            height: 11.67vh;
+        }
+        #planet_2 {
+            height: 17.5vh;
+        }
+        #planet_3 {
+            height: 21vh;
+        }
+        #planet_4 {
+            height: 32.1vh;
+        }
+        #planet_5 {
+            height: 43.75vh;
+        }
+        #planet_6 {
+            height: 51.3vh;
+        }
+        .box1 {
+            height: 10vh;
+        }
+        .dot {
+            background-image: radial-gradient(rgb(157, 152, 135) 5px, rgb(0, 0, 0, 0) 5px);
+            background-size: 1.7vh 1.7vh;
+        }
+        .line1 {
+            bottom: 7vh;
+        }
+        .welcome {
+            margin-bottom: 5vh;
+        }
+        .newUserBox, .upload_button {
+            width: 55%;
+        }
+        #newName {
+            margin-left: 10%;
+        }
+        .newUserBox_text, .upload_button_text, #newName, .done_button_text {
+            font-size: 1.2vh;
+        }
+        .done_button {
+            height: 2.8vh;
+            right: 10%;
         }
     }
     @media (orientation: landscape) {   /*横向き用（landscape: 風景）*/
@@ -336,8 +415,6 @@ main {
             .loginbox {
                 height: 95vh;
                 width: 95vw;
-                /* top: calc(50% - (95vh / 2));
-                left: calc(50% - (95vw / 2)); */
             }
             .upload_button {
                 width: 65%;
