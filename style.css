@@ -362,7 +362,7 @@ main {
             background-size: 1.7vh 1.7vh;
         }
         .line1 {
-            bottom: 7vh;
+            bottom: 5％;
         }
         .welcome {
             margin-bottom: 5vh;
@@ -436,3 +436,4 @@ main {
         }
     }
 }
+
