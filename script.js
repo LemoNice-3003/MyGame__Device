@@ -114,17 +114,13 @@ const hamburgerItems = document.querySelector('#js-items');
 // ハンバーガーメニューがクリックされたら
 hamburgerMenu.addEventListener('click', function() {
     hamburgerMenu.classList.toggle('active');
-    hamburgerItems.classList.toggle('active');
-});
-
-
-
-function lockOrientation() ｛
-    screen.orientation.lock('portrait-primary');
+    hamburgerItems.classList.
 }
 
+
+
 window.onload = function() {
-  lockOrientation();
+  screen.orientation.lock('portrait');
 };
 
 
