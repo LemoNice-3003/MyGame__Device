@@ -117,6 +117,19 @@ hamburgerMenu.addEventListener('click', function() {
     hamburgerItems.classList.toggle('active');
 });
 
+
+
+function lockOrientation() ｛
+    screen.orientation.lock('portrait-primary');
+}
+
+window.onload = function() {
+  lockOrientation();
+};
+
+
+
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
+
