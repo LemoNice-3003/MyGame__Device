@@ -15,6 +15,42 @@ a {
     top: 23px;
     left: 18px;
     z-index: 9999;
+    
+    /*マウスが乗った時*/
+    &:hover {
+        .TextMask .text {
+            animation: visible .4s ease-out forwards;
+        }
+    }
+    
+    /*マウスが離れた時*/
+    &:not(:hover) {
+        .TextMask .text {
+            animation: invisible .4s ease-out forwards;
+        }
+    }
+    
+    /*メニューを押したとき*/
+    &.active .text {
+        transition: ease-out .8s;
+        transform: translateX(-80px);
+    }
+}
+@keyframes visible {
+    from {
+        top: -40px;
+    }
+    to {
+        top: 0vh;
+    }
+}
+@keyframes invisible {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 /*ハンバーガーの線*/
 .hamburger_button span{
@@ -56,49 +92,19 @@ a {
     top: -23px;
     transform: rotate(-25deg);
 }
-.hamburger_button.active .text {
-    transition: ease-out .8s;
-    transform: translateX(-70px);
-}
+
 /*「MENU」の文字*/
 .TextMask {
-    padding: 2px 5px 0 5px ;
     overflow: hidden;
-}
-.TextMask .text {
-    font-family: "Bad Script";
-    color: aliceblue;
-    text-shadow: 0px 0px 6px #cee1f3, 0px 0px 10px #9fc5e8;
-    position: relative;
-    top: -30px;
-    transition: ease-out .8s;
-}
-/*マウスが乗った時*/
-.hamburger_button:hover {
-    .TextMask .text {
-        animation: visible .4s ease-out forwards;
-    }
-}
-@keyframes visible {
-    from {
-        top: -30px;
-    }
-    to {
-        top: 0px;
-    }
-}
-/*マウスが離れた時*/
-.hamburger_button:not(:hover) {
-    .TextMask .text {
-        animation: invisible .4s ease-out forwards;
-    }
-}
-@keyframes invisible {
-    from {
-        top: 0px;
-    }
-    to {
-        top: -30px;
+    height: 100%;
+    width: 80px;
+    .text {
+        font-family: 'PLENTO-Regular';
+        font-size: 150%;
+        color: aliceblue;
+        text-shadow: 0px 0px 6px #cee1f3, 0px 0px 10px #9fc5e8;
+        position: relative;
+        transition: ease-out .8s;
     }
 }
 /*メニューの中身*/
@@ -111,9 +117,10 @@ a {
     z-index: 1;
     transition: opacity 0.6s ease;
     pointer-events: none;
-}
-/*リストを表示*/
-.hamburger_items.active {
-    opacity: 1;
-    pointer-events: auto;
+
+    /*リストを表示*/
+    &.active {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
