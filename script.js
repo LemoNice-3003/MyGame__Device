@@ -79,7 +79,6 @@ function kakapo() {
         $(".welcome").css({"-webkit-background-clip" : "text"});
         $(".welcome").css({"-webkit-text-fill-color" : "transparent"});
         $(".kakapo img").css({"width" : "120px"});
-        $(".kakapo img").css({"display" : "block"});
     });
 }
 
@@ -110,22 +109,15 @@ document.addEventListener('wheel', function(event) {
 
 const hamburgerMenu = document.querySelector('#js-hamburger');
 const hamburgerItems = document.querySelector('#js-items');
+const container = document.querySelector('#js-container');
 
 // ハンバーガーメニューがクリックされたら
 hamburgerMenu.addEventListener('click', function() {
     hamburgerMenu.classList.toggle('active');
-    hamburgerItems.classList.
-}
-
-
-
-window.onload = function() {
-  screen.orientation.lock('portrait');
-};
-
-
+    hamburgerItems.classList.toggle('active');
+    container.classList.toggle('active');
+});
 
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
-
