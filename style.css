@@ -33,7 +33,7 @@ body, html {
     width: 100vw;
     overflow: hidden;
     background: rgb(187, 180, 156);
-    touch-action: manipulation;
+    touch-action: none;
     scrollbar-width: none;
 }
 
