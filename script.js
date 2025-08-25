@@ -118,6 +118,15 @@ hamburgerMenu.addEventListener('click', function() {
     container.classList.toggle('active');
 });
 
+
+
+$('#circle1')
+    .bind('touchstart', function(){
+        $(this).addClass('hover');
+    }).bind('touchend', function(){
+        $(this).removeClass('hover');
+});
+
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
