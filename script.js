@@ -126,6 +126,24 @@ $('#circle1')
     }).bind('touchend', function(){
         $(this).removeClass('hover');
 });
+$('#circle2')
+    .bind('touchstart', function(){
+        $(this).addClass('hover');
+    }).bind('touchend', function(){
+        $(this).removeClass('hover');
+});
+$('#circle3')
+    .bind('touchstart', function(){
+        $(this).addClass('hover');
+    }).bind('touchend', function(){
+        $(this).removeClass('hover');
+});
+$('#circle4')
+    .bind('touchstart', function(){
+        $(this).addClass('hover');
+    }).bind('touchend', function(){
+        $(this).removeClass('hover');
+});
 
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
