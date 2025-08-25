@@ -1,3 +1,18 @@
+let lastTouchTime = 0;
+
+document.addEventListener('touchend', (event) => {
+  const currentTime = new Date().getTime();
+  const timeDifference = currentTime - lastTouchTime;
+
+  if (timeDifference < 300 && timeDifference > 0) {
+    event.preventDefault(); // ダブルタップを無効化
+  }
+
+  lastTouchTime = currentTime;
+});
+
+
+
 var form = document.forms.myGameSite;
 // クリック時に実行する関数
 function uploadSaveData () {
