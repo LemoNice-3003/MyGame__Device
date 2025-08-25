@@ -26,13 +26,14 @@ a, p, img {
     -webkit-user-drag: none; /* Webkitブラウザ（ChromeやSafari）向け */
     -webkit-user-select: none;
     -moz-user-select: none; /* Firefox向け */
+    font-size: 1.8vh;
 }
 body, html {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
     background: rgb(187, 180, 156);
-    touch-action: none;
+    touch-action: manipulation;
     scrollbar-width: none;
 }
 
@@ -71,14 +72,14 @@ main {
     }
 }
 #circle1 {
-    top: 170px;
+    top: 190px;
     left: 95px;
-    width: 90px;
+    width: 110px;
 }
 #circle2 {
     top: 100px;
     left: 110px;
-    width: 130px;
+    width: 160px;
     clip-path: circle(50%);
     background: rgb(157, 152, 135);
 }
@@ -120,11 +121,11 @@ main {
 }
 #planet_2 {
     height: 30vh;
-    animation: planet-rotation 6s -21s linear infinite;
+    animation: planet-reverse-rotation 6s -21s linear infinite;
 }
 #planet_3 {
     height: 36vh;
-    animation: planet-rotation 9s -31s linear infinite;
+    animation: planet-reverse-rotation 9s -31s linear infinite;
 }
 #planet_4 {
     height: 55vh;
@@ -132,7 +133,7 @@ main {
 }
 #planet_5 {
     height: 75vh;
-    animation: planet-rotation 29s -51s linear infinite;
+    animation: planet-reverse-rotation 29s -51s linear infinite;
 }
 #planet_6 {
     height: 88vh;
@@ -144,6 +145,14 @@ main {
     }
     100% {
         transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+@keyframes planet-reverse-rotation {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
     }
 }
 .line1 {
@@ -265,13 +274,12 @@ main {
 .upload_button p, .newUserBox p {
     font-family: 'Bad Script';
     margin-left: .7vw;
-    font-size: 2vh;
     color: black;
 }
 #newName {
     --newName-width: 80%;
     width: var(--newName-width);
-    height: 2.5vh;
+    height: 3.5vh;
     margin-left: 1.5vw;
     padding: 1%;
     font-size: 1.6vh;
@@ -290,7 +298,6 @@ main {
     left: 70%;
     p {
         font-family: 'Bad Script';
-        font-size: 2vh;
         margin: 0;
         color: black;
     }
@@ -399,12 +406,12 @@ main {
         }
         .upload_button {
             width: 50%;
-        }
-        .upload_button img {
-            height: 60%;
-        }
-        .upload_button p {
-            font-size: 4vh;
+            &img {
+                height: 60%;
+            }
+            &p {
+                font-size: 4vh;
+            }
         }
     }
 }
