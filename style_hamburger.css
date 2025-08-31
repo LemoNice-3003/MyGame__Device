@@ -100,7 +100,7 @@ a {
     width: 80px;
     .text {
         font-family: 'PLENTO-Regular';
-        font-size: 150%;
+        font-size: 135%;
         color: aliceblue;
         text-shadow: 0px 0px 6px #cee1f3, 0px 0px 10px #9fc5e8;
         position: relative;
@@ -133,3 +133,4 @@ a {
         pointer-events: auto;
     }
 }
+
