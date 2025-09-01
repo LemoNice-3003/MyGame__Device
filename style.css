@@ -400,6 +400,10 @@ main {
             height: 2.8vh;
             right: 10%;
         }
+        .hamburger_items {
+            width: 90%;
+            left: 5%;
+        }
     }
     @media (orientation: landscape) {   /*横向き用（landscape: 風景）*/
         .gametitle {
