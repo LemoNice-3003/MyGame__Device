@@ -43,10 +43,29 @@ body, html, a, p {
 }
 
 /*--------------------------------------------------*/
-
+:root {
+    --stage_1_height: 0;
+    --stage_2_height: 0;
+    --stage_3_height: 0;
+    --stage_4_height: 0;
+    --stage_5_height: 0;
+    --stage_6_height: 0;
+    --stage_7_height: 0;
+    --stage_8_height: 0;
+    --stage_9_height: 0;
+    --thum1_width: 0;
+    --thum2_width: 0;
+    --thum3_width: 0;
+    --thum4_width: 0;
+    --thum5_width: 0;
+    --thum6_width: 0;
+    --thum7_width: 0;
+    --thum8_width: 0;
+    --thum9_width: 0;
+}
 main {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
@@ -55,18 +74,22 @@ main {
     /* &.active{
         -ms-filter: blur(15px);
         filter: blur(15px);
-    } */
-}
-#levels {
+        } */
+    }
+    #levels {
+    display: flex;
+    justify-content: space-around;
     ul {
-        width: 28vw;
+        width: 27vw;
         margin: 0 1vw;
+        position: absolute;
+        top: 25vh;
     }
     li {
         border-bottom: solid 1px rgb(0, 0, 0);
     }
     p {
-        margin: 10px 0 5px 10px;
+        margin: 10px 0 5px 0;
         font-size: 3.5vh;
     }
     li p {
@@ -74,38 +97,10 @@ main {
         font-size: 2.7vh;
     }
 }
-#st1-1:hover {
-
-}
-#st1-2:hover {
-
-}
-#st1-3:hover {
-
-}
-#st2-1:hover {
-
-}
-#st2-2:hover {
-
-}
-#st2-3:hover {
-
-}
-#st3-1:hover {
-
-}
-#st3-2:hover {
-
-}
-#st3-3:hover {
-
-}
 
 .stage {
     position: relative;
     aspect-ratio: 3 / 4;
-    width: 28vw;
     background: rgb(100, 100, 100);
     display: flex;
     justify-content: center;
@@ -118,19 +113,63 @@ main {
         width: 100%;
     }
 }
+#stage_1 {
+    height: var(--stage_1_height);
+}
+#stage_2 {
+    height: var(--stage_2_height);
+}
+#stage_3 {
+    height: var(--stage_3_height);
+}
+#stage_4 {
+    height: var(--stage_4_height);
+}
+#stage_5 {
+    height: var(--stage_5_height);
+}
+#stage_6 {
+    height: var(--stage_6_height);
+}
+#stage_7 {
+    height: var(--stage_7_height);
+}
+#stage_8 {
+    height: var(--stage_8_height);
+}
+#stage_9 {
+    height: var(--stage_9_height);
+}
+
 .thumbnail {
     aspect-ratio: 4 /3;
-    width: 24vw;
     margin-top: 5vh;
     background: rgb(168, 161, 137);
 }
-@media (max-width: 999px) { /*スマホモード*/
-    .hamburger_button {
-        margin-top: 10%;
-    }
-    @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
-        .thumbnail {
-            margin-top: 1vh;
-        }
-    }
+#thum1 {
+    width: var(--thum1_width);
+}
+#thum2 {
+    width: var(--thum2_width);
+}
+#thum3 {
+    width: var(--thum3_width);
+}
+#thum4 {
+    width: var(--thum4_width);
+}
+#thum5 {
+    width: var(--thum5_width);
+}
+#thum6 {
+    width: var(--thum6_width);
+}
+#thum7 {
+    width: var(--thum7_width);
+}
+#thum8 {
+    width: var(--thum8_width);
+}
+#thum9 {
+    width: var(--thum9_width);
 }
