@@ -5,6 +5,9 @@ li {
 a {
     text-decoration: none;
 }
+* {
+    border: solid 1px rgb(200, 30, 30, .2);
+}
 
 /*ハンバーガーメニュー*/
 .hamburger_button{
@@ -134,3 +137,14 @@ a {
     }
 }
 
+@media (max-width: 999px) { /*スマホモード*/
+    .hamburger_button {
+        margin-top: 5%;
+    }
+    .hamburger_items {
+        width: 90%;
+        left: 5%;
+    }
+    @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
+    }
+}
