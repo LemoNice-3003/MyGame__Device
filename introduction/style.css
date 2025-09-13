@@ -1,25 +1,45 @@
 /*基本設定*/
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
-@import url('style_hamburger.css');
-.font-bad {
-    font-family: "Bad Script", cursive;
+@import url('../style_hamburger.css');
+@font-face {
+    font-family: 'Foglihtenno';
+    src: url(../fonts/Foglihtenno04-aM2E.otf);
 }
-.font-grand {
-    font-family: "Grandiflora One", cursive;
+@font-face {
+    font-family: 'PLENTO-Regular';
+    src: url(../fonts/PLENTO-Regular.ttf);
 }
-a, p, img{
-    user-select: none; /* 選択禁止 */
-    -webkit-user-drag: none; /* Webkitブラウザ（ChromeやSafari）向け */
-    -webkit-user-select: none;
-    -moz-user-select: none; /* Firefox向け */
+@font-face {
+    font-family: 'Bad Script', cursive;
+    src: url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+}
+@font-face {
+    font-family: 'Grandiflora One', cursive;
+    src: url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    pointer-events: none; /* 画像保存禁止 */
 }
 body, html {
+    height: 100vh;
+    width: 100vw;
     background: rgb(187, 180, 156);
+}
+body, html, a, p {
+    user-select: none; /* 選択禁止 */
+    -webkit-user-select: none;
+    -moz-user-select: none; /* Firefox向け */
+    -ms-user-select: none;     /* Internet Explorer */
+    -webkit-user-drag: none; /* Webkitブラウザ（ChromeやSafari）向け */
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
     touch-action: manipulation;
     scrollbar-width: none;
-    width: 100%;
-    overflow: hidden;
+    font-size: 1.8vh;
 }
 
 
@@ -72,7 +92,64 @@ main {
     clip-path: circle(50%);
     background: rgb(157, 152, 135);
 }
-#circle5-1 {
+#circle5 {
+    position: relative;
+    top: -13vh;
+    right: -97vw;
+}
+.planet {
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    mix-blend-mode: difference;
+    top: 0;
+    left: 0;
+}
+#star {
+    height: 12vh;
+    clip-path: circle(50%);
+    background: rgb(157, 152, 135);
+    top: -6vh;
+    left: -6vh;
+}
+#planet_1 {
+    height: 20vh;
+    animation: planet-rotation 3s -11s linear infinite;
+}
+#planet_2 {
+    height: 30vh;
+    animation: planet-reverse-rotation 6s -21s linear infinite;
+}
+#planet_3 {
+    height: 36vh;
+    animation: planet-reverse-rotation 9s -31s linear infinite;
+}
+#planet_4 {
+    height: 55vh;
+    animation: planet-rotation 17s -41s linear infinite;
+}
+#planet_5 {
+    height: 75vh;
+    animation: planet-reverse-rotation 29s -51s linear infinite;
+}
+#planet_6 {
+    height: 88vh;
+    animation: planet-rotation 43s -71s linear infinite;
+}
+@keyframes planet-rotation {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+@keyframes planet-reverse-rotation {
+    0% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
 }
 .line1 {
     position: absolute;
