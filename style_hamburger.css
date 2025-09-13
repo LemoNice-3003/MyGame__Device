@@ -1,3 +1,7 @@
+a:link { color: rgb(30, 28, 21); }                                            /*リンクのデフォルト色*/
+a:visited { color: rgb(30, 28, 21); }                                         /*閲覧済みリンク色*/
+a:hover { color: rgb(157, 152, 135); }                                           /*リンクを持っているときの色*/
+a:active { color: rgb(157, 152, 135); }                                          /*リンクを選択中(リンクにカーソルが重なってる時)の色*/
 li {
     list-style: none;
     margin: 15px 0 15px 0;
@@ -7,6 +11,10 @@ a {
 }
 * {
     border: solid 1px rgb(200, 30, 30, .2);
+}
+@font-face {
+    font-family: 'Receipt';
+    src: url(fonts/レシートフォント.ttf);
 }
 
 /*ハンバーガーメニュー*/
@@ -122,14 +130,22 @@ a {
     z-index: 1000;
     transition: opacity 0.6s ease;
     pointer-events: none;
-    background-color: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, .1);
+    backdrop-filter: blur(3px);
     border-radius: 20px;
-    border: 1px solid rgba(250, 250, 250, 0.1);
-    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    border: 1px solid rgba(250, 250, 250, .2);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, .2);
+    a {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        font-family: 'Receipt';
+        font-size: 3vh;
+        margin: 1vh 0;
+        &:focus {
+            border: none;
+        }
+    }
     /*リストを表示*/
     &.active {
         opacity: 1;
@@ -143,6 +159,7 @@ a {
     }
     .hamburger_items {
         width: 90%;
+        top: 90px;
         left: 5%;
     }
     @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
