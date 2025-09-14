@@ -1,8 +1,8 @@
 /*基本設定*/
 @import url('style_hamburger.css');
 @font-face {
-    font-family: 'Foglihtenno';
-    src: url(fonts/Foglihtenno04-aM2E.otf);
+    font-family: 'CanisMinor-Regular';
+    src: url(fonts/CanisMinor-Regular.ttf);
 }
 @font-face {
     font-family: 'PLENTO-Regular';
@@ -217,19 +217,19 @@ main {
     } */
 }
 
-.gametitle {
-    margin-top: 3vh;
+.title p {
+    font-family: 'CanisMinor-Regular';
+    font-weight: nomal;
     color: aliceblue;
     text-shadow: 0px 0px 12px #ffffffaa;
-    font-family: 'Foglihtenno';
-    font-size: 8vh;
+}
+.gametitle {
+    font-size: 8.5vh;
+    margin-top: 3vh;
     animation: rainbow1 .16s linear infinite;
 }
 .welcome {
-    color: aliceblue;
-    text-shadow: 0px 0px 12px #ffffffaa;
-    font-family: 'Foglihtenno';
-    font-size:4vh;
+    font-size:4.3vh;
     margin : -2vh 0 6vh 0;
     animation: rainbow2 .16s linear infinite;
 }
