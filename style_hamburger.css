@@ -9,9 +9,9 @@ li {
 a {
     text-decoration: none;
 }
-* {
+/** {
     border: solid 1px rgb(200, 30, 30, .2);
-}
+}*/
 @font-face {
     font-family: 'Receipt';
     src: url(fonts/レシートフォント.ttf);
