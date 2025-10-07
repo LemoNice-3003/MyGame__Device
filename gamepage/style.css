@@ -44,7 +44,7 @@ body, html, a, p {
 
 /*--------------------------------------------------*/
 :root {
-    --stage_1_height: 0;
+    /* --stage_1_height: 0;
     --stage_2_height: 0;
     --stage_3_height: 0;
     --stage_4_height: 0;
@@ -61,7 +61,7 @@ body, html, a, p {
     --thum6_width: 0;
     --thum7_width: 0;
     --thum8_width: 0;
-    --thum9_width: 0;
+    --thum9_width: 0; */
 }
 main {
     display: flex;
@@ -85,12 +85,12 @@ main {
         position: absolute;
         top: 25vh;
     }
-    li {
-        border-bottom: solid 1px rgb(0, 0, 0);
-    }
     p {
         margin: 10px 0 5px 0;
         font-size: 3.5vh;
+    }
+    li {
+        border-bottom: solid 1px rgb(0, 0, 0);
     }
     li p {
         margin: 0 0 5px 30px;
@@ -99,12 +99,12 @@ main {
 }
 
 .stage {
+    height: 0;
     position: relative;
-    aspect-ratio: 3 / 4;
     background: rgb(100, 100, 100);
+    transition: ease .3s;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    opacity: 0;
     a {
         position: absolute;
         top: 0;
@@ -113,63 +113,13 @@ main {
         width: 100%;
     }
 }
-#stage_1 {
-    height: var(--stage_1_height);
-}
-#stage_2 {
-    height: var(--stage_2_height);
-}
-#stage_3 {
-    height: var(--stage_3_height);
-}
-#stage_4 {
-    height: var(--stage_4_height);
-}
-#stage_5 {
-    height: var(--stage_5_height);
-}
-#stage_6 {
-    height: var(--stage_6_height);
-}
-#stage_7 {
-    height: var(--stage_7_height);
-}
-#stage_8 {
-    height: var(--stage_8_height);
-}
-#stage_9 {
-    height: var(--stage_9_height);
+#stage_1.active, #stage_2.active, #stage_3.active, #stage_4.active, #stage_5.active, #stage_6.active, #stage_7.active, #stage_8.active, #stage_9.active {
+    height: 5vh;
+    opacity: 1;
 }
 
 .thumbnail {
-    aspect-ratio: 4 /3;
-    margin-top: 5vh;
+    aspect-ratio: 4 /2;
+    height: 5vh;
     background: rgb(168, 161, 137);
-}
-#thum1 {
-    width: var(--thum1_width);
-}
-#thum2 {
-    width: var(--thum2_width);
-}
-#thum3 {
-    width: var(--thum3_width);
-}
-#thum4 {
-    width: var(--thum4_width);
-}
-#thum5 {
-    width: var(--thum5_width);
-}
-#thum6 {
-    width: var(--thum6_width);
-}
-#thum7 {
-    width: var(--thum7_width);
-}
-#thum8 {
-    width: var(--thum8_width);
-}
-#thum9 {
-    width: var(--thum9_width);
 }
