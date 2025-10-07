@@ -1,7 +1,7 @@
 /*基本設定*/
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
-@import url('../../../style_hamburger.css');
+@import url('../../../style_pageback.css');
 .font-bad {
     font-family: "Bad Script", cursive;
 }
@@ -34,6 +34,7 @@ body, html {
     background: white;
     position: absolute;
     top: 95vh;
+    left: 0;
     #moveTile {
         --tileWidth: 50%;
         --volume: 0%;
@@ -42,8 +43,9 @@ body, html {
         background: white;
         position: relative;
         bottom: calc(var(--volume) + 10%);
+        border-radius: 1vh;
         left: calc((100% - var(--tileWidth)) / 2);
-        transition: ease .5s;
+        transition: ease .1s;
         text-align: center;
         &::before {
             content: "音量 -- ";
