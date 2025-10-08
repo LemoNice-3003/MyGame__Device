@@ -76,7 +76,7 @@ main {
         filter: blur(15px);
         } */
     }
-    #levels {
+    .levels {
     display: flex;
     justify-content: space-around;
     ul {
@@ -98,6 +98,9 @@ main {
     }
 }
 
+.levels li:hover {
+    background: rgb(50, 210, 255, .5);
+}
 .stage {
     height: 0;
     position: relative;
