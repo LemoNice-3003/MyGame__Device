@@ -10,7 +10,7 @@ $(document).ready(function() {
    const stage_8 = $("#stage_8");
    const stage_9 = $("#stage_9");
     $('#st1-1')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_1.addClass("active");
     });
     $(document).on('click', function(e) {
@@ -21,7 +21,7 @@ $(document).ready(function() {
     });
     
     $('#st1-2')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_2.addClass("active");
     });
     $(document).on('click', function(e) {
@@ -32,7 +32,7 @@ $(document).ready(function() {
     });
 
     $('#st1-3')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_3.addClass("active");
     });
     $(document).on('click', function(e) {
@@ -43,7 +43,7 @@ $(document).ready(function() {
     });
 
     $('#st2-1')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_4.addClass("active");
     });
     $(document).on('click', function(e) {
@@ -54,7 +54,7 @@ $(document).ready(function() {
     });
 
     $('#st2-2')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_5.addClass("active");
     });
     $(document).on('click', function(e) {
@@ -65,7 +65,7 @@ $(document).ready(function() {
     });
 
     $('#st2-3')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_6.addClass("active");
     });
     $(document).on('click', function(e) {
@@ -76,7 +76,7 @@ $(document).ready(function() {
     });
 
     $('#st3-1')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_7.addClass("active");
     });
     $(document).on('click', function(e) {
@@ -87,7 +87,7 @@ $(document).ready(function() {
     });
 
     $('#st3-2')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_8.addClass("active");
     });
     $(document).on('click', function(e) {
@@ -98,7 +98,7 @@ $(document).ready(function() {
     });
 
     $('#st3-3')
-        .bind('dblclick', function(){
+        .bind('click', function(){
             stage_9.addClass("active");
     });
     $(document).on('click', function(e) {
