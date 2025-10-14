@@ -1,47 +1,4 @@
-/*基本設定*/
-@import url('style_hamburger.css');
-@font-face {
-    font-family: 'CanisMinor-Regular';
-    src: url(fonts/CanisMinor-Regular.ttf);
-}
-@font-face {
-    font-family: 'PLENTO-Regular';
-    src: url(fonts/PLENTO-Regular.ttf);
-}
-@font-face {
-    font-family: 'Bad Script', cursive;
-    src: url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
-}
-@font-face {
-    font-family: 'Grandiflora One', cursive;
-    src: url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-img {
-    pointer-events: none; /* 画像保存禁止 */
-}
-body, html {
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    background: rgb(187, 180, 156);
-}
-body, html, a, p {
-    user-select: none; /* 選択禁止 */
-    -webkit-user-select: none;
-    -moz-user-select: none; /* Firefox向け */
-    -ms-user-select: none;     /* Internet Explorer */
-    -webkit-user-drag: none; /* Webkitブラウザ（ChromeやSafari）向け */
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    touch-action: none;
-    scrollbar-width: none;
-    font-size: 1.8vh;
-}
+@import url(root.css);
 
 
 /*--------------------------------------------------*/
