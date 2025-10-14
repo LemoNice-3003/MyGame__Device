@@ -1,22 +1,3 @@
-a:link { color: rgb(30, 28, 21); }                                            /*リンクのデフォルト色*/
-a:visited { color: rgb(30, 28, 21); }                                         /*閲覧済みリンク色*/
-a:hover { color: rgb(157, 152, 135); }                                           /*リンクを持っているときの色*/
-a:active { color: rgb(157, 152, 135); }                                          /*リンクを選択中(リンクにカーソルが重なってる時)の色*/
-li {
-    list-style: none;
-    margin: 15px 0 15px 0;
-}
-a {
-    text-decoration: none;
-}
-/** {
-    border: solid 1px rgb(200, 30, 30, .2);
-}*/
-@font-face {
-    font-family: 'Receipt';
-    src: url(fonts/レシートフォント.ttf);
-}
-
 /*ハンバーガーメニュー*/
 .hamburger_button{
     width: 80px;
@@ -156,7 +137,24 @@ a {
 @media (max-width: 999px) { /*スマホモード*/
     .hamburger_button {
         margin-top: 5%;
+        width: 60px;
     }
+    .hamburger_button span:nth-child(2){
+        margin: 18px 0;
+    }
+    .hamburger_button.active span:nth-child(1){
+        top: 19px;
+        transform: rotate(25deg);
+    }
+    .hamburger_button.active span:nth-child(2){
+        opacity: 0;
+        transform: translate(60px, 0); /*translate(x座標, y座標) */
+    }
+    .hamburger_button.active span:nth-child(3){
+        top: -19px;
+        transform: rotate(-25deg);
+    }
+
     .hamburger_items {
         width: 90%;
         top: 90px;
