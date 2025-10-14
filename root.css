@@ -1,8 +1,9 @@
 /*基本設定*/
-@import url('../style_hamburger.css');
+@import url(style_hamburger.css);
+@import url(style_pageback.css);
 @font-face {
     font-family: 'Foglihtenno';
-    src: url(../fonts/Foglihtenno04-aM2E.otf);
+    src: url(fonts/Foglihtenno04-aM2E.otf);
 }
 @font-face {
     font-family: 'Receipt';
@@ -10,7 +11,7 @@
 }
 @font-face {
     font-family: 'PLENTO-Regular';
-    src: url(../fonts/PLENTO-Regular.ttf);
+    src: url(fonts/PLENTO-Regular.ttf);
 }
 @font-face {
     font-family: 'CanisMinor-Regular';
