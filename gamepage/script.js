@@ -1,17 +1,25 @@
 $(document).ready(function() {
-   // ここで$を使用できる
-   const stage_1 = $("#stage_1");
-   const stage_2 = $("#stage_2");
-   const stage_3 = $("#stage_3");
-   const stage_4 = $("#stage_4");
-   const stage_5 = $("#stage_5");
-   const stage_6 = $("#stage_6");
-   const stage_7 = $("#stage_7");
-   const stage_8 = $("#stage_8");
-   const stage_9 = $("#stage_9");
-    $('#st1-1')
-        .bind('click', function(){
+    // ここで$を使用できる
+    const stage_1 = $("#stage_1");
+    const stage_2 = $("#stage_2");
+    const stage_3 = $("#stage_3");
+    const stage_4 = $("#stage_4");
+    const stage_5 = $("#stage_5");
+    const stage_6 = $("#stage_6");
+    const stage_7 = $("#stage_7");
+    const stage_8 = $("#stage_8");
+    const stage_9 = $("#stage_9");
+    const preview = $("#preview");
+    $('#st1-1').on({
+        click : function(){
             stage_1.addClass("active");
+        },
+        mouseenter : function() {
+            preview.css("background-image", "url(../images/stage_thumbnail/1.jpg)");
+        },
+        mouseleave : function() {
+            preview.css("background-image", "none");
+        }
     });
     $(document).on('click', function(e) {
         // クリックされた要素が input 以外なら active クラスを削除
