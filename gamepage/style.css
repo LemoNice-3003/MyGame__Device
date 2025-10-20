@@ -27,53 +27,63 @@ main {
 }
 
 .container{
-    flex-wrap: wrap;
+    display: flex;
+    align-items: flex-start;
+    margin: 0 10px;
     /* &.active{
         -ms-filter: blur(15px);
         filter: blur(15px);
     } */
-}
-.levels {
-    display: flex;
-    justify-content: space-around;
-    width: calc(100% / 3);
-    height: 100vh;
-    &#lev2 {
-        background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.08)15%, rgb(0, 0, 0, .2)50%);
+    #leftContainer {
+        width: 70vw;
+        justify-content: space-between;
     }
-    &#lev3 {
-        background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.18)15%, rgb(0, 0, 0, .3)50%);
+    #rightContainer {
+        width: 30vw;
+        justify-content: end;
     }
-    ul {
-        width: 27vw;
-        margin: 0 1vw;
-        position: absolute;
-        top: 25vh;
-    }
-    p {
-        margin: 10px 0 5px 0;
-        font-size: 3.5vh;
-        color: rgb(30, 28, 21);
-    }
-    li {
-        overflow: hidden;
+    .levels {
         display: flex;
-        justify-content: center; /* 横方向の中央揃え */
-        align-items: center; /* 縦方向の中央揃え */
-        border-bottom: solid 1px rgb(0, 0, 0);
-        .temp {
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% / 3);
+        height: 100vh;
+        &#lev2 {
+            background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.08)15%, rgb(0, 0, 0, .2)50%);
+        }
+        &#lev3 {
+            background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, 0.18)15%, rgb(0, 0, 0, .3)50%);
+        }
+        ul {
+            width: 80%;
+            margin: 0 1vw;
+        }
+        p {
+            margin: 10px 0 5px 0;
+            font-size: 5vh;
+            color: rgb(30, 28, 21);
+        }
+        li {
+            margin: 60px 0;
+            overflow: hidden;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center; /* 横方向の中央揃え */
+            align-items: center; /* 縦方向の中央揃え */
+            border-bottom: dotted 1px rgb(0, 0, 0);
+            .temp {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
         }
     }
-}
-.stNumber {
-    width: max-content;
-    padding: 3% 10%;
-    font-size: 2.7vh;
-    mix-blend-mode: difference;
-    color: rgb(157, 152, 135);
+    .stNumber {
+        width: max-content;
+        padding: 3% 10%;
+        font-size: 2.7vh;
+        mix-blend-mode: difference;
+        color: rgb(157, 152, 135);
+    }
 }
 
 
@@ -108,16 +118,21 @@ main {
     transform-origin: left;  /* ←ポイント */
 }
 
-
+.temp {
+    width: 100%;
+}
 .stage {
     height: 0;
+    width: 100%;
     position: relative;
     background: rgb(100, 100, 100);
     transition: ease .3s;
     display: flex;
     opacity: 0;
-    p {
+    h1 {
         color: aliceblue;
+        font-weight: normal;
+        font-size: 3.2vh;
     }
     a {
         position: absolute;
@@ -128,17 +143,69 @@ main {
     }
 }
 #stage_1.active, #stage_2.active, #stage_3.active, #stage_4.active, #stage_5.active, #stage_6.active, #stage_7.active, #stage_8.active, #stage_9.active {
-    height: 5vh;
+    height: calc(10vh + 2px + 1px);
     opacity: 1;
 }
 
 .thumbnail {
-    aspect-ratio: 4 /2;
-    height: 5vh;
+    aspect-ratio: 4 / 3;
+    height: 10vh;
+    margin: 2px;
     background: rgb(168, 161, 137);
+    border-radius: 5px;
 }
+
+#preview {
+    aspect-ratio: 4 / 3;
+    width: 100vw;
+    background: rgb(187, 180, 156);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    border-radius: 50px;
+    box-shadow: 11px 11px 15px #9b9581,
+    -11px -11px 15px #dbd3b7;
+}
+
 @media (max-width: 999px) { /*スマホモード*/
-    .stNumber {
-        font-size: 2vh;
-    }
+    /* body, html {
+        overflow: auto;
+        } */
+        #container {
+            flex-direction: column;
+            margin: 0;
+            #leftContainer {
+                width: 100vw;
+                margin: 0;
+                font-size: 1.8vw;
+            }
+            .levels {
+                height: 40vh;
+                &#lev2 {
+                    background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, .08)15%, rgb(0, 0, 0, .2)40%, rgb(0, 0, 0, .2)60%, rgb(0, 0, 0, .08)75%, rgb(0, 0, 0, 0)100%);
+                }
+                &#lev3 {
+                    background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, .18)15%, rgb(0, 0, 0, .3)40%, rgb(0, 0, 0, .3)60%, rgb(0, 0, 0, .18)75%, rgb(0, 0, 0, 0)100%);
+                }
+                p {
+                    font-size: 2.5vh;
+                }
+            }
+            .stage h1, .stNumber {
+                font-size: 1.5vh;
+            }
+            .thumbnail {
+                height: 4vh;
+            }
+            #rightContainer {
+                width: 100vw;
+                margin: 0;
+                #preview {
+                    margin: 10px;
+                }
+            }
+        }
+        #stage_1.active, #stage_2.active, #stage_3.active, #stage_4.active, #stage_5.active, #stage_6.active, #stage_7.active, #stage_8.active, #stage_9.active {
+            height: calc(4vh + 2px + 1px);
+        }
 }
