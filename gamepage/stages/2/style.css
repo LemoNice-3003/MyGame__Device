@@ -70,6 +70,7 @@ main {
 
         &.active {
             #shader {
+                background: rgb(157, 152, 135);
                 box-shadow: 0 0 15px rgb(255, 255, 255),
                             0 0 60px rgb(157, 152, 135);
             }
@@ -96,3 +97,4 @@ main {
     @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
     }
 }
+
