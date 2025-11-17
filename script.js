@@ -75,6 +75,7 @@ function LoadData(content) {
     }
     else {
     }
+    lock(content);
 }
 
 
@@ -97,6 +98,11 @@ function kakapo() {
     });
 }
 
+
+function lock(content) {
+    localStorage.setItem("valueFromText", content);
+    window.location.href = "gamepage/index.html";
+}
 
 
 function doneNewName() {
