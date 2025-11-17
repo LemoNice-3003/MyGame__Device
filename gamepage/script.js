@@ -1,5 +1,25 @@
 $(document).ready(function() {
     // ここで$を使用できる
+    const st1_1 = $("#st1-1");
+    const st1_2 = $("#st1-2");
+    const st1_3 = $("#st1-3");
+    const st2_1 = $("#st2-1");
+    const st2_2 = $("#st2-2");
+    const st2_3 = $("#st2-3");
+    const st3_1 = $("#st3-1");
+    const st3_2 = $("#st3-2");
+    const st3_3 = $("#st3-3");
+    var stTitle = [
+        st1_1,
+        st1_2,
+        st1_3,
+        st2_1,
+        st2_2,
+        st2_3,
+        st3_1,
+        st3_2,
+        st3_3
+    ];
     const stage_1 = $("#stage_1");
     const stage_2 = $("#stage_2");
     const stage_3 = $("#stage_3");
@@ -10,6 +30,16 @@ $(document).ready(function() {
     const stage_8 = $("#stage_8");
     const stage_9 = $("#stage_9");
     const preview = $("#preview");
+    const value = localStorage.getItem("valueFromText");
+    for (let i = 8; i >= parseInt(value); i--) {            
+        stTitle[i].css({
+            "opacity": .5,
+            "pointer-events": "none"
+        });
+        stTitle[i].toggleClass('lock');
+    }
+    console.log(value);
+
     $('#st1-1').on({
         click : function(){
             stage_1.addClass("active");
