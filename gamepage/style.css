@@ -1,23 +1,5 @@
 @import url(../root.css);
 :root {
-    /* --stage_1_height: 0;
-    --stage_2_height: 0;
-    --stage_3_height: 0;
-    --stage_4_height: 0;
-    --stage_5_height: 0;
-    --stage_6_height: 0;
-    --stage_7_height: 0;
-    --stage_8_height: 0;
-    --stage_9_height: 0;
-    --thum1_width: 0;
-    --thum2_width: 0;
-    --thum3_width: 0;
-    --thum4_width: 0;
-    --thum5_width: 0;
-    --thum6_width: 0;
-    --thum7_width: 0;
-    --thum8_width: 0;
-    --thum9_width: 0; */
 }
 main {
     display: flex;
@@ -81,8 +63,23 @@ main {
         width: max-content;
         padding: 3% 10%;
         font-size: 2.7vh;
-        mix-blend-mode: difference;
-        color: rgb(157, 152, 135);
+        mix-blend-mode: normal;
+        color: rgb(30, 28, 21);
+        &::after {
+            content: "";
+            aspect-ratio: 1 / 1;
+            width: 40px;
+            display: inline-block;
+            background: url(../images/lock.png) center center no-repeat;
+            background-size: contain;
+            vertical-align: -1px;
+            opacity: 0;
+        }     
+        &.lock {
+            &::after {
+                opacity: 1;
+            }
+        }
     }
 }
 
