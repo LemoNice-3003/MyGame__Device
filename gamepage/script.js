@@ -30,7 +30,8 @@ $(document).ready(function() {
     const stage_8 = $("#stage_8");
     const stage_9 = $("#stage_9");
     const preview = $("#preview");
-    const value = localStorage.getItem("valueFromText");
+    const params = new URLSearchParams(location.search);
+    const value = params.get("value");
     for (let i = 8; i >= parseInt(value); i--) {            
         stTitle[i].css({
             "opacity": .5,
