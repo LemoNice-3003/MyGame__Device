@@ -1,14 +1,14 @@
 let lastTouchTime = 0;
 
 document.addEventListener('touchend', (event) => {
-  const currentTime = new Date().getTime();
-  const timeDifference = currentTime - lastTouchTime;
+    const currentTime = new Date().getTime();
+    const timeDifference = currentTime - lastTouchTime;
 
-  if (timeDifference < 300 && timeDifference > 0) {
+    if (timeDifference < 300 && timeDifference > 0) {
     event.preventDefault(); // ダブルタップを無効化
-  }
+    }
 
-  lastTouchTime = currentTime;
+    lastTouchTime = currentTime;
 });
 
 
@@ -80,6 +80,13 @@ function LoadData(content) {
 
 
 
+function lock(content) {
+    localStorage.setItem("valueFromText", content);
+    const url = "./gamepage/index.html?value=" + encodeURIComponent(content); //encodeURIComponent()で安全に使える文字列に変換
+    window.location.href = url;
+}
+
+
 function kakapo() {
     $(function changeColor(){
         $(".gametitle").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
@@ -96,12 +103,6 @@ function kakapo() {
         $(".welcome").css({"-webkit-text-fill-color" : "transparent"});
         $(".kakapo img").css({"width" : "120px"});
     });
-}
-
-
-function lock(content) {
-    localStorage.setItem("valueFromText", content);
-    window.location.href = `gamepage/index.html?value=${ encodeURIComponent(content) }`; //?value=~~ がURLパラメータ。encodeURIComponent()で安全に使える文字列に変換
 }
 
 
