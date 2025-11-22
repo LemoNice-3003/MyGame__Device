@@ -81,8 +81,8 @@ function LoadData(content) {
 
 
 function lock(content) {
-    localStorage.setItem("valueFromText", content);
-    const url = "./gamepage/index.html?value=" + encodeURIComponent(content); //encodeURIComponent()で安全に使える文字列に変換
+    const base = location.origin + location.pathname.replace(/\/[^\/]*$/, "/");
+    const url = base + "gamepage/index.html?value=" + encodeURIComponent(content);
     window.location.href = url;
 }
 
@@ -170,3 +170,4 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
+
