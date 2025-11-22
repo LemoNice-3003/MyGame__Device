@@ -32,7 +32,20 @@ $(document).ready(function() {
     const preview = $("#preview");
     const params = new URLSearchParams(location.search);
     const value = params.get("value");
-    for (let i = 8; i >= parseInt(value); i--) {            
+    const valueNum = parseInt(value, 10);
+    if (!Number.isInteger(valueNum)) { //異常処理
+        console.warn("value が不正です", value);
+        for (let i = 0; i <= 8; i++) {
+            stTitle[i].css({
+                "opacity": .5,
+                "pointer-events": "none"
+            });
+            stTitle[i].toggleClass('lock');
+        }
+        return;
+    }
+
+    for (let i = 8; i >= parseInt(value); i--) {
         stTitle[i].css({
             "opacity": .5,
             "pointer-events": "none"
