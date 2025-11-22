@@ -101,9 +101,7 @@ function kakapo() {
 
 function lock(content) {
     localStorage.setItem("valueFromText", content);
-    setTimeout(() => {
-        window.location.href = "gamepage/index.html";
-    }, 50); // Secure enough
+    window.location.href = `gamepage/index.html?value=${ encodeURIComponent(content) }`; //?value=~~ がURLパラメータ。encodeURIComponent()で安全に使える文字列に変換
 }
 
 
@@ -171,4 +169,3 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
-
