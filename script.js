@@ -101,7 +101,9 @@ function kakapo() {
 
 function lock(content) {
     localStorage.setItem("valueFromText", content);
-    window.location.href = "gamepage/index.html";
+    setTimeout(() => {
+        window.location.href = "gamepage/index.html";
+    }, 50); // Secure enough
 }
 
 
@@ -169,3 +171,4 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
+
