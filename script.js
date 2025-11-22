@@ -81,8 +81,7 @@ function LoadData(content) {
 
 
 function lock(content) {
-    const base = location.origin + location.pathname.replace(/\/[^\/]*$/, "/");
-    const url = base + "gamepage/index.html?value=" + encodeURIComponent(content);
+    const url = "gamepage/index.html?value=" + encodeURIComponent(content);
     window.location.href = url;
 }
 
@@ -170,4 +169,5 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
+
 
