@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
 @import url('../../../style_pageback.css');
+@import url('../../../style_clear_icon.css');
 .font-bad {
     font-family: "Bad Script", cursive;
 }
@@ -85,6 +86,10 @@ main {
             }
         }
     }
+    #clearIcon {
+        top: 75vh;
+        left: calc(50vw - 100px);
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -97,4 +102,3 @@ main {
     @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
     }
 }
-
