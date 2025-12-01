@@ -1,5 +1,6 @@
 /*基本設定*/
-@import url('../style_hamburger.css');
+@import url(../root.css);
+
 @font-face {
     font-family: 'Foglihtenno';
     src: url(../fonts/Foglihtenno04-aM2E.otf);
@@ -378,3 +379,4 @@ main {
         }
     }
 }
+
