@@ -66,14 +66,14 @@
                     </div>
                     <div class="kakapo"><img src="images/home/kakapo.gif" alt="" width="120px"></div>
                     <div class="prompt">
-                        <button type="button" class="upload_button" onclick="uploadSaveData()">
+                        <button type="button" class="upload_button" onclick="UploadSaveData()">
                             <p>セーブデータをアップロード．．．</p>
                             <img src="images/home/upload.png">
                         </button>
                         <div class="newUserBox">
                             <p>新しくセーブデータを作成する．．．</p>
-                            <input type="text" name="userName" id="newName" placeholder="ユーザー名（半角10文字以内）"><br>
-                            <button type="button" class="done_button" onclick="doneNewName()">
+                            <input type="text" name="userName" id="newName" placeholder="ユーザー名（10文字以内）" autocomplete="off"><br>
+                            <button type="button" class="done_button" onclick="DoneNewName()">
                                 <p>決定→</p>
                             </button>
                         </div>
