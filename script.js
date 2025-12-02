@@ -15,7 +15,7 @@ document.addEventListener('touchend', (event) => {
 
 var form = document.forms.myGameSite;
 // クリック時に実行する関数
-function uploadSaveData () {
+function UploadSaveData () {
     const showOpenFileDialog = () => new Promise(resolve => {
         const input = document.createElement('input');
         input.type = 'file';    //inputのタイプ
@@ -47,15 +47,20 @@ dropArea.addEventListener('drop', async (e) => {
     e.preventDefault(); //デフォルトの動作をキャンセル
     dropArea.style.background = 'rgb(0, 0, 0, 0)'; //色を元に戻す（透明）
     const dropfile = await e.dataTransfer.files; //ドロップされたファイルを取得
-    const val = dropfile[0];
-    CheckFileType(val);
+    const val = dropfile[100];
+    const lines = dropfile[100].split('\n');
+    CheckFileType(val, lines);
 });
 
-async function CheckFileType(val) {
+async function CheckFileType(val, lines) {
     if (/\.(txt)$/i.test(val.name))
     {
-        const dropcontent = await val.text();
-        LoadData(dropcontent);
+        const dropContent = await val.text();
+        if (dropContent.slice(0, 5) == "name=") {
+            const userName = dropContent.slice(6, dropContent.indexOf('\n') - 1);
+            const userProgress = dropContent.slice(10, dropContent.indexOf('\n') - 1);
+            GoToGamepage(userName, userProgress);
+        }
         return;
     }
     else
@@ -64,25 +69,26 @@ async function CheckFileType(val) {
     }
 }
 
-function LoadData(content) {
-    if (content == "0") {
-        kakapo();
-    }
-    else if (content == "1") {
-        $(function changeColor(){
-            $(".gametitle").css({"color" : "blue"});
-        });
-    }
-    else {
-    }
-    lock(content);
-}
+// function LoadData(userName, userProgress) {
+//     if (userProgress == "0") {
+//         kakapo();
+//     }
+//     else if (userProgress == "1") {
+//         $(function changeColor(){
+//             $(".gametitle").css({"color" : "blue"});
+//         });
+//     }
+//     else {
+//     }
+//     GoToGamepage(userProgress);
+// }
 
 
 
-function lock(content) {
-    const url = "gamepage/index.html?value=" + encodeURIComponent(content);
-    window.location.href = url;
+function GoToGamepage(userName, userProgress) {
+    console.log(userName, userProgress);
+    // const url = "gamepage/index.html?value=" + encodeURIComponent(userProgress);
+    // window.location.href = url;
 }
 
 
@@ -105,10 +111,13 @@ function kakapo() {
 }
 
 
-function doneNewName() {
+function DoneNewName() {
     // テキストエリアより文字列を取得
-    const txt = document.getElementById('newName').value;
-    if (!txt) { return; }
+    const txt = "name=" + "\"" + document.getElementById('newName').value + "\"" + "\nprogress=\"0\"";
+    if (!txt || document.getElementById('newName').value.length > 10) {
+        alert("名前が無効です。再入力してください。")
+        return;
+    }
     // 文字列をBlob化
     const blob = new Blob([txt], { type: 'text/plain' });
     // ダウンロード用のaタグ生成（aタグを使用するのは、download属性にダウンロードするファイル名と形式を設定できるため）
@@ -116,6 +125,7 @@ function doneNewName() {
     a.href =  URL.createObjectURL(blob);
     a.download = 'sample.txt';
     a.click();
+    GoToGamepage(0);
 }
 
 
@@ -169,5 +179,3 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
-
-
