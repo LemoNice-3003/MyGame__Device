@@ -34,8 +34,8 @@ $(document).ready(function() {
     const value = params.get("value");
     const valueNum = parseInt(value, 10);
     if (!Number.isInteger(valueNum)) { //異常処理
-        console.warn("value が不正です", value);
-        for (let i = 0; i <= 8; i++) {
+        console.warn("value が不正です", valueNum);
+        for (let i = 0; i <= 8; i++) { // lock
             stTitle[i].css({
                 "opacity": .5,
                 "pointer-events": "none"
@@ -45,7 +45,7 @@ $(document).ready(function() {
         return;
     }
 
-    for (let i = 8; i >= parseInt(value); i--) {
+    for (let i = 8; i >= parseInt(value); i--) { // lockの解除
         stTitle[i].css({
             "opacity": .5,
             "pointer-events": "none"
