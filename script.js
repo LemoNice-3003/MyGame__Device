@@ -87,8 +87,8 @@ async function CheckFileType(val, lines) {
 
 function GoToGamepage(userName, userProgress) {
     console.log(userName, userProgress);
-    // const url = "gamepage/index.html?value=" + encodeURIComponent(userProgress);
-    // window.location.href = url;
+    const url = "gamepage/index.html?value=" + encodeURIComponent(2);
+    window.location.href = url;
 }
 
 
