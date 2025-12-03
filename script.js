@@ -134,7 +134,7 @@ function doneNewName() {
         showDownloadModal(blob);
     }
     
-    //goToGamepage(0);
+    goToGamepage(0);
 }
 
 function showDownloadModal(blob) {
@@ -202,3 +202,4 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
+
