@@ -14,7 +14,7 @@ document.addEventListener('touchend', (event) => {
 
 
 var form = document.forms.myGameSite;
-// クリック時に実行する関数
+// セーブデータアップロードボタンのクリック時に実行する関数
 function UploadSaveData () {
     const showOpenFileDialog = () => new Promise(resolve => {
         const input = document.createElement('input');
