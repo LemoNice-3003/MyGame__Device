@@ -134,7 +134,8 @@ function doneNewName() {
         showDownloadModal(blob);
     }
     
-    goToGamepage(0);
+    const url = "gamepage/index.html?value=" + encodeURIComponent(0);
+    window.location.href = url;
 }
 
 function showDownloadModal(blob) {
@@ -202,4 +203,5 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
+
 
