@@ -15,7 +15,7 @@ document.addEventListener('touchend', (event) => {
 
 var form = document.forms.myGameSite;
 // セーブデータアップロードボタンのクリック時に実行する関数
-function UploadSaveData () {
+function uploadSaveData () {
     const showOpenFileDialog = () => new Promise(resolve => {
         const input = document.createElement('input');
         input.type = 'file';    //inputのタイプ
@@ -26,7 +26,7 @@ function UploadSaveData () {
     (async () => {
         const files = await showOpenFileDialog();   //fileにダイアログで選択したtxtファイルのデータを渡す
         const val = await files[0];  //contentに開いたtxtファイルの中身を移す
-        CheckFileType(val);
+        checkFileType(val);
     })();
 }
 
@@ -47,19 +47,21 @@ dropArea.addEventListener('drop', async (e) => {
     e.preventDefault(); //デフォルトの動作をキャンセル
     dropArea.style.background = 'rgb(0, 0, 0, 0)'; //色を元に戻す（透明）
     const dropfile = await e.dataTransfer.files; //ドロップされたファイルを取得
-    const val = dropfile[100];
-    const lines = dropfile[100].split('\n');
-    CheckFileType(val, lines);
+    const text = dropfile[0];
+    checkFileType(text);
 });
 
-async function CheckFileType(val, lines) {
-    if (/\.(txt)$/i.test(val.name))
+async function checkFileType(text) {
+    if (/\.(txt)$/i.test(text.name)) // ファイルの拡張子チェック
     {
-        const dropContent = await val.text();
+        const dropContent = await text.text(); // データをテキストとして読み込む
+        const lines = dropContent.split(/\r?\n/); // 行ごとに分割し、格納
+        // console.log(lines);
         if (dropContent.slice(0, 5) == "name=") {
-            const userName = dropContent.slice(6, dropContent.indexOf('\n') - 1);
-            const userProgress = dropContent.slice(10, dropContent.indexOf('\n') - 1);
-            GoToGamepage(userName, userProgress);
+            const userName = lines[0].slice(6, lines[0].indexOf('\n')); // ユーザー名
+            const userProgress = lines[1].slice(10, lines[1].indexOf('\n')); // 進捗度（ステージがどこまで解放されているか）
+            // console.log(userName, userProgress);
+            goToGamepage(userName, userProgress);
         }
         return;
     }
@@ -80,14 +82,13 @@ async function CheckFileType(val, lines) {
 //     }
 //     else {
 //     }
-//     GoToGamepage(userProgress);
+//     goToGamepage(userProgress);
 // }
 
 
 
-function GoToGamepage(userName, userProgress) {
-    console.log(userName, userProgress);
-    const url = "gamepage/index.html?value=" + encodeURIComponent(2);
+function goToGamepage(userName, userProgress) {
+    const url = "gamepage/index.html?value=" + encodeURIComponent(userProgress);
     window.location.href = url;
 }
 
@@ -111,22 +112,44 @@ function kakapo() {
 }
 
 
-function DoneNewName() {
+// 新しいセーブデータを作るときのボタンの処理
+function doneNewName() {
     // テキストエリアより文字列を取得
-    const txt = "name=" + "\"" + document.getElementById('newName').value + "\"" + "\nprogress=\"0\"";
+    const txt = "name=\"" + document.getElementById('newName').value + "\"\nprogress=\"0\"";
+    
     if (!txt || document.getElementById('newName').value.length > 10) {
-        alert("名前が無効です。再入力してください。")
+        alert("名前が無効です。再入力してください。");
         return;
     }
-    // 文字列をBlob化
+    
     const blob = new Blob([txt], { type: 'text/plain' });
-    // ダウンロード用のaタグ生成（aタグを使用するのは、download属性にダウンロードするファイル名と形式を設定できるため）
-    const a = document.createElement('a');
-    a.href =  URL.createObjectURL(blob);
-    a.download = 'sample.txt';
-    a.click();
-    GoToGamepage(0);
+    
+    if(innerWidth > 999) { // pcは自動ダウンロード
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'sample.txt';
+        a.click();
+    } else { // スマホは手動ダウンロード
+        // iOS対応：リンクを直接表示してユーザーにタップさせる
+        showDownloadModal(blob);
+    }
+    
+    //goToGamepage(0);
 }
+
+function showDownloadModal(blob) {
+    const url = URL.createObjectURL(blob);
+    const modal = document.getElementById("downloadModal");
+    const link = document.getElementById("downloadLink");
+    link.href = url;
+    modal.style.display = "flex"; // 表示
+}
+
+function closeDownloadModal() {
+    const modal = document.getElementById("downloadModal");
+    modal.style.display = "none"; // 非表示
+}
+
 
 
 
