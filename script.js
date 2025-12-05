@@ -93,23 +93,23 @@ function goToGamepage(userName, userProgress) {
 }
 
 
-function kakapo() {
-    $(function changeColor(){
-        $(".gametitle").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
-        $(".gametitle").css({"margin-block-end" : "0px"});
-        $(".gametitle").css({"text-shadow" : "none"});
-        $(".gametitle").css({"display" : "inline-block"});
-        $(".gametitle").css({"-webkit-background-clip" : "text"});
-        $(".gametitle").css({"-webkit-text-fill-color" : "transparent"});
-        $(".welcome").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
-        $(".welcome").css({"margin" : "0px"});
-        $(".welcome").css({"text-shadow" : "none"});
-        $(".welcome").css({"display" : "inline-block"});
-        $(".welcome").css({"-webkit-background-clip" : "text"});
-        $(".welcome").css({"-webkit-text-fill-color" : "transparent"});
-        $(".kakapo img").css({"width" : "120px"});
-    });
-}
+// function kakapo() {
+//     $(function changeColor(){
+//         $(".gametitle").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
+//         $(".gametitle").css({"margin-block-end" : "0px"});
+//         $(".gametitle").css({"text-shadow" : "none"});
+//         $(".gametitle").css({"display" : "inline-block"});
+//         $(".gametitle").css({"-webkit-background-clip" : "text"});
+//         $(".gametitle").css({"-webkit-text-fill-color" : "transparent"});
+//         $(".welcome").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
+//         $(".welcome").css({"margin" : "0px"});
+//         $(".welcome").css({"text-shadow" : "none"});
+//         $(".welcome").css({"display" : "inline-block"});
+//         $(".welcome").css({"-webkit-background-clip" : "text"});
+//         $(".welcome").css({"-webkit-text-fill-color" : "transparent"});
+//         $(".kakapo img").css({"width" : "120px"});
+//     });
+// }
 
 
 // 新しいセーブデータを作るときのボタンの処理
@@ -129,20 +129,21 @@ function doneNewName() {
         a.href = URL.createObjectURL(blob);
         a.download = 'sample.txt';
         a.click();
+        const url = "gamepage/index.html?value=" + encodeURIComponent(0);
+        window.location.href = url;
     } else { // スマホは手動ダウンロード
         // iOS対応：リンクを直接表示してユーザーにタップさせる
         showDownloadModal(blob);
     }
     
-    const url = "gamepage/index.html?value=" + encodeURIComponent(0);
-    window.location.href = url;
 }
 
 function showDownloadModal(blob) {
     const url = URL.createObjectURL(blob);
-    const modal = document.getElementById("downloadModal");
     const link = document.getElementById("downloadLink");
+    const modal = document.getElementById("downloadModal");
     link.href = url;
+    link.download = 'sample.txt';
     modal.style.display = "flex"; // 表示
 }
 
@@ -203,5 +204,3 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
-
-
