@@ -7,11 +7,42 @@ document.addEventListener('touchend', (event) => {
     if (timeDifference < 300 && timeDifference > 0) {
     event.preventDefault(); // ダブルタップを無効化
     }
-
+    
     lastTouchTime = currentTime;
 });
 
 
+const newName = document.getElementById('newName');
+newName.form.addEventListener("keydown", (e) => {
+    if(e.key === "Enter") {
+        doneNewName();
+        e.preventDefault();  // Enterキー入力によるformの再読み込み（ページ自体の更新）を防止
+    }
+});
+
+// 新しいセーブデータを作るときのボタンの処理
+function doneNewName() {
+    // テキストエリアより文字列を取得
+    const txt = "name=\"" + newName.value + "\"\nprogress=\"0\"";
+    
+    if (!txt || document.getElementById('newName').value.length > 10) {
+        alert("名前が無効です。再入力してください。");
+        return;
+    }
+    
+    const blob = new Blob([txt], { type: 'text/plain' });
+    
+    if(innerWidth > 999) { // pcは自動ダウンロード
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'sample.txt';
+        a.click();
+        goToGamepage(newName.value, 0);
+    } else { // スマホは手動ダウンロード
+        // iOS対応：リンクを直接表示してユーザーにタップさせる
+        showDownloadModal(blob);
+    }
+}
 
 var form = document.forms.myGameSite;
 // セーブデータアップロードボタンのクリック時に実行する関数
@@ -111,32 +142,6 @@ function goToGamepage(userName, userProgress) {
 //     });
 // }
 
-
-// 新しいセーブデータを作るときのボタンの処理
-function doneNewName() {
-    // テキストエリアより文字列を取得
-    const txt = "name=\"" + document.getElementById('newName').value + "\"\nprogress=\"0\"";
-    
-    if (!txt || document.getElementById('newName').value.length > 10) {
-        alert("名前が無効です。再入力してください。");
-        return;
-    }
-    
-    const blob = new Blob([txt], { type: 'text/plain' });
-    
-    if(innerWidth > 999) { // pcは自動ダウンロード
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'sample.txt';
-        a.click();
-        const url = "gamepage/index.html?value=" + encodeURIComponent(0);
-        window.location.href = url;
-    } else { // スマホは手動ダウンロード
-        // iOS対応：リンクを直接表示してユーザーにタップさせる
-        showDownloadModal(blob);
-    }
-    
-}
 
 function showDownloadModal(blob) {
     const url = URL.createObjectURL(blob);
