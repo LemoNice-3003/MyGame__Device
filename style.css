@@ -1,5 +1,6 @@
 @import url(root.css);
-
+:root {
+}
 
 /*--------------------------------------------------*/
 
@@ -61,7 +62,7 @@ main {
 }
 #circle5 {
     position: relative;
-    top: -13vh;
+    top: -10vh;
     right: -97vw;
 }
 .planet {
@@ -157,13 +158,6 @@ main {
 }
 
 
-.loginbox {
-    width: 30vw;
-    height: 82vh;
-    border-radius: 100px;
-    text-align: center;
-    border: double 5.5px rgb(110, 106, 92);
-}
 .container{
     display: flex;
     flex-direction: column;
@@ -172,6 +166,13 @@ main {
         -ms-filter: blur(15px);
         filter: blur(15px);
     } */
+}
+.loginbox {
+    width: 30vw;
+    height: 82vh;
+    border-radius: 100px;
+    text-align: center;
+    border: double 5.5px rgb(110, 106, 92);
 }
 
 .title p {
@@ -200,65 +201,97 @@ main {
     }
 }
 .prompt {
-    height: 50%;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 .upload_button {
     aspect-ratio: 9 / 1.2; /*アスペクト比設定*/
-    width: 21vw;
+    width: 70%;
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0);
-    box-shadow: 0 0 3px rgb(238, 238, 238, .5) inset;
-    border: solid 2px rgb(110, 106, 92);
+    background: rgb(0, 0, 0, .2);
+    box-shadow: 10px 20px 20px rgb(0, 0, 0, .42),
+                inset 10px 20px 25px rgb(212, 203, 175, .82);
+    margin-bottom: 5%;
+    padding: .7% 1.5%;
+    border-top: solid 1px rgb(250, 250, 250, .5);
+    border-left: solid 1px rgb(250, 250, 250, .6);
+    border-right: solid 1px rgb(250, 250, 250, .3);
+    border-bottom: solid 1px rgb(250, 250, 250, .3);
     border-radius: 12px;
+    text-shadow: 0 0 2px rgb(255, 255, 255, .4), 
+                0 0 6px rgb(212, 203, 175);
+    transition: .3s ease-out;
     z-index: 101;
-}
-.upload_button img {
-    margin-right: 2%;
-    height: 90%;
+    &:hover {
+        box-shadow: 7px 14px 20px rgb(0, 0, 0, .47),
+                    inset 7px 14px 25px rgb(212, 203, 175, .9);
+    }
+    img {
+        margin-right: 2%;
+        height: 35px;
+    }
 }
 .newUserBox {
-    width: 21vw;
+    width: 70%;
     height: 30vh;
-    margin-top: 5%;
-    padding: 2%;
+    position: relative;
+    padding: .7% 1.5%;
     text-align: left;
-    background: rgb(0, 0, 0, 0);
-    box-shadow: 0 0 3px rgb(238, 238, 238, .5) inset;
-    border: solid 2px rgb(110, 106, 92);
+    background: rgb(0, 0, 0, .2);
     border-radius: 12px;
+    box-shadow: 10px 20px 25px rgb(0, 0, 0, .42),
+                inset 10px 20px 65px rgb(212, 203, 175, .82);
+    border-top: solid 1px rgb(250, 250, 250, .5);
+    border-left: solid 1px rgb(250, 250, 250, .6);
+    border-right: solid 1px rgb(250, 250, 250, .3);
+    border-bottom: solid 1px rgb(250, 250, 250, .3);
     z-index: 101;
 }
-.upload_button p, .newUserBox p {
-    font-family: 'Bad Script';
-    margin-left: .7vw;
-    color: black;
+.newUserBox p, .upload_button p {
+    position: relative;
+    left: 2.5%;
 }
 #newName {
-    --newName-width: 80%;
+    --newName-width: 95%;
     width: var(--newName-width);
     height: 3.5vh;
-    margin-left: 1.5vw;
+    position: relative;
+    left: calc(50% - (var(--newName-width) / 2));
+    margin-top: 8px;
     padding: 1%;
     font-size: 1.6vh;
-    border: solid 1px rgb(110, 106, 92);
+    border: none;
     border-radius: 5px;
     background: rgb(255, 253, 236, .6);
-    border: solid .5px rgb(60, 75, 87, 1);
 }
 .done_button {
     aspect-ratio: 5 / 2;
     height: 4vh;
-    margin-top: 2vh;
-    border: solid 1px rgb(110, 106, 92);
-    border-radius: 6px;
     position: relative;
     left: 70%;
+    margin-top: 2vh;
+    background: rgb(0, 0, 0, .2);
+    box-shadow: 5px 10px 15px rgb(0, 0, 0, .32),
+                inset 5px 10px 25px rgb(175, 167, 144, .82);
+    border-top: solid 1px rgb(250, 250, 250, .5);
+    border-left: solid 1px rgb(250, 250, 250, .6);
+    border-right: solid 1px rgb(250, 250, 250, .3);
+    border-bottom: solid 1px rgb(250, 250, 250, .3);
+    border-radius: 6px;
+    transition: .3s ease-out;
+    &:hover {
+        box-shadow: 4px 8px 15px rgb(0, 0, 0, .32),
+                    inset 4px 8px 25px rgb(175, 167, 144, .82);
+        text-shadow: 0 0 2px rgb(255, 255, 255, .2),
+                    0 0 5px rgb(175, 167, 144, .5);
+    }
     p {
         font-family: 'Bad Script';
         margin: 0;
@@ -267,6 +300,42 @@ main {
 }
 .upload_button:focus, #newName:focus, .done_button:focus {
     outline: 0;
+}
+
+#downloadModal {
+    display: none;
+    /* display: flex; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: rgb(0, 0, 0, .2);
+    opacity: 0;
+    z-index: 9999;
+    &:hover {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    div {
+        width: 85vw;
+        /* background: url(5A5H3OTZwMu6RK31764988954_1764988975.png) no-repeat center rgb(255, 255, 255, .1);
+        background-size: cover; */
+        background: rgb(255, 255, 255, .2);
+        backdrop-filter: blur(3px);
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, .2);
+        border-radius: 20px;
+        border: 1px solid rgb(250, 250, 250, .2);
+        padding: 20px;
+        text-align: center;
+        a, p {
+            font-family: 'Receipt';
+            font-size: 22px;
+            text-shadow: 0 0 5px rgb(255, 255, 255, 0.6);
+        }
+    }
 }
 
 @keyframes rainbow1 {
@@ -304,9 +373,9 @@ main {
             top: -13vh;
             right: -14vw;
         }
-        .circle5 {
-            top: -16vh;
-            right: -84vw;
+        #circle5 {
+            top: -11vh;
+            right: -95vw;
         }
         #star {
             height: 7vh;
@@ -344,18 +413,21 @@ main {
         .welcome {
             margin-bottom: 5vh;
         }
-        .newUserBox, .upload_button {
+        .upload_button, .newUserBox {
             width: 55%;
         }
-        #newName {
-            margin-left: 10%;
+        .upload_button {
+            aspect-ratio: 9 / 1.5;
+            img {
+                height: 22px;
+            }
         }
         .newUserBox p, .upload_button p, #newName, .done_button p {
             font-size: 1.2vh;
         }
         .done_button {
             height: 2.8vh;
-            right: 10%;
+            left: 65%;
         }
     }
     @media (orientation: landscape) {   /*横向き用（landscape: 風景）*/
@@ -370,7 +442,7 @@ main {
         .upload_button {
             width: 50%;
             &img {
-                height: 60%;
+                height: 20px;
             }
             &p {
                 font-size: 4vh;
@@ -382,7 +454,6 @@ main {
     @media(min-width: 1000px) {
         .loginbox {
             width: 55vw;
-            /* left: calc(50% - (55vw / 2)); */
         }
         .upload_button img {
             height: 70%;
@@ -407,8 +478,8 @@ main {
             .welcome {
                 margin: -16vh 0 12vh;
             }
-            .upload_button {
-                width: 65%;
+            .upload_button, .newUserBox {
+                width: 30%;
             }
         }
     }
