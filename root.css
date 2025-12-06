@@ -25,7 +25,9 @@
     font-family: 'Grandiflora One', cursive;
     src: url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
 }
-
+:root {
+    --defaultColor: rgb(187, 180, 156);
+}
 * {
     margin: 0;
     padding: 0;
@@ -50,7 +52,7 @@ body, html {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background: rgb(187, 180, 156);
+    background: var(--defaultColor);
 }
 body, html, a, p {
     user-select: none; /* 選択禁止 */
