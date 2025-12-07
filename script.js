@@ -22,13 +22,15 @@ newName.form.addEventListener("keydown", (e) => {
 
 // 新しいセーブデータを作るときのボタンの処理
 function doneNewName() {
-    // テキストエリアより文字列を取得
-    const txt = "name=\"" + newName.value + "\"\nprogress=\"0\"";
-    
-    if (!txt || document.getElementById('newName').value.length > 10) {
+    // 異常処理
+    if (!newName.value || newName.value.length > 10) {
         alert("名前が無効です。再入力してください。");
         return;
     }
+
+    // テキストエリアより文字列を取得
+    const txt = "name=\"" + newName.value + "\"\nprogress=\"0\"";
+    
     
     const blob = new Blob([txt], { type: 'text/plain' });
     
