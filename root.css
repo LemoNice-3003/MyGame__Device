@@ -14,8 +14,15 @@
     src: url(fonts/PLENTO-Regular.ttf);
 }
 @font-face {
-    font-family: 'CanisMinor-Regular';
-    src: url(fonts/CanisMinor-Regular.ttf);
+    font-family: 'Canis Minor';
+    src: url('fonts/CanisMinor/CanisMinor-Regular.eot');
+    src: local('CanisMinor-Regular'),
+        url('CanisMinor-Regular.eot?#iefix') format('embedded-opentype'),
+        url('CanisMinor-Regular.woff2') format('woff2'),
+        url('CanisMinor-Regular.woff') format('woff'),
+        url('CanisMinor-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
     font-family: 'Bad Script', cursive;
@@ -27,6 +34,12 @@
 }
 :root {
     --defaultColor: rgb(187, 180, 156);
+    --defaultColor-Light: rgb(212, 203, 175);
+    --defaultColor-Gray: rgb(157, 152, 135);
+    --defaultColor-Dark: rgb(30, 28, 21);
+    --defaultFont-星: 'Canis Minor';
+    --defaultFont-レシート: 'Receipt';
+    --defaultFont-バッド: 'Bad Script', cursive;
 }
 * {
     margin: 0;
@@ -34,10 +47,10 @@
     box-sizing: border-box;
     /* border: solid 1px rgb(200, 30, 30, .2); */
 }
-a:link { color: rgb(30, 28, 21); }                                            /*リンクのデフォルト色*/
-a:visited { color: rgb(30, 28, 21); }                                         /*閲覧済みリンク色*/
-a:hover { color: rgb(157, 152, 135); }                                           /*リンクを持っているときの色*/
-a:active { color: rgb(157, 152, 135); }                                          /*リンクを選択中(リンクにカーソルが重なってる時)の色*/
+a:link { color: var(--defaultColor-Dark); }                                            /*リンクのデフォルト色*/
+a:visited { color: var(--defaultColor-Dark); }                                         /*閲覧済みリンク色*/
+a:hover { color: var(--defaultColor-Gray); }                                           /*リンクを持っているときの色*/
+a:active { color: var(--defaultColor-Gray); }                                          /*リンクを選択中(リンクにカーソルが重なってる時)の色*/
 li {
     list-style: none;
     margin: 15px 0 15px 0;
