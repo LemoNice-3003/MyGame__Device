@@ -17,10 +17,10 @@
     font-family: 'Canis Minor';
     src: url('fonts/CanisMinor/CanisMinor-Regular.eot');
     src: local('CanisMinor-Regular'),
-        url('CanisMinor-Regular.eot?#iefix') format('embedded-opentype'),
-        url('CanisMinor-Regular.woff2') format('woff2'),
-        url('CanisMinor-Regular.woff') format('woff'),
-        url('CanisMinor-Regular.ttf') format('truetype');
+        url('fonts/CanisMinor/CanisMinor-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/CanisMinor/CanisMinor-Regular.woff2') format('woff2'),
+        url('fonts/CanisMinor/CanisMinor-Regular.woff') format('woff'),
+        url('fonts/CanisMinor/CanisMinor-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -79,3 +79,4 @@ body, html, a, p {
     scrollbar-width: none;
     font-size: 1.8vh;
 }
+
