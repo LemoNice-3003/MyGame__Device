@@ -176,8 +176,7 @@ main {
 }
 
 .title p {
-    font-family: 'CanisMinor-Regular';
-    font-weight: nomal;
+    font-family: var(--defaultFont-星);
     color: aliceblue;
     text-shadow: 0px 0px 12px #ffffffaa;
 }
@@ -206,6 +205,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    p {
+        font-family: var(--defaultFont-バッド);
+        color: var(--defaultColor-Dark);
+    }
 }
 .upload_button {
     aspect-ratio: 9 / 1.2; /*アスペクト比設定*/
@@ -217,6 +220,7 @@ main {
     overflow: hidden;
     background: rgb(0, 0, 0, .2);
     box-shadow: 10px 20px 20px rgb(0, 0, 0, .42),
+                inset 0 0 7px rgb(212, 203, 175, .62),
                 inset 10px 20px 25px rgb(212, 203, 175, .82);
     margin-bottom: 5%;
     padding: .7% 1.5%;
@@ -225,13 +229,14 @@ main {
     border-right: solid 1px rgb(250, 250, 250, .3);
     border-bottom: solid 1px rgb(250, 250, 250, .3);
     border-radius: 12px;
-    text-shadow: 0 0 2px rgb(255, 255, 255, .4), 
+    text-shadow: 0 0 2px rgb(255, 255, 255, .4),
                 0 0 6px rgb(212, 203, 175);
     transition: .3s ease-out;
     z-index: 101;
     &:hover {
-        box-shadow: 7px 14px 20px rgb(0, 0, 0, .47),
-                    inset 7px 14px 25px rgb(212, 203, 175, .9);
+        box-shadow: 7px 14px 15px rgb(0, 0, 0, .47),
+                    inset 0 0 7px rgb(212, 203, 175, .62),
+                    inset 7px 14px 20px rgb(212, 203, 175, .9);
     }
     img {
         margin-right: 2%;
@@ -244,10 +249,11 @@ main {
     position: relative;
     padding: .7% 1.5%;
     text-align: left;
-    background: rgb(0, 0, 0, .2);
+    background: rgb(0, 0, 0, .1);
     border-radius: 12px;
-    box-shadow: 10px 20px 25px rgb(0, 0, 0, .42),
-                inset 10px 20px 65px rgb(212, 203, 175, .82);
+    box-shadow: 10px 20px 15px rgb(0, 0, 0, .42),
+                inset 0 0 10px rgb(212, 203, 175, .62),
+                inset 10px 20px 20px rgb(194, 188, 166, .82);
     border-top: solid 1px rgb(250, 250, 250, .5);
     border-left: solid 1px rgb(250, 250, 250, .6);
     border-right: solid 1px rgb(250, 250, 250, .3);
@@ -265,11 +271,17 @@ main {
     position: relative;
     left: calc(50% - (var(--newName-width) / 2));
     margin-top: 8px;
-    padding: 1%;
+    padding-left: .5em;
     font-size: 1.6vh;
     border: none;
     border-radius: 5px;
-    background: rgb(255, 253, 236, .6);
+    background: rgb(168, 162, 140);
+    box-shadow: 3px 3px 6px rgb(0, 0, 0, .1),
+                inset 0 0 10px rgb(255, 253, 236, .2),
+                -3px -3px 6px rgb(255, 253, 236, 0.2);
+    &::placeholder {
+        color: rgb(224, 219, 201, .8);
+    }
 }
 .done_button {
     aspect-ratio: 5 / 2;
@@ -279,23 +291,20 @@ main {
     margin-top: 2vh;
     background: rgb(0, 0, 0, .2);
     box-shadow: 5px 10px 15px rgb(0, 0, 0, .32),
+                inset 0 0 5px rgb(212, 203, 175, .62),
                 inset 5px 10px 25px rgb(175, 167, 144, .82);
     border-top: solid 1px rgb(250, 250, 250, .5);
     border-left: solid 1px rgb(250, 250, 250, .6);
     border-right: solid 1px rgb(250, 250, 250, .3);
     border-bottom: solid 1px rgb(250, 250, 250, .3);
     border-radius: 6px;
+    text-shadow: 0 0 2px rgb(255, 255, 255, .2),
+                0 0 5px rgb(175, 167, 144, .5);
     transition: .3s ease-out;
     &:hover {
-        box-shadow: 4px 8px 15px rgb(0, 0, 0, .32),
-                    inset 4px 8px 25px rgb(175, 167, 144, .82);
-        text-shadow: 0 0 2px rgb(255, 255, 255, .2),
-                    0 0 5px rgb(175, 167, 144, .5);
-    }
-    p {
-        font-family: 'Bad Script';
-        margin: 0;
-        color: black;
+        box-shadow: 4px 8px 12px rgb(0, 0, 0, .38),
+                    inset 0 0 5px rgb(212, 203, 175, .62),
+                    inset 4px 8px 15px rgb(175, 167, 144, .9);
     }
 }
 .upload_button:focus, #newName:focus, .done_button:focus {
@@ -331,7 +340,7 @@ main {
         padding: 20px;
         text-align: center;
         a, p {
-            font-family: 'Receipt';
+            font-family: var(--defaultFont-レシート);
             font-size: 22px;
             text-shadow: 0 0 5px rgb(255, 255, 255, 0.6);
         }
@@ -351,6 +360,7 @@ main {
     .loginbox {
         height: 75vh;
         width: 95vw;
+        border-radius: 70px;
     }
     @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
         #circle1 {
@@ -479,7 +489,7 @@ main {
                 margin: -16vh 0 12vh;
             }
             .upload_button, .newUserBox {
-                width: 30%;
+                width: 50%;
             }
         }
     }
