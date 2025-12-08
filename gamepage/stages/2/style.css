@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
 @import url('../../../style_pageback.css');
-@import url('../../../style_clear_icon.css');
 .font-bad {
     font-family: "Bad Script", cursive;
 }
@@ -24,81 +23,35 @@ body, html {
     width: var(--htmlWidth);
     height: var(--htmlHeight);
     overflow: hidden;
-    transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 
 /*--------------------------------------------------*/
 
-main {
-    width: 100vw;
-    height: 100vh;
+#tile {
+    width: 100%;
+    height: 100%;
+    background: white;
     position: absolute;
-    top: 0;
+    top: 95vh;
     left: 0;
-    #symbol {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        .symbolItem {
-            aspect-ratio: 1 / 1;
-            width: 300px;
-            position: absolute;
-            top: 25%;
-            mix-blend-mode: difference;
-            background: rgb(157, 152, 135);
-            transform-origin: 50% 50%;
-            border-radius: 50%;
-            transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
-            &#shader {
-                width: 300px;
-                mix-blend-mode: normal;
-                background: rgb(0, 0, 0, 0);
-                box-shadow: 0 0 15px rgb(40, 40, 40),
-                            0 0 30px rgb(110, 106, 91);
-            }
-            &#semicircle-left {
-                background: linear-gradient(to right, rgb(157, 152, 135)0%, rgb(157, 152, 135)50%, rgb(0, 0, 0, 0)50%, rgb(0, 0, 0, 0)100%);
-                border: solid 10px rgb(0, 0, 0);
-            }
-            &#circle {
-                transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
-                border: solid rgb(0, 0, 0);
-                border-width: 75px;
-            }
+    #moveTile {
+        --tileWidth: 50%;
+        --volume: 0%;
+        width: var(--tileWidth);
+        height: 3vh;
+        background: white;
+        position: relative;
+        bottom: calc(var(--volume) + 10%);
+        border-radius: 1vh;
+        left: calc((100% - var(--tileWidth)) / 2);
+        transition: ease .1s;
+        text-align: center;
+        &::before {
+            content: "音量 -- ";
         }
-
-        &.active {
-            #shader {
-                background: rgb(157, 152, 135);
-                box-shadow: 0 0 15px rgb(255, 255, 255),
-                            0 0 60px rgb(157, 152, 135);
-            }
-            #object {
-                transform: scale(.5);
-            }
-            #semicircle-left {
-                transform: rotate(180deg);
-            }
-            #circle {
-                transform: scale(2);
-            }
+        &::after {
+            content: "% --";
         }
-    }
-    #clearIcon {
-        top: 75vh;
-        left: calc(50vw - 100px);
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body, html{
-        background: rgb(24, 23, 17);
-    }
-}
-
-@media (max-width: 999px) { /*スマホモード*/
-    @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
     }
 }
