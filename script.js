@@ -39,7 +39,7 @@ function doneNewName() {
         a.href = URL.createObjectURL(blob);
         a.download = 'sample.txt';
         a.click();
-        goToGamepage(newName.value, 0);
+        goToGamepage(newName.value, 1);
     } else { // スマホは手動ダウンロード
         // iOS対応：リンクを直接表示してユーザーにタップさせる
         showDownloadModal(blob);
