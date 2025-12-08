@@ -29,7 +29,7 @@ function doneNewName() {
     }
 
     // テキストエリアより文字列を取得
-    const txt = "name=\"" + newName.value + "\"\nprogress=\"0\"";
+    const txt = "name=\"" + newName.value + "\"\nprogress=\"1\"";
     
     
     const blob = new Blob([txt], { type: 'text/plain' });
