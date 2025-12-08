@@ -122,7 +122,7 @@ class ExplosionParticle {
                 if (particle.life > 0) {
                     this.ctx.beginPath();
                     this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                    this.ctx.fillStyle = `rgba(157, 152, 135, ${particle.life})`;
+                    this.ctx.fillStyle = `rgba(255, 255, 255, ${particle.life})`;
                     this.ctx.fill();
                 }
             });
@@ -143,7 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
     particle = new ExplosionParticle(canvas, {
         particleCount: 50,
         particleSize: 3,
-        particleColor: 'rgb(157, 152, 135)',
+        particleColor: 'rgb(255, 255, 255)',
         explosionSpeed: 3
     });
 });
+
