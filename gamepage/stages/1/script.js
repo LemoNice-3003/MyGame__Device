@@ -1,28 +1,21 @@
-var $moveTile = $('#moveTile');
-var volumeStr, volumeNum, newVolume;
-// 現在の--volumeの値を取得
-volumeStr = $moveTile.css('--volume').trim();
-// 数値部分を抽出
-volumeNum = parseFloat(volumeStr);
-document.getElementById("moveTile").innerHTML = volumeNum;
-
-document.addEventListener("keydown", function(event) {
-    volumeStr = $moveTile.css('--volume').trim();
-    volumeNum = parseFloat(volumeStr);
-    if (event.key == "ArrowDown" || event.key == "ArrowUp") {
-        if (event.key == "ArrowDown" && volumeNum > 0) {
-            newVolume = volumeNum - 1;
-        }
-        if (event.key == "ArrowUp" && volumeNum < 60) {
-            newVolume = volumeNum + 1;
-        }
-        
-        var displayVolume = Math.floor(newVolume * (100 / 60));
-        document.getElementById("moveTile").innerHTML = displayVolume;
-        $(function changeVolume() {
-            $moveTile.css('--volume', Math.floor(newVolume) + '%');
-        });
+function isDarkMode() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+function onload() {
+    const symbol = document.querySelector('#symbol');
+    if (isDarkMode()) {
+        symbol.classList.toggle('active');
+        console.log('ダークモードです');
+    } else {
+        console.log('ライトモードです');
     }
-    else {
+}
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    symbol.classList.toggle('active');
+    checkClearIcon();
+    if (event.matches) {
+        console.log('ダークモードに変更されました');
+    } else {
+        console.log('ライトモードに変更されました');
     }
 });
