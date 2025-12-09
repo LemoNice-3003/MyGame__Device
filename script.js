@@ -151,6 +151,10 @@ function showDownloadModal(blob) {
     const modal = document.getElementById("downloadModal");
     link.href = url;
     link.download = 'sample.txt';
+    link.onclick = function (e) {
+        e.preventDefault(); // 通常のリンク動作を阻止
+        window.open(url, "_blank"); // 別タブで開く（iOS対応）
+    };
     modal.style.display = "flex"; // 表示
 }
 
