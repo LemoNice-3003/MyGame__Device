@@ -1,8 +1,13 @@
+const nowProgress = Number(sessionStorage.getItem('progress'));
+
 function isDarkMode() {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 function onload() {
     const symbol = document.querySelector('#symbol');
+    if(nowProgress >= 2) {
+        checkClearIcon();
+    }
     if (isDarkMode()) {
         symbol.classList.toggle('active');
         console.log('ダークモードです');
@@ -19,3 +24,9 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
         console.log('ライトモードに変更されました');
     }
 });
+
+function pageback() {
+    if(clearFlag && nowProgress == 1) {
+        sessionStorage.setItem('progress', nowProgress + 1);
+    }
+}
