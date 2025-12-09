@@ -40,6 +40,8 @@ function doneNewName() {
         a.download = 'sample.txt';
         a.click();
         goToGamepage(newName.value, 1);
+        sessionStorage.setItem('progress', 1)
+        sessionStorage.setItem('name', userName);
     } else { // スマホは手動ダウンロード
         // iOS対応：リンクを直接表示してユーザーにタップさせる
         showDownloadModal(blob);
@@ -98,6 +100,8 @@ async function checkFileType(text) {
                 kakapo();
             } else {
                 goToGamepage(userName, userProgress);
+                sessionStorage.setItem('progress', userProgress);
+                sessionStorage.setItem('name', userName);
             }
         }
         return;
@@ -125,23 +129,23 @@ async function checkFileType(text) {
 
 
 function goToGamepage(userName, userProgress) {
-    const url = "gamepage/index.html?value=" + encodeURIComponent(userProgress);
+    const url = `gamepage/index.html?name=${encodeURIComponent(userName)}&value=${encodeURIComponent(userProgress)}`;
     window.location.href = url;
 }
 
 
 function kakapo() {
     $(function changeColor(){
-       $(".gametitle").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
-       $(".gametitle").css({"margin-block-end" : "0px"});
+        $(".gametitle").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
+        $(".gametitle").css({"margin-block-end" : "0px"});
         $(".gametitle").css({"text-shadow" : "none"});
         $(".gametitle").css({"display" : "inline-block"});
         $(".gametitle").css({"-webkit-background-clip" : "text"});
         $(".gametitle").css({"-webkit-text-fill-color" : "transparent"});
         $(".welcome").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
-       $(".welcome").css({"margin" : "0px"});
+        $(".welcome").css({"margin" : "0px"});
         $(".welcome").css({"text-shadow" : "none"});
-       $(".welcome").css({"display" : "inline-block"});
+        $(".welcome").css({"display" : "inline-block"});
         $(".welcome").css({"-webkit-background-clip" : "text"});
         $(".welcome").css({"-webkit-text-fill-color" : "transparent"});
         $(".kakapo img").css({"width" : "120px"});
@@ -154,7 +158,7 @@ function showDownloadModal(blob) {
     const link = document.getElementById("downloadLink");
     const modal = document.getElementById("downloadModal");
     link.href = url;
-    link.download = 'sample.txt';
+    link.download = 'DeviceSaveData.txt';
     modal.style.display = "flex"; // 表示
 }
 
