@@ -94,7 +94,11 @@ async function checkFileType(text) {
             const userName = lines[0].slice(6, lines[0].indexOf('\n')); // ユーザー名
             const userProgress = lines[1].slice(10, lines[1].indexOf('\n')); // 進捗度（ステージがどこまで解放されているか）
             // console.log(userName, userProgress);
-            goToGamepage(userName, userProgress);
+            if(userName == "kakapo") {
+                kakapo();
+            } else {
+                goToGamepage(userName, userProgress);
+            }
         }
         return;
     }
@@ -126,23 +130,23 @@ function goToGamepage(userName, userProgress) {
 }
 
 
-// function kakapo() {
-//     $(function changeColor(){
-//         $(".gametitle").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
-//         $(".gametitle").css({"margin-block-end" : "0px"});
-//         $(".gametitle").css({"text-shadow" : "none"});
-//         $(".gametitle").css({"display" : "inline-block"});
-//         $(".gametitle").css({"-webkit-background-clip" : "text"});
-//         $(".gametitle").css({"-webkit-text-fill-color" : "transparent"});
-//         $(".welcome").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
-//         $(".welcome").css({"margin" : "0px"});
-//         $(".welcome").css({"text-shadow" : "none"});
-//         $(".welcome").css({"display" : "inline-block"});
-//         $(".welcome").css({"-webkit-background-clip" : "text"});
-//         $(".welcome").css({"-webkit-text-fill-color" : "transparent"});
-//         $(".kakapo img").css({"width" : "120px"});
-//     });
-// }
+function kakapo() {
+    $(function changeColor(){
+       $(".gametitle").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
+       $(".gametitle").css({"margin-block-end" : "0px"});
+        $(".gametitle").css({"text-shadow" : "none"});
+        $(".gametitle").css({"display" : "inline-block"});
+        $(".gametitle").css({"-webkit-background-clip" : "text"});
+        $(".gametitle").css({"-webkit-text-fill-color" : "transparent"});
+        $(".welcome").css({"background" : "linear-gradient(to right, rgb(230, 25, 25), rgb(243, 163, 25), rgb(253, 241, 25), rgb(25, 153, 68), rgb(25, 104, 183), rgb(50, 53, 139), rgb(146, 29, 134), rgb(230, 25, 25)) 0 / 200%"});
+       $(".welcome").css({"margin" : "0px"});
+        $(".welcome").css({"text-shadow" : "none"});
+       $(".welcome").css({"display" : "inline-block"});
+        $(".welcome").css({"-webkit-background-clip" : "text"});
+        $(".welcome").css({"-webkit-text-fill-color" : "transparent"});
+        $(".kakapo img").css({"width" : "120px"});
+    });
+}
 
 
 function showDownloadModal(blob) {
