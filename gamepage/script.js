@@ -1,3 +1,5 @@
+const userName = sessionStorage.getItem('name');
+const valueNum = Number(sessionStorage.getItem('progress'));
 $(document).ready(function() {
     // ここで$を使用できる
     const st1_1 = $("#st1-1");
@@ -30,11 +32,16 @@ $(document).ready(function() {
     const stage_8 = $("#stage_8");
     const stage_9 = $("#stage_9");
     const preview = $("#preview");
-    const params = new URLSearchParams(location.search);
-    const value = params.get("value");
-    const valueNum = parseInt(value, 10);
+    if(userName.length > 10) {
+        alert("名前が不正な値です。文字数が10字以内であるか確認してください");
+    } else {
+        $("#header_h1").text(userName);
+    }
+    console.log(valueNum);
+
     if (!Number.isInteger(valueNum)) { //異常処理
         console.warn("value が不正です", valueNum);
+        alert("セーブデータに不正な値が含まれています"); // ホームに戻るべき？
         for (let i = 0; i <= 8; i++) { // lock
             stTitle[i].css({
                 "opacity": .5,
@@ -45,14 +52,13 @@ $(document).ready(function() {
         return;
     }
 
-    for (let i = 8; i >= parseInt(value); i--) { // lockの解除
+    for (let i = 8; i >= valueNum; i--) { // lockの解除
         stTitle[i].css({
             "opacity": .5,
             "pointer-events": "none"
         });
         stTitle[i].toggleClass('lock');
     }
-    console.log(value);
 
     $('#st1-1').on({
         click : function(){
@@ -209,6 +215,10 @@ $(document).ready(function() {
     });
 });
 const root = document.documentElement;
+
+const customElement = document.querySelector('#header_h1');
+const textLength = parseInt(userName.length) + 7;
+customElement.style.setProperty('--nameLength', textLength + "em");
 
 document.addEventListener('wheel', function(event) {
     if (event.ctrlKey) {
