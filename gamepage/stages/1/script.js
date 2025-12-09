@@ -26,8 +26,20 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', eve
     }
 });
 
-function pageback() {
-    if(clearFlag && nowProgress == 1) {
+function pageback(e) {
+    e.preventDefault(); // ページ遷移を止める
+
+    if (clearFlag && nowProgress == 1) {
         sessionStorage.setItem('progress', nowProgress + 1);
     }
+
+    // 書き込み完了を保証するため少し遅延
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 50);
 }
+window.addEventListener('pagehide', () => { // 戻るボタンを使わない場合のデータ保存用コード
+    if (clearFlag && nowProgress == 1) {
+        sessionStorage.setItem('progress', nowProgress + 1);
+    }
+});
