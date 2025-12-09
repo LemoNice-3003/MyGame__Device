@@ -18,6 +18,7 @@ function onload() {
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
     symbol.classList.toggle('active');
     checkClearIcon();
+    console.log(nowProgress);
     if (event.matches) {
         console.log('ダークモードに変更されました');
     } else {
