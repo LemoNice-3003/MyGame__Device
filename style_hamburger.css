@@ -127,6 +127,61 @@
             border: none;
         }
     }
+    .temp {
+        position: relative;
+        top: 68%;
+        width: 100%;
+    }
+    #loginButton {
+        width: 10em;
+        position: relative;
+        left: calc(50% - 5em);
+        bottom: 0;
+        background: none;
+        margin: 1vh 0;
+        padding-bottom: 5px;
+        border: none;
+        border-bottom: dotted 1px var(--defaultColor-Dark);
+        font-family: 'Receipt';
+        font-size: 3vh;
+        transition: .2s ease-out;
+        &:hover {
+            color: var(--defaultColor-Gray);
+        }
+        &:focus {
+            border: none;
+        }
+    }
+    .my-contact-btn {
+        position: relative;
+    }
+    /*ボタン内のテキストを疑似要素の上にもってくる*/
+    .my-contact-btn .temp {
+        position: relative; /* ←ポイント */
+        z-index: 2;    /* ←ポイント */
+        transition: .3s; /* ←ポイント */
+    }
+    .my-contact-btn:hover .temp{
+        color: gray;
+    }
+    /*ボタン上のアニメーションの設定*/
+    .my-btn-animation:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        z-index: 1;
+        background: var(--defaultColor-Dark);
+        width: 100%;
+        height: 5%;
+        transform: scale(0, 1);           /* ←ポイント */
+        transition: transform .3s ease;   /* ←ポイント */
+        transform-origin: left;           /* ←ポイント */
+    }
+    .my-btn-animation:hover:before{
+        transform: scale(1, 1);    /* ←ポイント */
+        transform-origin: left;  /* ←ポイント */
+    }
     /*リストを表示*/
     &.active {
         opacity: 1;
