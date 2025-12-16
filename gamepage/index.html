@@ -5,12 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-compatible" content="ie=Edge">
         <title>Device - gamepage</title>
+
         <link rel="stylesheet" href="style.css">
+
         <link rel="icon" href="../images/Device__icon/favicon.ico" sizes="32x32">
         <link rel="icon" href="../images/Device__icon/icon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="../images/Device__icon/apple-touch-icon.png">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script src="../root.js" defer></script>
         <script src="script.js" defer></script>
+        <script src="../script_humburger.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <form name="myGameSite">
@@ -21,7 +26,15 @@
                         <li><a href="index.html">ステージ選択</a></li>
                         <li><a href="../introduction/index.html">紹介</a></li>
                     </ul>
+                    <div class="temp">
+                        <div id="loginNow">
+                            <p id="nowUserName">開発者</p>
+                            <button type="button" id="logoutButton"  class="stNumber my-contact-btn my-btn-animation" onclick="logout()">Log out</button>
+                        </div>
+                        <button type="button" id="loginButton"  class="stNumber my-contact-btn my-btn-animation" onclick="uploadSaveData()">Log in</button>
+                    </div>
                 </div>
+
                 <div class="hamburger_button" id="js-hamburger">
                     <span></span>
                     <span></span>
@@ -29,7 +42,7 @@
                     <div class="TextMask"><div class="text">M E N U</div></div>
                 </div>
 
-                <h1 id="header_h1"></h1>
+                <h1 id="header_h1"></h1> <!-- ようこそ -->
             </header>
             
             <main class="container" id="js-container">
