@@ -100,6 +100,7 @@ async function checkFileType(text) {
                 kakapo();
             } else {
                 goToGamepage(userName, userProgress);
+                sessionStorage.setItem('loginFlag', true);
                 sessionStorage.setItem('progress', userProgress);
                 sessionStorage.setItem('name', userName);
             }
@@ -131,6 +132,17 @@ async function checkFileType(text) {
 function goToGamepage(userName, userProgress) {
     const url = `gamepage/index.html?name=${encodeURIComponent(userName)}&value=${encodeURIComponent(userProgress)}`;
     window.location.href = url;
+}
+
+function logout() {
+    try {
+        if(sessionStorage.clear()) {
+            window.location.reload();
+            sessionStorage.setItem('loginFlag', false);
+        }
+    } catch (e) {
+        console.warn("sessionStorage をクリアできませんでした", e);
+    }
 }
 
 
@@ -175,19 +187,6 @@ document.addEventListener('wheel', function(event) {
         event.preventDefault();
     }
 }, { passive: false });
-
-
-
-const hamburgerMenu = document.querySelector('#js-hamburger');
-const hamburgerItems = document.querySelector('#js-items');
-const container = document.querySelector('#js-container');
-
-// ハンバーガーメニューがクリックされたら
-hamburgerMenu.addEventListener('click', function() {
-    hamburgerMenu.classList.toggle('active');
-    hamburgerItems.classList.toggle('active');
-    container.classList.toggle('active');
-});
 
 
 
