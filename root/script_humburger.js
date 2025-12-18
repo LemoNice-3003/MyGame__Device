@@ -1,24 +1,27 @@
 nowUserName.style.setProperty('--nameLength', textLength + "em");
 function onload() {
-    if(loginFlag == "true") {
+    if(loginFlag === "true") {
         // alert("アカウント認識");
         $("#nowUserName").text(userName);
-
+        
         loginNow.style.opacity = 1;
         loginNow.style.pointerEvents = 'auto';
-
+        
         loginButton.style.opacity = 0;
         loginButton.style.pointerEvents = 'none';
     }
-    else if((loginFlag == "false") || (typeof sessionStorage === "undefined") || (sessionStorage.length === 0)){ // 初期状態または"0"だった場合
+    else if((loginFlag == "false") || (loginFlag === null) || (typeof sessionStorage === "undefined") || (sessionStorage.length === 0)){ // 初期状態または"0"だった場合
         // alert("アカウントなし");
         $("#nowUserName").text("");
-
+        
         loginNow.style.opacity = 0;
         loginNow.style.pointerEvents = 'none';
-
+        
         loginButton.style.opacity = 1;
         loginButton.style.pointerEvents = 'auto';
+    }
+    else {
+        alert("error");
     }
 }
 
