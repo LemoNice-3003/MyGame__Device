@@ -6,8 +6,8 @@ const container = document.getElementById('js-container');
 
 
 const nowUserName = document.querySelector('#nowUserName');
-const loginNow = document.getElementById('loginNow');
-const loginButton = document.getElementById('loginButton');
+const loginNow = document.querySelector('#loginNow');
+const loginButton = document.querySelector('#loginButton');
 
 
 
