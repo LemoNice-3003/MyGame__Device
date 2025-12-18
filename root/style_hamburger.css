@@ -124,53 +124,58 @@
         justify-content: center;
         font-family: var(--defaultFont-レシート);
         font-size: 3vh;
-        margin: 1vh 0;
+        margin: 1em 0;
         transition: .2s ease-out;
         &:focus {
             border: none;
         }
     }
     .temp {
-        position: relative;
-        top: 68%;
         width: 100%;
+        position: relative;
+        top: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     #loginNow {
         position: relative;
         display: flex;
         align-items: flex-end;
-        justify-content: space-evenly;
+        justify-content: space-between;
+        top: 0;
+        opacity: 1;
         #nowUserName {
             --nameLength: 0;
             width: var(--nameLength);
-            bottom: 0;
             background: none;
+            margin: 0 1em;
             padding-bottom: 5px;
             border: none;
             border-bottom: dotted 1px var(--defaultColor-Dark);
-            font-family: 'Receipt';
             font-family: var(--defaultFont-レシート);
-            font-size: 2.5vh;
+            font-size: 1.5em;
             text-align: center;
         }
         #logoutButton {
             right: 0;
-            font-size: 2.5vh;
+            margin: 0 1em;
+            font-size: 1.5em;
             text-align: center;
         }
-        &.active {
+        /* &.active {
             display: none;
-        }
+        } */
     }
     #loginButton {
-        left: calc(50% - 5em);
-        margin: 1vh 0;
-        display: block;
-        &.active {
+        top: calc(-1.5em + 5px);
+        font-size: 2em;
+        opacity: 1;
+        /* &.active {
             display: none;
+            } */
         }
-    }
-    .my-contact-btn {
+        .my-contact-btn {
         width: 10em;
         position: relative;
         bottom: 0;
@@ -179,7 +184,6 @@
         border: none;
         border-bottom: dotted 1px var(--defaultColor-Dark);
         font-family: var(--defaultFont-レシート);
-        font-size: 3vh;
         transition: .2s ease-out;
         &:hover {
             color: var(--defaultColor-Gray);
