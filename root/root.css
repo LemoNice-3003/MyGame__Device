@@ -1,6 +1,6 @@
 /*基本設定*/
-@import url(style_hamburger.css);
-@import url(style_pageback.css);
+@import url('style_hamburger.css');
+@import url('style_pageback.css');
 @font-face {
     font-family: 'Foglihtenno';
     src: url(fonts/Foglihtenno04-aM2E.otf);
@@ -79,4 +79,3 @@ body, html, a, p {
     scrollbar-width: none;
     font-size: 1.8vh;
 }
-
