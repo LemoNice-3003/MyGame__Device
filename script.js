@@ -50,7 +50,7 @@ function doneNewName() {
 
 var form = document.forms.myGameSite;
 // セーブデータアップロードボタンのクリック時に実行する関数
-function uploadSaveData () {
+function uploadSaveData() {
     const showOpenFileDialog = () => new Promise(resolve => {
         const input = document.createElement('input');
         input.type = 'file';    //inputのタイプ
@@ -96,13 +96,18 @@ async function checkFileType(text) {
             const userName = lines[0].slice(6, lines[0].indexOf('\n')); // ユーザー名
             const userProgress = lines[1].slice(10, lines[1].indexOf('\n')); // 進捗度（ステージがどこまで解放されているか）
             // console.log(userName, userProgress);
-            if(userName == "kakapo") {
-                kakapo();
-            } else {
-                goToGamepage(userName, userProgress);
-                sessionStorage.setItem('loginFlag', true);
-                sessionStorage.setItem('progress', userProgress);
-                sessionStorage.setItem('name', userName);
+            if(loginFlag == "true") {
+                alert("すでにログインされています\nログアウトして再度実行してください")
+            }
+            else {
+                if(userName == "kakapo") {
+                    kakapo();
+                } else {
+                    goToGamepage(userName, userProgress);
+                    sessionStorage.setItem('loginFlag', true);
+                    sessionStorage.setItem('progress', userProgress);
+                    sessionStorage.setItem('name', userName);
+                }
             }
         }
         return;
@@ -136,12 +141,17 @@ function goToGamepage(userName, userProgress) {
 
 function logout() {
     try {
-        if(sessionStorage.clear()) {
-            window.location.reload();
+        if(window.confirm("ログアウトしますか？")) {
+            sessionStorage.clear()
             sessionStorage.setItem('loginFlag', false);
+            alert("ログアウトします");
+            window.location.reload(); // 現在のページをリロード
+        }
+        else {
+            alert("ログアウトがキャンセルされました")
         }
     } catch (e) {
-        console.warn("sessionStorage をクリアできませんでした", e);
+        console.warn("error", e);
     }
 }
 
