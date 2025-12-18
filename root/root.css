@@ -3,24 +3,24 @@
 @import url('style_pageback.css');
 @font-face {
     font-family: 'Foglihtenno';
-    src: url(fonts/Foglihtenno04-aM2E.otf);
+    src: url('../fonts/Foglihtenno04-aM2E.otf');
 }
 @font-face {
     font-family: 'Receipt';
-    src: url(fonts/レシートフォント.ttf);
+    src: url('../fonts/レシートフォント.ttf');
 }
 @font-face {
     font-family: 'PLENTO-Regular';
-    src: url(fonts/PLENTO-Regular.ttf);
+    src: url('../fonts/PLENTO-Regular.ttf');
 }
 @font-face {
     font-family: 'Canis Minor';
-    src: url('fonts/CanisMinor/CanisMinor-Regular.eot');
+    src: url('../fonts/CanisMinor/CanisMinor-Regular.eot');
     src: local('CanisMinor-Regular'),
-        url('fonts/CanisMinor/CanisMinor-Regular.eot?#iefix') format('embedded-opentype'),
-        url('fonts/CanisMinor/CanisMinor-Regular.woff2') format('woff2'),
-        url('fonts/CanisMinor/CanisMinor-Regular.woff') format('woff'),
-        url('fonts/CanisMinor/CanisMinor-Regular.ttf') format('truetype');
+        url('../fonts/CanisMinor/CanisMinor-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/CanisMinor/CanisMinor-Regular.woff2') format('woff2'),
+        url('../fonts/CanisMinor/CanisMinor-Regular.woff') format('woff'),
+        url('../fonts/CanisMinor/CanisMinor-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
