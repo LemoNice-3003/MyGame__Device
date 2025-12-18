@@ -60,7 +60,7 @@ header {
         }
         p {
             margin: 10px 0 5px 0;
-            font-size: 5vh;
+            font-size: 3em;
             color: rgb(30, 28, 21);
         }
         li {
@@ -191,8 +191,15 @@ header {
 @media (max-width: 999px) { /*スマホモード*/
     /* body, html {
         overflow: auto;
-        } */
-        #container {
+    } */
+    @media (orientation: portrait) {
+        header {
+            #header_h1 {
+                left: calc(100vw - var(--nameLength));
+                font-size: 1.6em;
+            }
+        }
+        #js-container {
             flex-direction: column;
             margin: 0;
             #leftContainer {
@@ -209,11 +216,11 @@ header {
                     background: linear-gradient(rgb(0, 0, 0, 0), rgb(0, 0, 0, .18)15%, rgb(0, 0, 0, .3)40%, rgb(0, 0, 0, .3)60%, rgb(0, 0, 0, .18)75%, rgb(0, 0, 0, 0)100%);
                 }
                 p {
-                    font-size: 2.5vh;
+                    font-size: 3em;
                 }
             }
             .stage h1, .stNumber {
-                font-size: 1.5vh;
+                font-size: 1.5em;
             }
             .thumbnail {
                 height: 4vh;
@@ -222,11 +229,14 @@ header {
                 width: 100vw;
                 margin: 0;
                 #preview {
+                    aspect-ratio: 4 / 3;
                     margin: 10px;
+                    margin-top: 3vh;
                 }
             }
         }
         #stage_1.active, #stage_2.active, #stage_3.active, #stage_4.active, #stage_5.active, #stage_6.active, #stage_7.active, #stage_8.active, #stage_9.active {
             height: calc(4vh + 2px + 1px);
         }
+    }
 }
