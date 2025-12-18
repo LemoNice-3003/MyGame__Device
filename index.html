@@ -17,9 +17,9 @@
         <script src="root/script_humburger.js" defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
-    <body oncontextmenu="return false;"></body> <!-- 右クリック禁止令 -->
+    <body oncontextmenu="return false;"> <!-- 右クリック禁止令 -->
         <div id="dropArea" ontouchstart=""></div>
-        <form name="myGameSite">
+        <form id="myGameSite">
             <div class="hamburger_items" id="js-items">
                 <ul>
                     <li><a href="index.html">ホーム</a></li>
@@ -91,9 +91,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-    </form>
+            </main>
+        </form>
     <div id="downloadModal">
         <div>
             <p>セーブデータのダウンロード</p>
