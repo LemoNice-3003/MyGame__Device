@@ -47,25 +47,12 @@
     box-sizing: border-box;
     /* border: solid 1px rgb(200, 30, 30, .2); */
 }
-a:link { color: var(--defaultColor-Dark); }                                            /*リンクのデフォルト色*/
-a:visited { color: var(--defaultColor-Dark); }                                         /*閲覧済みリンク色*/
-a:hover { color: var(--defaultColor-Gray); }                                           /*リンクを持っているときの色*/
-a:active { color: var(--defaultColor-Gray); }                                          /*リンクを選択中(リンクにカーソルが重なってる時)の色*/
-li {
-    list-style: none;
-    margin: 15px 0 15px 0;
-}
-a {
-    text-decoration: none;
-}
-img {
-    pointer-events: none; /* 画像保存禁止 */
-}
 body, html {
-    height: 100vh;
     width: 100vw;
-    overflow: hidden;
+    height: 100vh;
     background: var(--defaultColor);
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 body, html, a, p {
     user-select: none; /* 選択禁止 */
@@ -78,4 +65,19 @@ body, html, a, p {
     touch-action: none;
     scrollbar-width: none;
     font-size: 1.8vh;
+}
+a:link { color: var(--defaultColor-Dark); }                                            /*リンクのデフォルト色*/
+a:visited { color: var(--defaultColor-Dark); }                                         /*閲覧済みリンク色*/
+a:hover { color: var(--defaultColor-Gray); }                                           /*リンクを持っているときの色*/
+a:active { color: var(--defaultColor-Gray); }                                          /*リンクを選択中(リンクにカーソルが重なってる時)の色*/
+li {
+    list-style: none;
+    margin: 15px 0 15px 0;
+}
+a {
+    text-decoration: none;
+}
+img, svg {
+    max-width: 100%;
+    pointer-events: none; /* 画像保存禁止 */
 }
