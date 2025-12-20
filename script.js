@@ -1,17 +1,5 @@
 let lastTouchTime = 0;
 
-document.addEventListener('touchend', (event) => {
-    const currentTime = new Date().getTime();
-    const timeDifference = currentTime - lastTouchTime;
-
-    if (timeDifference < 300 && timeDifference > 0) {
-    event.preventDefault(); // ダブルタップを無効化
-    }
-    
-    lastTouchTime = currentTime;
-});
-
-
 const newName = document.getElementById('newName');
 newName.form.addEventListener("keydown", (e) => {
     if(e.key === "Enter") {
