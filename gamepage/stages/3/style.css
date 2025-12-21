@@ -1,7 +1,8 @@
 /*基本設定*/
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
-@import url('../../../style_hamburger.css');
+@import url('../../../root/style_pageback.css');
+@import url('../../../root/style_clear_icon.css');
 .font-bad {
     font-family: "Bad Script", cursive;
 }
@@ -15,13 +16,124 @@ a, p, img{
     -moz-user-select: none; /* Firefox向け */
 }
 body, html {
-    background: rgb(168, 161, 137);
+    background: var(--defaultColor);
     touch-action: manipulation;
     scrollbar-width: none;
-    width: 100%;
+    --htmlWidth: 100%;
+    --htmlHeight: 100%;
+    width: var(--htmlWidth);
+    height: var(--htmlHeight);
+    overflow: hidden;
+    transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
 }
 
 
 /*--------------------------------------------------*/
 
+main {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    #clockFace {
+        aspect-ratio: 1 / 1;
+        width: 30vw;
+        height: 30vw;
+        position: absolute;
+        top: calc(50vh - 15vw);
+        left: calc(50vw - 15vw);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        /* background: rgb(200, 0, 0 ,.2); */
+        .clock {
+            aspect-ratio: 1 / 1;
+            width: 0%;
+            position: absolute;
+            border-radius: 50%;
+        }
 
+        #timeZone {
+            width: 100%;
+            background: var(--defaultColor);
+            box-shadow:  11px 11px 22px #928c7a,
+                        -11px -11px 22px #e4dcbe;
+        }
+        #hole {
+            width: 83%;
+            top: 8.5%;
+            border: solid 3px transparent;
+            background: linear-gradient(
+                            var(--defaultColor-Dark),
+                            var(--defaultColor-Dark)
+                        ) padding-box,
+                        conic-gradient(
+                            rgb(122, 116, 92),
+                            var(--defaultColor-Light),
+                            var(--defaultColor-Light),
+                            rgb(221, 213, 190),
+                            rgb(221, 213, 190),
+                            rgb(58, 55, 45),
+                            rgb(58, 55, 45),
+                            rgb(122, 116, 92)
+                        ) border-box;
+        }
+        #hour {
+            --fill-color: var(--defaultColor);
+            width: 80%;
+            top: 10%;
+            border: solid 3px transparent;
+            background: linear-gradient(
+                            var(--fill-color),
+                            var(--fill-color)
+                        ) padding-box,
+                        conic-gradient(
+                            rgb(221, 213, 190),
+                            rgb(122, 116, 92),
+                            rgb(122, 116, 92),
+                            rgb(99, 94, 76),
+                            rgb(99, 94, 76),
+                            var(--defaultColor-Light),
+                            var(--defaultColor-Light),
+                            rgb(221, 213, 190)
+                        ) border-box;
+            box-shadow: 50px 20px 20px rgb(10, 10, 10, .2),
+                        20px 20px 10px rgb(10, 10, 10, .1),
+                        20px 40px 20px rgb(10, 10, 10, .3);
+                        transition: .2s ease;
+            &:hover {
+                --fill-color: rgb(182, 175, 152);
+                box-shadow: none;
+                /* box-shadow: 5px 2px 20px rgb(10, 10, 10, .0),
+                            2px 2px 10px rgb(10, 10, 10, .0),
+                            2px 4px 20px rgb(10, 10, 10, .0); */
+            }
+        }
+    }
+    #clearIcon {
+        top: calc(50vh - 100px);
+        &.morning {
+            left: calc(30vw - 100px);
+        }
+        &.evening {
+            top: calc(10vh - 100px);
+            left: calc(50vw - 100px);
+        }
+        &.night {
+            right: calc(30vw - 100px);
+        }
+    }
+}
+
+@media (max-width: 999px) { /*スマホモード*/
+    @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
+        #clockFace {
+            width: 40vw;
+            height: 40vw;
+            top: calc(50vh - 20vw);
+            left: calc(50vw - 20vw);
+        }
+    }
+}
