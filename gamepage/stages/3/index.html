@@ -4,30 +4,50 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-compatible" content="ie=Edge">
-        <title>Device - gamepage</title>
+        <title>Device - stage3</title>
         <link rel="stylesheet" href="style.css">
+
         <link rel="icon" href="../../../images/Device__icon/favicon.ico" sizes="32x32">
         <link rel="icon" href="../../../images/Device__icon/icon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="../../../images/Device__icon/apple-touch-icon.png">
+
         <script src="script.js" defer></script>
+        <script src="../script_CheckClearIcon.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
-    <body>
-        <!-- <div class="hamburger_items" id="js-items">
-            <ul>
-                <li><a href="">メニュー1</a></li>
-                <li>メニュー2</li>
-                <li>メニュー3</li>
-            </ul>
+    <body onload="onload();">
+        <div class="pageback_button" id="js-pageback">
+            <a href="../../index.html"></a>
+            <span></span>
+            <span class="arrow"></span>
+            <div class="TextMask"><div class="text">B A C K</div></div>
         </div>
-        <div class="hamburger_button" id="js-hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-            <div class="TextMask"><div class="text">M E N U</div></div>
-        </div>
-        <div class="content">
-            <div class="stage" id="stage_1" href="stages/1/index.html"></div>
-        </div> -->
+        <main>
+            <div id="clockFace">
+                <div id="timeZone" class="clock"></div>
+                <div id="hole" class="clock"></div>
+                <div id="hour" class="clock"></div>
+                <div id="minute" class="clock"></div>
+                <div id="second" class="clock"></div>
+                <div id="temp" class="clock"></div>
+            </div>
+
+            <canvas id="particleCanvas"></canvas>
+            <div id="clearIcon" class="clear_Icon morning">
+                <div id="" class="clear_Icon outLine morning"></div>
+                <div id="" class="clear_Icon rectangle morning"></div>
+                <div id="" class="clear_Icon rectangle2 morning"></div>
+            </div>
+            <div id="clearIcon" class="clear_Icon evening">
+                <div id="" class="clear_Icon outLine evening"></div>
+                <div id="" class="clear_Icon rectangle evening"></div>
+                <div id="" class="clear_Icon rectangle2 evening"></div>
+            </div>
+            <div id="clearIcon" class="clear_Icon night">
+                <div id="" class="clear_Icon outLine night"></div>
+                <div id="" class="clear_Icon rectangle night"></div>
+                <div id="" class="clear_Icon rectangle2 night"></div>
+            </div>
+        </main>
     </body>
 </html>
