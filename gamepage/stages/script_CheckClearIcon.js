@@ -10,7 +10,7 @@ async function checkClearIcon() {
     await sleep(2000);
     if(!clearFlag) {
         clearFlag = true;
-        $("#rectangle2").css({"opacity": 1});
+        $(".rectangle2").css({"opacity": 1});
         await sleep(800);
         if (particle) {
             particle.start();
@@ -147,4 +147,5 @@ document.addEventListener('DOMContentLoaded', () => {
         explosionSpeed: 3
     });
 });
+
 
