@@ -1,2 +1,2 @@
 name="開発者"
-progress="1"
+progress="9"
