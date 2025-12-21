@@ -7,19 +7,19 @@
         align-items: center;
         width: 200px;
     }
-    #outLine {
+    .outLine {
         width: 80px;
         mix-blend-mode: color-dodge;
         background: rgb(157, 152, 135);
         border-radius: 17.5px;
     }
-    #rectangle {
+    .rectangle {
         width: 75px;
         mix-blend-mode: multiply;
         background: rgb(157, 152, 135);
         border-radius: 15px;
     }
-    #rectangle2 {
+    .rectangle2 {
         width: 65px;
         mix-blend-mode: color-dodge;
         background: rgb(157, 152, 135);
