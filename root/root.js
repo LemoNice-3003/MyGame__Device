@@ -13,7 +13,7 @@ const loginButton = document.querySelector('#loginButton');
 
 const userName = sessionStorage.getItem('name');
 let textLength = 0;
-const valueNum = Number(sessionStorage.getItem('progress'));
+const nowProgress = Number(sessionStorage.getItem('progress'));
 
 document.addEventListener('touchend', (event) => {
     const currentTime = new Date().getTime();
