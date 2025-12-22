@@ -35,10 +35,10 @@ $(document).ready(function() {
     } else {
         $("#header_h1").text(userName);
     }
-    console.log(valueNum);
+    console.log(nowProgress);
 
-    if (!Number.isInteger(valueNum)) { //異常処理
-        console.warn("value が不正です", valueNum);
+    if (!Number.isInteger(nowProgress)) { //異常処理
+        console.warn("value が不正です", nowProgress);
         alert("セーブデータに不正な値が含まれています"); // ホームに戻るべき？
         for (let i = 0; i <= 8; i++) { // lock
             stTitle[i].css({
@@ -50,7 +50,7 @@ $(document).ready(function() {
         return;
     }
 
-    for (let i = 8; i >= valueNum; i--) { // lockの解除
+    for (let i = 8; i >= nowProgress; i--) { // lockの解除
         stTitle[i].css({
             "opacity": .5,
             "pointer-events": "none"
