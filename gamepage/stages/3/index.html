@@ -11,6 +11,7 @@
         <link rel="icon" href="../../../images/Device__icon/icon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="../../../images/Device__icon/apple-touch-icon.png">
 
+        <script src="../../../root/root.js"></script>
         <script src="script.js" defer></script>
         <script src="../script_CheckClearIcon.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,12 +25,21 @@
         </div>
         <main>
             <div id="clockFace">
-                <div id="timeZone" class="clock"></div>
-                <div id="hole" class="clock"></div>
-                <div id="hour" class="clock"></div>
-                <div id="minute" class="clock"></div>
-                <div id="second" class="clock"></div>
-                <div id="temp" class="clock"></div>
+                <div id="timeZone" class="clock"></div> <!--土台-->
+                
+                <div id="secondHole" class="clock hole"></div>
+                <div id="second" class="clock dial"></div> <!--一番外側-->
+
+                <div id="minuteHole" class="clock hole"></div>
+                <div id="minute" class="clock dial"></div> <!--二番目-->
+                
+                <div id="hourHole" class="clock hole"></div>
+                <div id="hour" class="clock dial"></div> <!--三番目-->
+                
+                <div id="tempHole" class="clock hole"></div>
+                <div id="temp" class="clock dial">
+                    <span></span>
+                </div> <!--真ん中の丸-->
             </div>
 
             <canvas id="particleCanvas"></canvas>
