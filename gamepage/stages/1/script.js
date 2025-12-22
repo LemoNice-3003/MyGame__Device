@@ -1,5 +1,3 @@
-const nowProgress = Number(sessionStorage.getItem('progress'));
-
 function isDarkMode() {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
