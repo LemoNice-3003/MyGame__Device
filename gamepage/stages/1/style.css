@@ -88,7 +88,7 @@ main {
     }
     #clearIcon {
         top: 75vh;
-        left: calc(50vw - 100px);
+        left: calc(50vw - 40px);
     }
 }
 
