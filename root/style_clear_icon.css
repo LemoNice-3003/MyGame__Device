@@ -5,26 +5,34 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 200px;
+        width: 80px;
     }
     .outLine {
-        width: 80px;
+        width: 100%;
         mix-blend-mode: color-dodge;
         background: rgb(157, 152, 135);
-        border-radius: 17.5px;
+        border-radius: 20%;
     }
     .rectangle {
-        width: 75px;
+        width: 92%;
         mix-blend-mode: multiply;
         background: rgb(157, 152, 135);
-        border-radius: 15px;
+        border-radius: 20%;
     }
     .rectangle2 {
-        width: 65px;
+        width: 80%;
         mix-blend-mode: color-dodge;
         background: rgb(157, 152, 135);
-        border-radius: 12.5px;
+        border-radius: 20%;
         transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
         opacity: 0;
+    }
+}
+
+@media (max-width: 999px) and (orientation: portrait) { /*スマホモード*/
+    .clear_Icon {
+        &#clearIcon {
+            width: 60px;
+        }
     }
 }
