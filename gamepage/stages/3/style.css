@@ -45,7 +45,7 @@ main {
         left: calc(50vw - 15vw);
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         /* background: rgb(200, 0, 0 ,.2); */
         .clock {
@@ -55,7 +55,7 @@ main {
             border-radius: 50%;
         }
 
-        #timeZone {
+        #foundation {
             width: 100%;
             background: var(--defaultColor);
             box-shadow:  11px 11px 22px #928c7a,
@@ -78,51 +78,54 @@ main {
                             rgb(122, 116, 92)
                         ) border-box;
             &#secondHole {
-                width: 83%;
-                top: 8.5%;
+                width: 85%;
             }
             &#minuteHole {
-                width: 73%;
-                top: 13.5%;
+                width: 75%;
             }
             &#hourHole {
-                width: 53%;
-                top: 23.5%;
+                width: 55%;
             }
-            &#tempHole {
-                width: 23%;
-                top: 38.5%;
+            &#timeZoneHole {
+                width: 25%;
+            }
+        }
+        .highlight {
+            background: conic-gradient(
+                rgb(221, 213, 190),
+                rgb(122, 116, 92),
+                rgb(122, 116, 92),
+                rgb(99, 94, 76),
+                rgb(99, 94, 76),
+                var(--defaultColor-Light),
+                var(--defaultColor-Light),
+                rgb(221, 213, 190)
+            );
+            &#secondLight {
+                width: 81%;
+            }
+            &#minuteLight {
+                width: 71%;
+            }
+            &#hourLight {
+                width: 51%;
+            }
+            &#timeZoneLight {
+                width: 21%;
             }
         }
         .dial {
-            --fill-color: var(--defaultColor);
-            border: solid 3px transparent;
-            background: linear-gradient(
-                            var(--fill-color),
-                            var(--fill-color)
-                        ) padding-box,
-                        conic-gradient(
-                            rgb(221, 213, 190),
-                            rgb(122, 116, 92),
-                            rgb(122, 116, 92),
-                            rgb(99, 94, 76),
-                            rgb(99, 94, 76),
-                            var(--defaultColor-Light),
-                            var(--defaultColor-Light),
-                            rgb(221, 213, 190)
-                        ) border-box;
+            background: var(--defaultColor);
             /* box-shadow: 50px 20px 20px rgb(10, 10, 10, .2),
                         20px 20px 10px rgb(10, 10, 10, .1),
                         20px 40px 20px rgb(10, 10, 10, .3); */
-            transition: .2s ease;
             rotate: 90deg;
             /* &:hover {
-                --fill-color: rgb(182, 175, 152);
                 box-shadow: none;
                 box-shadow: 5px 2px 20px rgb(10, 10, 10, .0),
                             2px 2px 10px rgb(10, 10, 10, .0),
                             2px 4px 20px rgb(10, 10, 10, .0);
-                            } */
+            } */
             &::after {
                 content: "";
                 display: block;
@@ -135,48 +138,67 @@ main {
             }
             &#second {
                 width: 80%;
-                top: 10%;
                 transition: transform 1s linear;
             }
             &#minute {
                 width: 70%;
-                top: 15%;
                 transition: transform 1s linear;
             }
             &#hour {
                 width: 50%;
-                top: 25%;
                 transition: transform 1s linear;
             }
-            &#temp {
+            &#timeZone {
                 width: 20%;
-                top: 40%;
-                animation: planet-rotation 3s linear infinite;
+                --sora-color: var(--defaultColor);
+                background: var(--sora-color);
+                border: solid 8px var(--defaultColor);
+                transition: 1s linear;
+                &::after {
+                    display: none;
+                }
             }
         }
     }
     #clearIcon {
-        top: calc(50vh - 100px);
+        top: calc(50vh - 40px);
         &.morning {
-            left: calc(30vw - 100px);
+            left: calc(30vw - 40px);
         }
         &.evening {
-            top: calc(10vh - 100px);
-            left: calc(50vw - 100px);
+            top: calc(10vh - 40px);
+            left: calc(50vw - 40px);
         }
         &.night {
-            right: calc(30vw - 100px);
+            right: calc(30vw - 40px);
         }
     }
 }
 
-@media (max-width: 999px) { /*スマホモード*/
-    @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
+@media (max-width: 999px) and (orientation: portrait) { /*スマホモード*/
+    main {
         #clockFace {
-            width: 40vw;
-            height: 40vw;
-            top: calc(50vh - 20vw);
-            left: calc(50vw - 20vw);
+            width: 56vw;
+            height: 56vw;
+            top: calc(50vh - 28vw);
+            left: calc(50vw - 28vw);
+            .hole {
+                border: solid 1px transparent;
+            }
+        }
+        #clearIcon {
+            &.morning {
+                bottom: 20vh;
+                left: 8vw;
+            }
+            &.evening {
+                top: 27vh;
+                left: calc(50vw - 30px);
+            }
+            &.night {
+                bottom: 20vh;
+                right: 8vw;
+            }
         }
     }
 }
