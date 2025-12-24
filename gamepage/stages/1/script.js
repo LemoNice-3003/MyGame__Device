@@ -4,7 +4,7 @@ function isDarkMode() {
 function onload() {
     const symbol = document.querySelector('#symbol');
     if(nowProgress >= 2) {
-        checkClearIcon();
+        checkClearIcon(checkbox_1_0, "50vw", "calc(75vh + 40px)");
     }
     if (isDarkMode()) {
         symbol.classList.toggle('active');
@@ -15,7 +15,7 @@ function onload() {
 }
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
     symbol.classList.toggle('active');
-    checkClearIcon();
+    checkClearIcon(checkbox_1_0, "50vw", "calc(75vh + 40px)");
     console.log(nowProgress);
     if (event.matches) {
         console.log('ダークモードに変更されました');
