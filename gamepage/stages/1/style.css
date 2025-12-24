@@ -24,7 +24,7 @@ body, html {
     width: var(--htmlWidth);
     height: var(--htmlHeight);
     overflow: hidden;
-    transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
+    transition: 1s var(--transition-move);
 }
 
 
@@ -50,7 +50,7 @@ main {
             background: rgb(157, 152, 135);
             transform-origin: 50% 50%;
             border-radius: 50%;
-            transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
+            transition: 1s var(--transition-move);
             &#shader {
                 width: 300px;
                 mix-blend-mode: normal;
@@ -63,7 +63,7 @@ main {
                 border: solid 10px rgb(0, 0, 0);
             }
             &#circle {
-                transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
+                transition: 1s var(--transition-move);
                 border: solid rgb(0, 0, 0);
                 border-width: 75px;
             }
