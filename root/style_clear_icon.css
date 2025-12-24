@@ -1,37 +1,37 @@
-.clear_Icon {
+.clearIcon {
     position: absolute;
     aspect-ratio: 1 / 1;
-    &#clearIcon {
+    &.area {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 80px;
     }
-    .outLine {
+    .outline {
         width: 100%;
         mix-blend-mode: color-dodge;
         background: rgb(157, 152, 135);
         border-radius: 20%;
     }
-    .rectangle {
+    .foundation {
         width: 92%;
         mix-blend-mode: multiply;
         background: rgb(157, 152, 135);
         border-radius: 20%;
     }
-    .rectangle2 {
+    .checkbox {
         width: 80%;
         mix-blend-mode: color-dodge;
         background: rgb(157, 152, 135);
         border-radius: 20%;
-        transition: 1s cubic-bezier(0.87, 0, 0.13, 1);
+        transition: 1s var(--transition-move);
         opacity: 0;
     }
 }
 
 @media (max-width: 999px) and (orientation: portrait) { /*スマホモード*/
-    .clear_Icon {
-        &#clearIcon {
+    .clearIcon {
+        &.area {
             width: 60px;
         }
     }
