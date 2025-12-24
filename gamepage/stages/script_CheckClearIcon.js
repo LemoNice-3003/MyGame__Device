@@ -6,14 +6,20 @@ this.explosionY = "";
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); //sleep関数の定義
 
-async function checkClearIcon() {
+/**
+ * クリアした際にチェックボックスを光らせる
+ * @param {HTMLElement} checkboxId チェックを入れるチェックボックスのid
+ * @param {string} x x座標（leftの値）
+ * @param {string} y y座標（topの値）
+ */
+async function checkClearIcon(checkboxId, x, y) {
     await sleep(2000);
     if(!clearFlag) {
         clearFlag = true;
-        $(".rectangle2").css({"opacity": 1});
+        $(checkboxId).css({"opacity": 1});
         await sleep(800);
         if (particle) {
-            particle.start();
+            particle.start(x, y);
         }
     }
 }
@@ -30,8 +36,6 @@ class ExplosionParticle {
             particleSize: options.particleSize || 3,
             particleColor: options.particleColor || '#ff6b6b',
             explosionSpeed: options.explosionSpeed || 5,
-            explosionX: "50vw",
-            explosionY: "calc(75vh + 100px)",
             ...options
         };
     }
@@ -65,7 +69,9 @@ class ExplosionParticle {
         }
     }
 
-    start() {
+    start(x, y) {
+        this.options.explosionX = x;
+        this.options.explosionY = y;
         this.clearEvent();
         this.animate();
     }
@@ -147,5 +153,3 @@ document.addEventListener('DOMContentLoaded', () => {
         explosionSpeed: 3
     });
 });
-
-
