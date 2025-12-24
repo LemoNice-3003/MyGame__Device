@@ -153,24 +153,69 @@ main {
                 --sora-color: var(--defaultColor);
                 background: var(--sora-color);
                 border: solid 8px var(--defaultColor);
-                transition: 1s linear;
+                transition: 1s 1s var(--transition-move);
                 &::after {
                     display: none;
                 }
             }
         }
     }
-    #clearIcon {
-        top: calc(50vh - 40px);
-        &.morning {
-            left: calc(30vw - 40px);
+    .clearIcon {
+        &.area {
+            top: calc(50vh - 40px);
         }
-        &.evening {
+        .outline {
+            mix-blend-mode: normal;
+        }
+        .foundation {
+            mix-blend-mode: overlay;
+        }
+        .checkbox {
+            mix-blend-mode: screen;
+            /* opacity: 1; */
+        }
+
+        &#morning {
+            left: calc(30vw - 40px);
+            #morningOutline {
+                background:
+                    linear-gradient(to top left, transparent, #5358a1),
+                    linear-gradient(to top right, transparent, #7dadde),
+                    linear-gradient(to bottom right, transparent, white),
+                    linear-gradient(to bottom left, transparent, #aedef5);
+            }
+        }
+        &#noon {
             top: calc(10vh - 40px);
             left: calc(50vw - 40px);
+            #noonOutline {
+                background:
+                    linear-gradient(to top left, transparent, #1eb7ed),
+                    linear-gradient(to top right, transparent, #5cc1ed),
+                    linear-gradient(to bottom right, transparent, #92d0dd),
+                    linear-gradient(to bottom left, transparent, #beca90);
+            }
         }
-        &.night {
+        &#evening {
             right: calc(30vw - 40px);
+            #eveningOutline {
+                background:
+                    linear-gradient(to top left, transparent, #b0534b),
+                    linear-gradient(to top right, transparent, #ed7002),
+                    linear-gradient(to bottom right, transparent, #beca90),
+                    linear-gradient(to bottom left, transparent, #ddad51);
+            }
+        }
+        &#night {
+            top: calc(90vh - 40px);
+            left: calc(50vw - 40px);
+            #nightOutline {
+                background:
+                    linear-gradient(to top left, transparent, #000046),
+                    linear-gradient(to top right, transparent, #2e238d),
+                    linear-gradient(to bottom right, transparent, #6c2f6a),
+                    linear-gradient(to bottom left, transparent, #1e136f);
+            }
         }
     }
 }
@@ -186,18 +231,22 @@ main {
                 border: solid 1px transparent;
             }
         }
-        #clearIcon {
-            &.morning {
-                bottom: 20vh;
-                left: 8vw;
+        .clearIcon {
+            &#morning {
+                top: calc(50vh - 30px);
+                left: 3vw;
             }
-            &.evening {
-                top: 27vh;
+            &#noon {
+                top: calc(50vh - 60px - 18vh);
                 left: calc(50vw - 30px);
             }
-            &.night {
-                bottom: 20vh;
-                right: 8vw;
+            &#evening {
+                top: calc(50vh - 30px);
+                right: 3vw;
+            }
+            &#night {
+                top: calc(50vh + 18vh);
+                left: calc(50vw - 30px);
             }
         }
     }
