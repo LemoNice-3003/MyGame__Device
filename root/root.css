@@ -40,6 +40,7 @@
     --defaultFont-星: 'Canis Minor';
     --defaultFont-レシート: 'Receipt';
     --defaultFont-バッド: 'Bad Script', cursive;
+    --transition-move: cubic-bezier(0.87, 0, 0.13, 1);
 }
 * {
     margin: 0;
