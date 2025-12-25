@@ -41,9 +41,16 @@ var soraColor =  {
 };
 let colorCount = 1;
 
-function onload() {
+async function onload() {
     if(nowProgress >= 4) {
-        checkClearIcon(checkbox_2_0, "30vw", "50vh");
+        await checkClearIcon(checkbox_2_0, "30vw", "50vh");
+        // alert("clear-0");
+        await checkClearIcon(checkbox_2_1, "50vw", "10vh");
+        // alert("clear-1");
+        await checkClearIcon(checkbox_2_2, "70vw", "50vh");
+        // alert("clear-2");
+        await checkClearIcon(checkbox_2_3, "50vw", "90vh");
+        // alert("clear-3");
     }
 
     updateClock();
