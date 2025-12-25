@@ -1,6 +1,11 @@
 let clockTimer;
 clockTimer = setInterval(updateClock, 1000);
 
+let flag_2_0 = false;
+let flag_2_1 = false;
+let flag_2_2 = false;
+let flag_2_3 = false;
+
 const secondDial = document.getElementById("second");
 const minuteDial = document.getElementById("minute");
 const hourDial = document.getElementById("hour");
@@ -11,6 +16,8 @@ let lastHourDeg = 0;
 let secondRotation = 0;
 let minuteRotation = 0;
 let hourRotation = 0;
+
+let lastHourTime = 0;
 
 const timeZone = document.getElementById("timeZone");
 var soraColor =  {
@@ -42,23 +49,16 @@ var soraColor =  {
 let colorCount = 1;
 
 async function onload() {
-    if(nowProgress >= 4) {
-        await checkClearIcon(checkbox_2_0, "30vw", "50vh");
-        // alert("clear-0");
-        await checkClearIcon(checkbox_2_1, "50vw", "10vh");
-        // alert("clear-1");
-        await checkClearIcon(checkbox_2_2, "70vw", "50vh");
-        // alert("clear-2");
-        await checkClearIcon(checkbox_2_3, "50vw", "90vh");
-        // alert("clear-3");
-    }
+    const now = new Date();
+    timeCheck(now.getHours()); // 最初に条件を満たしているものがあればクリア判定を出す
+    lastHourTime = now.getHours(); // 読み込んだ時の時間を記録しておく
 
-    updateClock();
+    updateClock(); // 時計スタート
 }
 
 function updateClock() {
     const now = new Date();
-
+    // console.log(now.getHours(), now.getMinutes(), now.getSeconds());
     const ms = now.getMilliseconds();
 
     const second = now.getSeconds() + ms / 1000;
@@ -83,12 +83,11 @@ function updateClock() {
     minuteDial.style.transform = `rotate(${minuteAngle}deg)`;
     hourDial.style.transform = `rotate(${hourAngle}deg)`;
 
-    if(colorCount > 23) {
-        colorCount = 0;
-    }
     timeZone.style.setProperty('--sora-color', soraColor[now.getHours()]);
-    console.log(now.getHours());
-    colorCount++;
+    if(lastHourTime != now.getHours()) {
+        timeCheck(now.getHours());
+    }
+    lastHourTime = now.getHours();
 }
 
 function checkOverflow(type, current, deg) {
@@ -115,3 +114,42 @@ function checkOverflow(type, current, deg) {
             break;
     }
 }
+
+async function timeCheck(nowHour) {
+    if(nowHour >= 4 && nowHour <= 7) {
+        await checkClearIcon(clearFlag_2, checkbox_2_0, "30vw", "50vh");
+        flag_2_0 = true;
+    }
+    if(nowHour >= 11 && nowHour <= 13) {
+        await checkClearIcon(clearFlag_2, checkbox_2_1, "50vw", "10vh");
+        flag_2_1 = true;
+    }
+    if(nowHour >= 16 && nowHour <= 18) {
+        await checkClearIcon(clearFlag_2, checkbox_2_2, "70vw", "50vh");
+        flag_2_2 = true;
+    }
+    if(nowHour == 22 || nowHour == 23 || nowHour == 0 || nowHour == 1) {
+        await checkClearIcon(clearFlag_2, checkbox_2_3, "50vw", "90vh");
+        flag_2_3 = true;
+    }
+
+    if(flag_2_0 && flag_2_1 && flag_2_2 && flag_2_3) {
+        clearFlag_2 = true;
+    }
+}
+
+function pageback() {
+    if (clearFlag_2 && nowProgress == 3) {
+        sessionStorage.setItem('progress', nowProgress + 1);
+    }
+
+    // 書き込み完了を保証するため少し遅延
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 50);
+}
+window.addEventListener('pagehide', () => { // 戻るボタンを使わない場合のデータ保存用コード
+    if (clearFlag_2 && nowProgress == 3) {
+        sessionStorage.setItem('progress', nowProgress + 1);
+    }
+});
