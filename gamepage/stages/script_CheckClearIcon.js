@@ -1,5 +1,4 @@
 let particle;
-let clearFlag = false;
 this.explosionX = "";
 this.explosionY = "";
 
@@ -8,15 +7,15 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); //sleep�
 
 /**
  * クリアした際にチェックボックスを光らせる
- * @returns true
+ * @returns true(異常時にfalse)
+ * @param {boolean} clearFlag 呼び出すステージのクリアフラグ ex)clearFlag_1
  * @param {HTMLElement} checkboxId チェックを入れるチェックボックスのid
  * @param {string} x x座標（leftの値）
  * @param {string} y y座標（topの値）
  */
-async function checkClearIcon(checkboxId, x, y) {
+async function checkClearIcon(clearFlag, checkboxId, x, y) {
     await sleep(1000);
     if(!clearFlag) {
-        // clearFlag = true;
         if (!checkboxId) {
             console.log("checkboxId is null");
             return false;
