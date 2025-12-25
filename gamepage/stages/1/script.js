@@ -15,7 +15,7 @@ async function onload() {
 }
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', async event => {
     symbol.classList.toggle('active');
-    await checkClearIcon(checkbox_1_0, "50vw", "calc(75vh + 40px)");
+    await checkClearIcon(clearFlag_1, checkbox_1_0, "50vw", "calc(75vh + 40px)");
     console.log(nowProgress);
     if (event.matches) {
         console.log('ダークモードに変更されました');
@@ -24,10 +24,8 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', asy
     }
 });
 
-function pageback(e) {
-    e.preventDefault(); // ページ遷移を止める
-
-    if (clearFlag && nowProgress == 1) {
+function pageback() {
+    if (clearFlag_1 && nowProgress == 1) {
         sessionStorage.setItem('progress', nowProgress + 1);
     }
 
@@ -37,7 +35,7 @@ function pageback(e) {
     }, 50);
 }
 window.addEventListener('pagehide', () => { // 戻るボタンを使わない場合のデータ保存用コード
-    if (clearFlag && nowProgress == 1) {
+    if (clearFlag_1 && nowProgress == 1) {
         sessionStorage.setItem('progress', nowProgress + 1);
     }
 });
