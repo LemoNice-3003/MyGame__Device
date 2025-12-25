@@ -1,10 +1,10 @@
 function isDarkMode() {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
-function onload() {
+async function onload() {
     const symbol = document.querySelector('#symbol');
     if(nowProgress >= 2) {
-        checkClearIcon(checkbox_1_0, "50vw", "calc(75vh + 40px)");
+        await checkClearIcon(checkbox_1_0, "50vw", "calc(75vh + 40px)");
     }
     if (isDarkMode()) {
         symbol.classList.toggle('active');
@@ -13,9 +13,9 @@ function onload() {
         console.log('ライトモードです');
     }
 }
-window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', async event => {
     symbol.classList.toggle('active');
-    checkClearIcon(checkbox_1_0, "50vw", "calc(75vh + 40px)");
+    await checkClearIcon(checkbox_1_0, "50vw", "calc(75vh + 40px)");
     console.log(nowProgress);
     if (event.matches) {
         console.log('ダークモードに変更されました');
