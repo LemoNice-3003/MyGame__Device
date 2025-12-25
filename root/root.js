@@ -36,6 +36,16 @@ let textLength = 0;
  */
 const nowProgress = Number(sessionStorage.getItem('progress'));
 
+let clearFlag_1 = false;
+let clearFlag_2 = false;
+let clearFlag_3 = false;
+let clearFlag_4 = false;
+let clearFlag_5 = false;
+let clearFlag_6 = false;
+let clearFlag_7 = false;
+let clearFlag_8 = false;
+let clearFlag_9 = false;
+
 document.addEventListener('touchend', (event) => {
     const currentTime = new Date().getTime();
     const timeDifference = currentTime - lastTouchTime;
