@@ -8,20 +8,27 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); //sleep�
 
 /**
  * クリアした際にチェックボックスを光らせる
+ * @returns true
  * @param {HTMLElement} checkboxId チェックを入れるチェックボックスのid
  * @param {string} x x座標（leftの値）
  * @param {string} y y座標（topの値）
  */
 async function checkClearIcon(checkboxId, x, y) {
-    await sleep(2000);
+    await sleep(1000);
     if(!clearFlag) {
-        clearFlag = true;
-        $(checkboxId).css({"opacity": 1});
+        // clearFlag = true;
+        if (!checkboxId) {
+            console.log("checkboxId is null");
+            return false;
+        }
+        checkboxId.style.opacity = "1";
         await sleep(800);
         if (particle) {
             particle.start(x, y);
         }
     }
+
+    return true;
 }
 
 
@@ -34,7 +41,7 @@ class ExplosionParticle {
         this.options = {
             particleCount: options.particleCount || 30,
             particleSize: options.particleSize || 3,
-            particleColor: options.particleColor || '#ff6b6b',
+            particleColor: 'rgb(255, 255, 255)',
             explosionSpeed: options.explosionSpeed || 5,
             ...options
         };
@@ -70,10 +77,10 @@ class ExplosionParticle {
     }
 
     start(x, y) {
+        this.explosion = []; // 完全リセット
         this.options.explosionX = x;
         this.options.explosionY = y;
         this.clearEvent();
-        this.animate();
     }
 
     clearEvent() {
@@ -152,4 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
         particleColor: 'rgb(255, 255, 255)',
         explosionSpeed: 3
     });
+
+    particle.animate();
 });
