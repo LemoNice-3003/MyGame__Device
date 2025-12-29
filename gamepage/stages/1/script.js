@@ -27,9 +27,3 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', asy
         console.log('ライトモードに変更されました');
     }
 });
-
-window.addEventListener('pagehide', () => { // 戻るボタンを使わない場合のデータ保存用コード
-    if (clearFlag_1 && nowProgress == 1) {
-        sessionStorage.setItem('progress', nowProgress + 1);
-    }
-});
