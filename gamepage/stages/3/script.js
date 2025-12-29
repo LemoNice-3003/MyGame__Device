@@ -133,23 +133,9 @@ async function timeCheck(nowHour) {
         flag_2_3 = true;
     }
 
-    if(flag_2_0 && flag_2_1 && flag_2_2 && flag_2_3) {
+    if(flag_2_0 && flag_2_1 && flag_2_2 && flag_2_3 && !clearFlag_2) {
         clearFlag_2 = true;
+        await sessionStorage.setItem('progress', nowProgress + 1);
+        console.log("clear");
     }
 }
-
-function pageback() {
-    if (clearFlag_2 && nowProgress == 3) {
-        sessionStorage.setItem('progress', nowProgress + 1);
-    }
-
-    // 書き込み完了を保証するため少し遅延
-    setTimeout(() => {
-        window.location.href = "index.html";
-    }, 50);
-}
-window.addEventListener('pagehide', () => { // 戻るボタンを使わない場合のデータ保存用コード
-    if (clearFlag_2 && nowProgress == 3) {
-        sessionStorage.setItem('progress', nowProgress + 1);
-    }
-});
