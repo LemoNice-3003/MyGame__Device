@@ -1,5 +1,7 @@
+let pathName = '';
 nowUserName.style.setProperty('--nameLength', textLength + "em");
 function onload() {
+    pathName = location.pathname;
     if(loginFlag === "true") {
         // alert("アカウント認識");
         $("#nowUserName").text(userName);
@@ -59,7 +61,7 @@ async function checkFileType(text) {
             }
             else {
                 if(userName == "kakapo") {
-                    kakapo();
+                    // kakapo();
                 } else {
                     goToGamepage(userName, userProgress);
                     sessionStorage.setItem('loginFlag', true);
@@ -76,20 +78,31 @@ async function checkFileType(text) {
     }
 }
 function goToGamepage(userName, userProgress) {
-    const url = `gamepage/index.html?name=${encodeURIComponent(userName)}&value=${encodeURIComponent(userProgress)}`;
-    window.location.href = url;
+    if(pathName == '/gamepage/index.html') {
+        window.location.reload();
+    }
+    else {
+        const url = `gamepage/index.html?name=${encodeURIComponent(userName)}&value=${encodeURIComponent(userProgress)}`;
+        window.location.href = url;
+    }
 }
 
 function logout() {
     try {
         if(window.confirm("ログアウトしますか？")) {
-            sessionStorage.clear()
+            sessionStorage.clear();
             sessionStorage.setItem('loginFlag', false);
             alert("ログアウトします");
-            window.location.reload(); // 現在のページをリロード
+            if (pathName != '/index.html') {
+                const url = `../index.html`;
+                window.location.href = url;
+            }
+            else {
+                window.location.reload(); // 現在のページをリロード
+            }
         }
         else {
-            alert("ログアウトがキャンセルされました")
+            alert("ログアウトがキャンセルされました");
         }
     } catch (e) {
         console.warn("error", e);
