@@ -200,7 +200,7 @@ main {
     margin : -2vh 0 6vh 0;
     animation: rainbow2 .16s linear infinite;
 }
-.kakapo {
+/* .kakapo {
     position: absolute;
     top: 16%;
     left: calc(50vw - 60px);
@@ -208,7 +208,7 @@ main {
         aspect-ratio: 1 / 1;
         width: 0px;
     }
-}
+} */
 .prompt {
     width: 100%;
     display: flex;
