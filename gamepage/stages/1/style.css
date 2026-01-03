@@ -16,7 +16,7 @@ a, p, img{
     -moz-user-select: none; /* Firefox向け */
 }
 body, html {
-    background: rgb(168, 161, 137);
+    background: var(--defaultColor);
     touch-action: manipulation;
     scrollbar-width: none;
     --htmlWidth: 100%;
