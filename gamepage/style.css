@@ -166,7 +166,7 @@ header {
     aspect-ratio: 4 / 3;
     height: 10vh;
     margin: 2px;
-    background: rgb(168, 161, 137);
+    background: var(--defaultColor);
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -179,7 +179,7 @@ header {
 #preview {
     aspect-ratio: 4 / 3;
     width: 100vw;
-    background: rgb(187, 180, 156);
+    background: var(--defaultColor);
     background-repeat: no-repeat;
     background-size: contain;
     background-position-x: center;
