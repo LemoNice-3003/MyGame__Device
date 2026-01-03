@@ -63,7 +63,7 @@ $(document).ready(function() {
             stage_1.addClass("active");
         },
         mouseenter : function() {
-            preview.css("background-image", "url(../images/stage_thumbnail/1.jpg)");
+            preview.css("background-image", "url(../images/stage_thumbnail/1.png)");
         },
         mouseleave : function() {
             preview.css("background-image", "none");
@@ -97,7 +97,7 @@ $(document).ready(function() {
             stage_3.addClass("active");
         },
         mouseenter : function() {
-            preview.css("background-image", "url(../images/stage_thumbnail/3.jpg)");
+            preview.css("background-image", "url(../images/stage_thumbnail/3.png)");
         },
         mouseleave : function() {
             preview.css("background-image", "none");
@@ -114,7 +114,7 @@ $(document).ready(function() {
             stage_4.addClass("active");
         },
         mouseenter : function() {
-            preview.css("background-image", "url(../images/stage_thumbnail/4.jpg)");
+            preview.css("background-image", "url(../images/stage_thumbnail/4.png)");
         },
         mouseleave : function() {
             preview.css("background-image", "none");
