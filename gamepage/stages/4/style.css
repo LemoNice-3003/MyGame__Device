@@ -36,13 +36,127 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    #clearIcon {
-        top: calc(50vh - 40px);
-        left: calc(50vw - 40px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .brackets {
+        aspect-ratio: 1 / 1;
+        position: absolute;
+        background: transparent;
+        &.outside {
+            width: 6%;
+            &.top_left {
+                top: 6%;
+                left: 6%;
+                box-shadow: inset 25px 25px 0px var(--defaultColor-Dark);
+            }
+            &.top_right {
+                top: 6%;
+                right: 6%;
+                box-shadow: inset -25px 25px 0px var(--defaultColor-Light);
+            }
+            &.bottom_right {
+                bottom: 6%;
+                right: 6%;
+                box-shadow: inset -25px -25px 0px var(--defaultColor-Dark);
+            }
+            &.bottom_left {
+                bottom: 6%;
+                left: 6%;
+                box-shadow: inset 25px -25px 0px var(--defaultColor-Light);
+            }
+        }
+        &.inside {
+            width: 2%;
+            &.top_left {
+                top: 42%;
+                left: 44%;
+                box-shadow: inset 15px 15px 0px var(--defaultColor-Dark);
+            }
+            &.top_right {
+                top: 42%;
+                right: 44%;
+                box-shadow: inset -15px 15px 0px var(--defaultColor-Light);
+            }
+            &.bottom_right {
+                bottom: 42%;
+                right: 44%;
+                box-shadow: inset -15px -15px 0px var(--defaultColor-Dark);
+            }
+            &.bottom_left {
+                bottom: 42%;
+                left: 44%;
+                box-shadow: inset 15px -15px 0px var(--defaultColor-Light);
+            }
+        }
+    }
+    #printer {
+        aspect-ratio: 1 / 2;
+        height: calc(100vh - 2%);
+        position: absolute;
+        margin: 1%;
+        background: url(../../../images/stagesImg/4/printer.svg) no-repeat center;
+        background-size: cover;
+        background-position: center top;
     }
 }
 
 @media (max-width: 999px) { /*スマホモード*/
     @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
+        main {
+            #printer {
+                height: auto;
+                width: calc(100vw - 2%);
+            }
+            .brackets {
+                &.outside {
+                    width: 13%;
+                    &.top_left {
+                        top: 10%;
+                        left: 5%;
+                        box-shadow: inset 20px 20px 0px var(--defaultColor-Dark);
+                    }
+                    &.top_right {
+                        top: 10%;
+                        right: 5%;
+                        box-shadow: inset -20px 20px 0px var(--defaultColor-Light);
+                    }
+                    &.bottom_right {
+                        bottom: 10%;
+                        right: 5%;
+                        box-shadow: inset -20px -20px 0px var(--defaultColor-Dark);
+                    }
+                    &.bottom_left {
+                        bottom: 10%;
+                        left: 5%;
+                        box-shadow: inset 20px -20px 0px var(--defaultColor-Light);
+                    }
+                }
+                &.inside {
+                    width: 6%;
+                    &.top_left {
+                        top: 42%;
+                        left: 24%;
+                        box-shadow: inset 10px 10px 0px var(--defaultColor-Dark);
+                    }
+                    &.top_right {
+                        top: 42%;
+                        right: 24%;
+                        box-shadow: inset -10px 10px 0px var(--defaultColor-Light);
+                    }
+                    &.bottom_right {
+                        bottom: 42%;
+                        right: 24%;
+                        box-shadow: inset -10px -10px 0px var(--defaultColor-Dark);
+                    }
+                    &.bottom_left {
+                        bottom: 42%;
+                        left: 24%;
+                        box-shadow: inset 10px -10px 0px var(--defaultColor-Light);
+                    }
+                }
+            }
+        }
     }
 }
