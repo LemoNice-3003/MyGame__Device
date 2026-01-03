@@ -50,7 +50,15 @@ let colorCount = 1;
 
 async function onload() {
     const now = new Date();
-    timeCheck(now.getHours()); // 最初に条件を満たしているものがあればクリア判定を出す
+    if(nowProgress >= 4) {
+        timeCheck(5);
+        timeCheck(12);
+        timeCheck(17);
+        timeCheck(23);
+    }
+    else {
+        timeCheck(now.getHours()); // 最初に条件を満たしているものがあればクリア判定を出す
+    }
     lastHourTime = now.getHours(); // 読み込んだ時の時間を記録しておく
 
     updateClock(); // 時計スタート
@@ -133,7 +141,7 @@ async function timeCheck(nowHour) {
         flag_2_3 = true;
     }
 
-    if(flag_2_0 && flag_2_1 && flag_2_2 && flag_2_3 && !clearFlag_2) {
+    if(flag_2_0 && flag_2_1 && flag_2_2 && flag_2_3 && !clearFlag_2 && nowProgress == 3) {
         clearFlag_2 = true;
         await sessionStorage.setItem('progress', nowProgress + 1);
         console.log("clear");
