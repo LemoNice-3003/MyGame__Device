@@ -16,7 +16,7 @@ a, p, img{
     -moz-user-select: none; /* Firefox向け */
 }
 body, html {
-    background: rgb(168, 161, 137);
+    background: var(--defaultColor);
     touch-action: manipulation;
     scrollbar-width: none;
     --htmlWidth: 100%;
@@ -107,7 +107,7 @@ main {
         main {
             #printer {
                 height: auto;
-                width: calc(100vw - 2%);
+                width: calc(80vw - 2%);
             }
             .brackets {
                 &.outside {
@@ -136,23 +136,23 @@ main {
                 &.inside {
                     width: 6%;
                     &.top_left {
-                        top: 42%;
-                        left: 24%;
+                        top: 44%;
+                        left: 30%;
                         box-shadow: inset 10px 10px 0px var(--defaultColor-Dark);
                     }
                     &.top_right {
-                        top: 42%;
-                        right: 24%;
+                        top: 44%;
+                        right: 30%;
                         box-shadow: inset -10px 10px 0px var(--defaultColor-Light);
                     }
                     &.bottom_right {
-                        bottom: 42%;
-                        right: 24%;
+                        bottom: 44%;
+                        right: 30%;
                         box-shadow: inset -10px -10px 0px var(--defaultColor-Dark);
                     }
                     &.bottom_left {
-                        bottom: 42%;
-                        left: 24%;
+                        bottom: 44%;
+                        left: 30%;
                         box-shadow: inset 10px -10px 0px var(--defaultColor-Light);
                     }
                 }
