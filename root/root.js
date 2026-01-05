@@ -66,3 +66,5 @@ const checkbox_2_2 = document.getElementById("checkbox_2_2");
 const checkbox_2_3 = document.getElementById("checkbox_2_3");
 
 const checkbox_4_0 = document.getElementById("checkbox_4_0");
+
+const checkbox_5_0 = document.getElementById("checkbox_5_0");
