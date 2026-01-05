@@ -1,7 +1,8 @@
 /*基本設定*/
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
-@import url('../../../style_hamburger.css');
+@import url('../../../root/style_pageback.css');
+@import url('../../../root/style_clear_icon.css');
 .font-bad {
     font-family: "Bad Script", cursive;
 }
@@ -15,13 +16,53 @@ a, p, img{
     -moz-user-select: none; /* Firefox向け */
 }
 body, html {
-    background: rgb(168, 161, 137);
+    background: var(--defaultColor);
     touch-action: manipulation;
     scrollbar-width: none;
-    width: 100%;
+    --htmlWidth: 100%;
+    --htmlHeight: 100%;
+    width: var(--htmlWidth);
+    height: var(--htmlHeight);
+    overflow: hidden;
+    transition: 1s var(--transition-move);
 }
 
 
 /*--------------------------------------------------*/
 
+main {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    #par {
+        aspect-ratio: 1/1;
+        width: 10%;
+        --defaultWidh-par: 10%;
+        background-color: red;
+    }
+    #vw {
+        aspect-ratio: 1/1;
+        width: 10vw;
+        --defaultWidh-wv: 10vw;
+        background-color: green;
+    }
+    #px {
+        aspect-ratio: 1/1;
+        width: 200px;
+        --defaultWidh-px: 200px;
+        background-color: blue;
+    }
+}
 
+@media (max-width: 999px) { /*スマホモード*/
+    @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
+        main {
+        }
+    }
+}
