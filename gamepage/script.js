@@ -131,7 +131,8 @@ $(document).ready(function() {
             stage_5.addClass("active");
         },
         mouseenter : function() {
-            preview.css("background-image", "url(../images/stage_thumbnail/5.png
+            preview.css("background-image", "url(../images/stage_thumbnail/5.png)");
+        },
         mouseleave : function() {
             preview.css("background-image", "none");
         }
@@ -232,4 +233,5 @@ document.addEventListener('wheel', function(event) {
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
+
 
