@@ -28,6 +28,10 @@ body, html {
 }
 :root {
     --defaultWidh-5-0: 230px;
+    --defaultWidh-5-1: 50px;
+    --defaultWidh-5-2: 380px;
+    --defaultWidh-5-3: 990px;
+    --defaultWidh-5-4: 130px;
 }
 
 
@@ -43,12 +47,36 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    #clearIcon_0 {
+        width: 90px;
+        top: calc(80vh - 45px);
+        left: calc(10vw - 45px);
+    }
+    #clearIcon_1 {
+        width: 140px;
+        top: calc(25vh - 70px);
+        left: calc(30vw - 70px);
+    }
+    #clearIcon_2 {
+        width: 60px;
+        top: calc(50vh - 30px);
+        left: calc(50vw - 30px);
+    }
+    #clearIcon_3 {
+        top: calc(86vh - 40px);
+        right: calc(30vw - 40px);
+    }
+    #clearIcon_4 {
+        width: 260px;
+        top: calc(1vh - 130px);
+        right: calc(10vw - 130px);
+    }
     #checkbox_5_0, #checkbox_5_1, #checkbox_5_2, #checkbox_5_3, #checkbox_5_4 {
         mix-blend-mode: color-dodge;
-        background: rgb(157, 152, 135);
+        background: var(--defaultColor-Dark);
         border-radius: 20%;
         transition: 1s var(--transition-move);
-        opacity: 0;
+        opacity: 1;
         z-index: 99;
     }
     #checkbox_5_0 {
@@ -71,6 +99,30 @@ main {
 @media (max-width: 999px) { /*スマホモード*/
     @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
         main {
+            /* #clearIcon_0 {
+                width: 90px;
+                top: calc(80vh - 45px);
+                left: calc(10vw - 45px);
+            }
+            #clearIcon_1 {
+                width: 140px;
+                top: calc(25vh - 70px);
+                left: calc(30vw - 70px);
+            }
+            #clearIcon_2 {
+                width: 60px;
+                top: calc(50vh - 30px);
+                left: calc(50vw - 30px);
+            }
+            #clearIcon_3 {
+                top: calc(86vh - 40px);
+                right: calc(30vw - 40px);
+            }
+            #clearIcon_4 {
+                width: 260px;
+                top: calc(1vh - 130px);
+                right: calc(10vw - 130px);
+            } */
         }
     }
 }
