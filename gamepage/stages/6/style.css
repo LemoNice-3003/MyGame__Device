@@ -1,7 +1,8 @@
 /*基本設定*/
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
-@import url('../../../style_hamburger.css');
+@import url('../../../root/style_pageback.css');
+@import url('../../../root/style_clear_icon.css');
 .font-bad {
     font-family: "Bad Script", cursive;
 }
@@ -15,13 +16,95 @@ a, p, img{
     -moz-user-select: none; /* Firefox向け */
 }
 body, html {
-    background: rgb(168, 161, 137);
+    background: var(--defaultColor);
     touch-action: manipulation;
     scrollbar-width: none;
-    width: 100%;
+    --htmlWidth: 100%;
+    --htmlHeight: 100%;
+    width: var(--htmlWidth);
+    height: var(--htmlHeight);
+    overflow: hidden;
+    transition: 1s var(--transition-move);
+}
+:root {
 }
 
 
 /*--------------------------------------------------*/
 
+main {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .frame {
+        position: absolute;
+        border: solid;
+        &#frame_0 {
+            width: 1700px;
+            height: 800px;
+            border-width: 10px;
+            border-color: rgb(0, 0, 0);
+        }
+        &#frame_1 {
+            width: 1200px;
+            height: 400px;
+            border-width: 6px;
+            border-color: rgb(50, 50, 50);
+        }
+        &#frame_2 {
+            width: 700px;
+            height: 160px;
+            border-width: 2px;
+            border-color: rgb(100, 100, 100);
+        }
+    }
+    #clearIcon_0 {
+        width: 120px;
+        top: calc(16vh - 60px);
+    }
+    #clearIcon_1 {
+        width: 80px;
+        top: calc(34vh - 40px);
+    }
+    #clearIcon_2 {
+        width: 40px;
+        top: calc(45vh - 20px);
+    }
+}
 
+@media (max-width: 999px) { /*スマホモード*/
+    @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
+        main {
+            /* #clearIcon_0 {
+                width: 90px;
+                top: calc(80vh - 45px);
+                left: calc(10vw - 45px);
+            }
+            #clearIcon_1 {
+                width: 140px;
+                top: calc(25vh - 70px);
+                left: calc(30vw - 70px);
+            }
+            #clearIcon_2 {
+                width: 60px;
+                top: calc(50vh - 30px);
+                left: calc(50vw - 30px);
+            }
+            #clearIcon_3 {
+                top: calc(86vh - 40px);
+                right: calc(30vw - 40px);
+            }
+            #clearIcon_4 {
+                width: 260px;
+                top: calc(1vh - 130px);
+                right: calc(10vw - 130px);
+            } */
+        }
+    }
+}
