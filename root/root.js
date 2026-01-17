@@ -72,3 +72,7 @@ const checkbox_5_1 = document.getElementById("checkbox_5_1");
 const checkbox_5_2 = document.getElementById("checkbox_5_2");
 const checkbox_5_3 = document.getElementById("checkbox_5_3");
 const checkbox_5_4 = document.getElementById("checkbox_5_4");
+
+const checkbox_6_0 = document.getElementById("checkbox_6_0");
+const checkbox_6_1 = document.getElementById("checkbox_6_1");
+const checkbox_6_2 = document.getElementById("checkbox_6_2");
