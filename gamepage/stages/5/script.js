@@ -121,9 +121,10 @@ document.addEventListener('wheel', async function(event) {
 
         if(!data[0].flag && !data[1].flag && !data[2].flag && !data[3].flag && !data[4].flag) {
             if(nowProgress == 5) {
-                clearFlag_4 = true;
+                clearFlag_5 = true;
                 await sessionStorage.setItem('progress', nowProgress + 1);
             }
         }
     }
 }, { passive: false });
+
