@@ -1,6 +1,14 @@
+const pageback_button = document.getElementById("js-pageback");
+const permissionButton = document.getElementById('permission');
+const clearIcon_0 = document.getElementById("clearIcon_0");
+const clearIcon_1 = document.getElementById("clearIcon_1");
+const clearIcon_2 = document.getElementById("clearIcon_2");
+
 const frame_0 = document.getElementById("frame_0");
 const frame_1 = document.getElementById("frame_1");
 const frame_2 = document.getElementById("frame_2");
+
+const styleVal = getComputedStyle(document.documentElement).getPropertyValue('--portrait');
 
 let _0_Width = frame_0.clientWidth;
 let _1_Width = frame_1.clientWidth;
@@ -10,14 +18,17 @@ let _0_height = frame_0.clientHeight;
 let _1_height = frame_1.clientHeight;
 let _2_height = frame_2.clientHeight;
 
+// width用（左右の辺）
 let _0_flg1 = true;
 let _1_flg1 = true;
 let _2_flg1 = true;
 
+// heigt用（上下の辺）
 let _0_flg2 = true;
 let _1_flg2 = true;
 let _2_flg2 = true;
 
+// それぞれのチェックボックス用
 let _0_flg3 = true;
 let _1_flg3 = true;
 let _2_flg3 = true;
@@ -31,16 +42,13 @@ const data = [
 
 
 async function onload() {
+    console.log(window.innerHeight);
     if(nowProgress >= 7) {
-        data[0].flag1 = false;
-        data[1].flag1 = false;
-        data[2].flag1 = false;
-        data[0].flag2 = false;
-        data[1].flag2 = false;
-        data[2].flag2 = false;
-        data[0].flag3 = false;
-        data[1].flag3 = false;
-        data[2].flag3 = false;
+        data.forEach(item => {
+            item.flag1 = false;
+            item.flag2 = false;
+            item.flag3 = false;
+        });
 
         checkClearIcon(clearFlag_6, checkbox_6_0, "50vw", "16vh");
         checkClearIcon(clearFlag_6, checkbox_6_1, "50vw", "34vh");
@@ -48,7 +56,133 @@ async function onload() {
     }
 }
 
-window.addEventListener('resize', () => {
+
+// ここからスマホ用ロジック
+if(styleVal == "1" || window.innerHeight < 700) {
+    data.forEach(item => {
+        item.frame.style.display = "none";
+    });
+    pageback_button.style.position = "absolute";
+    permissionButton.style.display = "block";
+    clearIcon_0.style.width = "80px";
+    clearIcon_0.style.top = "calc(16vh - 40px)";
+    clearIcon_1.style.top = "calc(50vh - 40px)";
+    clearIcon_1.style.left = "calc(20vw - 40px)";
+    clearIcon_2.style.width = "80px";
+    clearIcon_2.style.top = "calc(50vh - 40px)";
+    clearIcon_2.style.right = "calc(20vw - 40px)";
+
+    const { Engine, Render, Runner, World, Bodies } = Matter;
+
+    const engine = Engine.create();
+    const world = engine.world;
+
+    // 描画
+    const render = Render.create({
+        element: document.body,
+        engine: engine,
+        options: {
+            width: window.innerWidth,
+            height: window.innerHeight,
+            wireframes: false,
+            background: "rgb(187, 180, 156)"
+        }
+    });
+
+    // 壁
+    let walls = [];
+    walls = createWalls(window.innerWidth, window.innerHeight);
+
+    // 玉
+    let balls = [];
+    for(let i = 0; i < 150; i++) {
+        const ball = Matter.Bodies.circle(
+            Math.random() * window.innerWidth,
+            Math.random() * window.innerHeight / 2,
+            15, {
+                restitution: 0.6,
+                friction: 0.01
+            }
+        );
+        balls.push(ball);
+    }
+
+    Matter.World.add(world, [...walls, ...balls]);
+
+    Render.run(render);
+    Runner.run(Runner.create(), engine);
+
+    // ===== スマホの傾き =====
+    permissionButton.addEventListener("click", async () => {
+        // iOS対策
+        if (typeof DeviceOrientationEvent?.requestPermission === "function") {
+            const permission = await DeviceOrientationEvent.requestPermission();
+            if (permission !== "granted") return;
+        }
+
+        window.addEventListener("deviceorientation", (e) => {
+            // gamma: 左右 (-90〜90)
+            // beta: 前後 (-180〜180)
+            const gx = e.gamma / 30; // 感度調整
+            const gy = e.beta / 30;
+
+            engine.world.gravity.x = gx;
+            engine.world.gravity.y = gy;
+        });
+
+        permissionButton.style.display = "none";
+    });
+
+    
+    window.addEventListener("resize", () => {
+        const width  = window.innerWidth;
+        const height = window.innerHeight;
+
+        // canvasサイズ変更
+        render.canvas.width = width;
+        render.options.width = width;
+        render.canvas.height = height;
+        render.options.height = height;
+
+        World.remove(world, walls);
+        World.remove(world, balls);
+        balls.length = 0; // ← 超重要!!
+        walls = createWalls(window.innerWidth, window.innerHeight);
+        for(let i = 0; i < 150; i++) {
+            const ball = Matter.Bodies.circle(
+                Math.random() * window.innerWidth,
+                Math.random() * window.innerHeight / 2,
+                15, {
+                    restitution: 0.6,
+                    friction: 0.01
+                }
+            );
+            balls.push(ball);
+        }
+        Matter.World.add(world, [...walls, ...balls]);
+
+        // 描画範囲更新
+        Matter.Render.lookAt(render, {
+            min: { x: 0, y: 0 },
+            max: { x: width, y: height }
+        });
+    });
+    
+    function createWalls(w, h) {
+        return [
+            // x, y, width, height
+            Bodies.rectangle(w / 2, -20, w, 40, { isStatic: true }),
+            Bodies.rectangle(w + 20, h / 2, 40, h, { isStatic: true }),
+            Bodies.rectangle(w / 2, h + 20, w, 40, { isStatic: true }),
+            Bodies.rectangle(-20, h / 2, 40, h, { isStatic: true }),
+        ];
+    }
+}
+
+
+
+// ここからPC版用ロジック
+window.addEventListener('resize', async function() {
     data.forEach(item => {
         if(isNear(window.innerWidth, item.width, 20) && item.flag1) {
             turnOnFluorescent(item.frame, "leftright");
@@ -74,7 +208,14 @@ window.addEventListener('resize', () => {
             item.flag2 = false;
             item.flag3 = false;
         }
-    })
+    });
+    
+    if(!data[0].flag3 && !data[1].flag3 && !data[2].flag3) {
+        if(nowProgress == 6) {
+            clearFlag_6 = true;
+            await sessionStorage.setItem('progress', nowProgress + 1);
+        }
+    }
 });
 
 /**
