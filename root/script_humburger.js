@@ -78,7 +78,7 @@ async function checkFileType(text) {
     }
 }
 function goToGamepage(userName, userProgress) {
-    if(pathName == '/gamepage/index.html') {
+    if(pathName == '/C:/Users/h3513/Desktop/MyGame__Device-main/gamepage/index.html' || pathName == '/MyGame__Device/gamepage/index.html') {
         window.location.reload();
     }
     else {
