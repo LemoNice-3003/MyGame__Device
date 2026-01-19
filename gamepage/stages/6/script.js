@@ -286,7 +286,7 @@ if(styleVal == "1" || window.innerHeight < 700) {
         if(!data[0].flag3 && !data[1].flag3 && !data[2].flag3) {
             if(nowProgress == 6) {
                 clearFlag_6 = true;
-                await sessionStorage.setItem('progress', nowProgress + 1);
+                //await sessionStorage.setItem('progress', nowProgress + 1);
             }
         }
 
@@ -327,7 +327,7 @@ window.addEventListener('resize', async function() {
     if(!data[0].flag3 && !data[1].flag3 && !data[2].flag3) {
         if(nowProgress == 6) {
             clearFlag_6 = true;
-            await sessionStorage.setItem('progress', nowProgress + 1);
+            //await sessionStorage.setItem('progress', nowProgress + 1);
         }
     }
 });
