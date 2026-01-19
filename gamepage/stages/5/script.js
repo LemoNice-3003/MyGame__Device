@@ -116,7 +116,7 @@ document.addEventListener('wheel', async function(event) {
         if(data[4].width == 201 && data[4].flag) {
             data[4].flag = false;
             checkbox_5_4.style.backgroundColor = "rgb(157, 152, 135)";
-            await checkClearIcon(clearFlag_5, checkbox_5_4, "70vw", "86vh");
+            await checkClearIcon(clearFlag_5, checkbox_5_4, "90vw", "1vh");
         }
 
         if(!data[0].flag && !data[1].flag && !data[2].flag && !data[3].flag && !data[4].flag) {
@@ -127,4 +127,5 @@ document.addEventListener('wheel', async function(event) {
         }
     }
 }, { passive: false });
+
 
