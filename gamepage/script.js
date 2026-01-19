@@ -6,9 +6,9 @@ $(document).ready(function() {
     const st2_1 = $("#st2-1");
     const st2_2 = $("#st2-2");
     const st2_3 = $("#st2-3");
-    const st3_1 = $("#st3-1");
-    const st3_2 = $("#st3-2");
-    const st3_3 = $("#st3-3");
+    // const st3_1 = $("#st3-1");
+    // const st3_2 = $("#st3-2");
+    // const st3_3 = $("#st3-3");
     var stTitle = [
         st1_1,
         st1_2,
@@ -16,9 +16,9 @@ $(document).ready(function() {
         st2_1,
         st2_2,
         st2_3,
-        st3_1,
-        st3_2,
-        st3_3
+        // st3_1,
+        // st3_2,
+        // st3_3
     ];
     const stage_1 = $("#stage_1");
     const stage_2 = $("#stage_2");
@@ -26,9 +26,9 @@ $(document).ready(function() {
     const stage_4 = $("#stage_4");
     const stage_5 = $("#stage_5");
     const stage_6 = $("#stage_6");
-    const stage_7 = $("#stage_7");
-    const stage_8 = $("#stage_8");
-    const stage_9 = $("#stage_9");
+    // const stage_7 = $("#stage_7");
+    // const stage_8 = $("#stage_8");
+    // const stage_9 = $("#stage_9");
     const preview = $("#preview");
     if(userName.length > 10) {
         alert("名前が不正な値です。文字数が10字以内であるか確認してください");
@@ -160,57 +160,57 @@ $(document).ready(function() {
             stage_6.removeClass("active");
         }
     });
-    $('#st3-1').on({
-        click : function(){
-            stage_7.addClass("active");
-        },
-        mouseenter : function() {
-            preview.css("background-image", "url(../images/stage_thumbnail/7.jpg)");
-        },
-        mouseleave : function() {
-            preview.css("background-image", "none");
-        }
-    });
-    $(document).on('click', function(e) {
-        // クリックされた要素が input 以外なら active クラスを削除
-        if (!$(e.target).is('#st3-1')) {
-            stage_7.removeClass("active");
-        }
-    });
-    $('#st3-2').on({
-        click : function(){
-            stage_8.addClass("active");
-        },
-        mouseenter : function() {
-            preview.css("background-image", "url(../images/stage_thumbnail/8.jpg)");
-        },
-        mouseleave : function() {
-            preview.css("background-image", "none");
-        }
-    });
-    $(document).on('click', function(e) {
-        // クリックされた要素が input 以外なら active クラスを削除
-        if (!$(e.target).is('#st3-2')) {
-            stage_8.removeClass("active");
-        }
-    });
-    $('#st3-3').on({
-        click : function(){
-            stage_9.addClass("active");
-        },
-        mouseenter : function() {
-            preview.css("background-image", "url(../images/stage_thumbnail/9.jpg)");
-        },
-        mouseleave : function() {
-            preview.css("background-image", "none");
-        }
-    });
-    $(document).on('click', function(e) {
-        // クリックされた要素が input 以外なら active クラスを削除
-        if (!$(e.target).is('#st3-3')) {
-            stage_9.removeClass("active");
-        }
-    });
+    // $('#st3-1').on({
+    //     click : function(){
+    //         stage_7.addClass("active");
+    //     },
+    //     mouseenter : function() {
+    //         preview.css("background-image", "url(../images/stage_thumbnail/7.jpg)");
+    //     },
+    //     mouseleave : function() {
+    //         preview.css("background-image", "none");
+    //     }
+    // });
+    // $(document).on('click', function(e) {
+    //     // クリックされた要素が input 以外なら active クラスを削除
+    //     if (!$(e.target).is('#st3-1')) {
+    //         stage_7.removeClass("active");
+    //     }
+    // });
+    // $('#st3-2').on({
+    //     click : function(){
+    //         stage_8.addClass("active");
+    //     },
+    //     mouseenter : function() {
+    //         preview.css("background-image", "url(../images/stage_thumbnail/8.jpg)");
+    //     },
+    //     mouseleave : function() {
+    //         preview.css("background-image", "none");
+    //     }
+    // });
+    // $(document).on('click', function(e) {
+    //     // クリックされた要素が input 以外なら active クラスを削除
+    //     if (!$(e.target).is('#st3-2')) {
+    //         stage_8.removeClass("active");
+    //     }
+    // });
+    // $('#st3-3').on({
+    //     click : function(){
+    //         stage_9.addClass("active");
+    //     },
+    //     mouseenter : function() {
+    //         preview.css("background-image", "url(../images/stage_thumbnail/9.jpg)");
+    //     },
+    //     mouseleave : function() {
+    //         preview.css("background-image", "none");
+    //     }
+    // });
+    // $(document).on('click', function(e) {
+    //     // クリックされた要素が input 以外なら active クラスを削除
+    //     if (!$(e.target).is('#st3-3')) {
+    //         stage_9.removeClass("active");
+    //     }
+    // });
 });
 const root = document.documentElement;
 
@@ -225,14 +225,3 @@ document.addEventListener('wheel', function(event) {
         event.preventDefault();
     }
 }, { passive: false });
-
-
-
-
-
-// $(function(){
-//    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
-// });
-
-
-
