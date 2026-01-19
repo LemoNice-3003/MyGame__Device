@@ -4,16 +4,17 @@ async function onload() {
         await checkClearIcon(clearFlag_2, checkbox_2_0, "50vw", "calc(75vh + 40px)");
     }
 }
-function isInstalledPWA() {
-    return window.matchMedia('(display-mode: standalone)').matches;
+function isAppLaunch() {
+    return (
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true
+    );
 }
 
-if(isInstalledPWA()) {
-    console.log('PWA（ホーム画面・アプリ）から起動');
-}
-else {
-    console.log('通常のブラウザアクセス');
-}
+console.log(isAppLaunch() ? 'PWA起動' : '通常ブラウザ');
+
+
+
 const isIOSStandalone = window.navigator.standalone === true;
 
 if(isIOSStandalone) {
