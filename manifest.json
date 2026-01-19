@@ -1,8 +1,8 @@
 {
-  "name": "Device - stage2",
-  "short_name": "DeviceStage2",
-  "start_url": "/",
-  "scope": "/",
+  "name": "MyGame Device",
+  "short_name": "MyGame",
+  "start_url": "/MyGame__Device/",
+  "scope": "/MyGame__Device/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
@@ -19,4 +19,3 @@
     }
   ]
 }
-
