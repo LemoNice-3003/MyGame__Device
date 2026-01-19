@@ -1,8 +1,21 @@
 const pageback_button = document.getElementById("js-pageback");
+const caution = document.getElementById('caution');
 const permissionButton = document.getElementById('permission');
 const clearIcon_0 = document.getElementById("clearIcon_0");
 const clearIcon_1 = document.getElementById("clearIcon_1");
 const clearIcon_2 = document.getElementById("clearIcon_2");
+const targets = [
+    { el: clearIcon_0, stayingBalls: 0 },
+    { el: clearIcon_1, stayingBalls: 0 },
+    { el: clearIcon_2, stayingBalls: 0 }
+];
+
+let stayTime = 0;
+const count = [0, 0, 0];
+const REQUIRED_COUNT = 10;
+const REQUIRED_TIME = 2500; // ms
+
+let noDecision = true;
 
 const frame_0 = document.getElementById("frame_0");
 const frame_1 = document.getElementById("frame_1");
@@ -42,7 +55,6 @@ const data = [
 
 
 async function onload() {
-    console.log(window.innerHeight);
     if(nowProgress >= 7) {
         data.forEach(item => {
             item.flag1 = false;
@@ -63,7 +75,7 @@ if(styleVal == "1" || window.innerHeight < 700) {
         item.frame.style.display = "none";
     });
     pageback_button.style.position = "absolute";
-    permissionButton.style.display = "block";
+    caution.style.opacity = "1";
     clearIcon_0.style.width = "80px";
     clearIcon_0.style.top = "calc(16vh - 40px)";
     clearIcon_1.style.top = "calc(50vh - 40px)";
@@ -73,6 +85,14 @@ if(styleVal == "1" || window.innerHeight < 700) {
     clearIcon_2.style.right = "calc(20vw - 40px)";
 
     const { Engine, Render, Runner, World, Bodies } = Matter;
+
+    function getTargetRect() { // チェックボックスの範囲を取得
+        return {
+            icon0: clearIcon_0.getBoundingClientRect(),
+            icon1: clearIcon_1.getBoundingClientRect(),
+            icon2: clearIcon_2.getBoundingClientRect()
+        }
+    }
 
     const engine = Engine.create();
     const world = engine.world;
@@ -95,7 +115,7 @@ if(styleVal == "1" || window.innerHeight < 700) {
 
     // 玉
     let balls = [];
-    for(let i = 0; i < 150; i++) {
+    for(let i = 0; i < 200; i++) {
         const ball = Matter.Bodies.circle(
             Math.random() * window.innerWidth,
             Math.random() * window.innerHeight / 2,
@@ -129,8 +149,10 @@ if(styleVal == "1" || window.innerHeight < 700) {
             engine.world.gravity.x = gx;
             engine.world.gravity.y = gy;
         });
-
-        permissionButton.style.display = "none";
+        
+        caution.style.opacity = "0";
+        caution.style.display = "none";
+        noDecision = false;
     });
 
     
@@ -148,7 +170,7 @@ if(styleVal == "1" || window.innerHeight < 700) {
         World.remove(world, balls);
         balls.length = 0; // ← 超重要!!
         walls = createWalls(window.innerWidth, window.innerHeight);
-        for(let i = 0; i < 150; i++) {
+        for(let i = 0; i < 200; i++) {
             const ball = Matter.Bodies.circle(
                 Math.random() * window.innerWidth,
                 Math.random() * window.innerHeight / 2,
@@ -177,6 +199,98 @@ if(styleVal == "1" || window.innerHeight < 700) {
             Bodies.rectangle(-20, h / 2, 40, h, { isStatic: true }),
         ];
     }
+
+    function isBallOverlappingRect(ball, rect) { // DOM要素と重なっているか判定
+        const x = ball.position.x;
+        const y = ball.position.y;
+        const r = ball.circleRadius;
+
+        return (
+            x + r > rect.left &&
+            x - r < rect.right &&
+            y + r > rect.top &&
+            y - r < rect.bottom
+        );
+    }
+
+    balls.forEach(ball => {
+        ball.stay = 0;
+        ball.targetIndex = null; // ← どのDOM要素か
+    });
+
+    let lastTime = performance.now();
+    Matter.Events.on(engine, "afterUpdate", async function() {
+        const now = performance.now();
+        if(noDecision) { // センサの使用を許可するまでは判定をしない
+            return;
+        }
+
+        const delta = now - lastTime;
+        lastTime = now;
+
+        // ターゲットのrectを取得
+        const rects = targets.map(t => t.el.getBoundingClientRect());
+
+        // 毎フレーム初期化
+        targets.forEach(t => t.stayingBalls = 0);
+
+        balls.forEach(ball => {
+            let hitIndex = null;
+
+            rects.forEach((rect, i) => {
+            if(isBallOverlappingRect(ball, rect)) {
+                hitIndex = i;
+            }
+            });
+
+            if(hitIndex !== null) {
+                // 同じDOMに居続けているか？
+                if(ball.targetIndex === hitIndex) {
+                    ball.stay += delta;
+                }
+                else {
+                    // 別のDOMに入った
+                    ball.stay = delta;
+                    ball.targetIndex = hitIndex;
+                }
+
+                if(ball.stay >= 2000) {
+                    targets[hitIndex].stayingBalls++;
+                }
+            }
+            else {
+                // どのDOMにも重なっていない
+                ball.stay = 0;
+                ball.targetIndex = null;
+            }
+        });
+
+        // 判定
+        targets.forEach((t, i) => {
+            if(t.stayingBalls >= 7) {
+                if(i == 0 && data[i].flag3) {
+                    checkClearIcon(clearFlag_6, data[i].checkbox, "50vw", "16vh");
+                    data[i].flag3 = false;
+                }
+                if(i == 1 && data[i].flag3) {
+                    checkClearIcon(clearFlag_6, data[i].checkbox, "20vw", "50vh");
+                    data[i].flag3 = false;
+                }
+                if(i == 2 && data[i].flag3) {
+                    checkClearIcon(clearFlag_6, data[i].checkbox, "80vw", "50vh");
+                    data[i].flag3 = false;
+                }
+            }
+        });
+
+        if(!data[0].flag3 && !data[1].flag3 && !data[2].flag3) {
+            if(nowProgress == 6) {
+                clearFlag_6 = true;
+                await sessionStorage.setItem('progress', nowProgress + 1);
+            }
+        }
+
+    });
 }
 
 
