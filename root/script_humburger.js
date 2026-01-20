@@ -93,7 +93,7 @@ function logout() {
             sessionStorage.clear();
             sessionStorage.setItem('loginFlag', false);
             alert("ログアウトします");
-            if (pathName != '/MyGame__Device/gamepage/index.html' || pathName != '/MyGame__Device/introduction/index.html') {
+            if (pathName == '/MyGame__Device/gamepage/index.html' || pathName == '/MyGame__Device/introduction/index.html') {
                 const url = `../index.html`;
                 window.location.href = url;
             }
@@ -128,3 +128,4 @@ document.addEventListener('DOMContentLoaded', function () {
     nowUserName.style.setProperty('--nameLength', textLength + "em");
     onload();
 });
+
