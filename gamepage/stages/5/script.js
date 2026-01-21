@@ -35,15 +35,23 @@ const data = [
 async function onload() {
     if(nowProgress >= 6) {
         data[0].flag = false;
-        data[1].flag = false;
-        data[2].flag = false;
-        data[3].flag = false;
-        data[4].flag = false;
-
+        data[0].width = 68;
         data[0].checkbox.style.setProperty(data[0].css, "68px");
+
+        data[1].flag = false;
+        data[1].width = 113;
         data[1].checkbox.style.setProperty(data[1].css, "113px");
+
+        data[2].flag = false;
+        data[2].width = 50;
         data[2].checkbox.style.setProperty(data[2].css, "50px");
+
+        data[3].flag = false;
+        data[3].width = 60;
         data[3].checkbox.style.setProperty(data[3].css, "60px");
+
+        data[4].flag = false;
+        data[4].width = 201;
         data[4].checkbox.style.setProperty(data[4].css, "201px");
 
         checkbox_5_0.style.backgroundColor = "rgb(157, 152, 135)";
@@ -57,6 +65,43 @@ async function onload() {
         checkClearIcon(clearFlag_5, checkbox_5_2, "50vw", "50vh");
         checkClearIcon(clearFlag_5, checkbox_5_3, "70vw", "86vh");
         checkClearIcon(clearFlag_5, checkbox_5_4, "90vw", "1vh");
+    }
+    else {
+        if(clearFlag_5_0) {
+            data[0].checkbox.style.setProperty(data[0].css, "68px");
+            data[0].flag = false;
+            data[0].width = 68;
+            checkbox_5_0.style.backgroundColor = "rgb(157, 152, 135)";
+            await checkClearIcon(clearFlag_5, checkbox_5_0, "10vw", "80vh");
+        }
+        if(clearFlag_5_1) {
+            data[1].checkbox.style.setProperty(data[1].css, "113px");
+            data[1].flag = false;
+            data[1].width = 113;
+            checkbox_5_1.style.backgroundColor = "rgb(157, 152, 135)";
+            await checkClearIcon(clearFlag_5, checkbox_5_1, "10vw", "80vh");
+        }
+        if(clearFlag_5_2) {
+            data[2].checkbox.style.setProperty(data[2].css, "50px");
+            data[2].flag = false;
+            data[2].width = 50;
+            checkbox_5_2.style.backgroundColor = "rgb(157, 152, 135)";
+            await checkClearIcon(clearFlag_5, checkbox_5_2, "50vw", "50vh");
+        }
+        if(clearFlag_5_3) {
+            data[3].checkbox.style.setProperty(data[3].css, "60px");
+            data[3].flag = false;
+            data[3].width = 60;
+            checkbox_5_3.style.backgroundColor = "rgb(157, 152, 135)";
+            await checkClearIcon(clearFlag_5, checkbox_5_3, "70vw", "86vh");
+        }
+        if(clearFlag_5_4) {
+            data[4].checkbox.style.setProperty(data[4].css, "201px");
+            data[4].flag = false;
+            data[4].width = 201;
+            checkbox_5_4.style.backgroundColor = "rgb(157, 152, 135)";
+            await checkClearIcon(clearFlag_5, checkbox_5_4, "90vw", "1vh");
+        }
     }
 }
 
@@ -120,26 +165,36 @@ async function transformBoxsize() {
     
     if(data[0].width <= 68 && data[0].flag) {
         data[0].flag = false;
+        clearFlag_5_0 = true;
+        await sessionStorage.setItem('clearFlag_5_0', true);
         checkbox_5_0.style.backgroundColor = "rgb(157, 152, 135)";
         await checkClearIcon(clearFlag_5, checkbox_5_0, "10vw", "80vh");
     }
     if(data[1].width == 113 && data[1].flag) {
         data[1].flag = false;
+        clearFlag_5_1 = true;
+        await sessionStorage.setItem('clearFlag_5_1', true);
         checkbox_5_1.style.backgroundColor = "rgb(157, 152, 135)";
         await checkClearIcon(clearFlag_5, checkbox_5_1, "10vw", "80vh");
     }
     if(data[2].width <= 50 && data[2].flag) {
         data[2].flag = false;
+        clearFlag_5_2 = true;
+        await sessionStorage.setItem('clearFlag_5_2', true);
         checkbox_5_2.style.backgroundColor = "rgb(157, 152, 135)";
         await checkClearIcon(clearFlag_5, checkbox_5_2, "50vw", "50vh");
     }
     if(data[3].width <= 60 && data[3].flag) {
         data[3].flag = false;
+        clearFlag_5_3 = true;
+        await sessionStorage.setItem('clearFlag_5_3', true);
         checkbox_5_3.style.backgroundColor = "rgb(157, 152, 135)";
         await checkClearIcon(clearFlag_5, checkbox_5_3, "70vw", "86vh");
     }
     if(data[4].width == 201 && data[4].flag) {
         data[4].flag = false;
+        clearFlag_5_4 = true;
+        await sessionStorage.setItem('clearFlag_5_4', true);
         checkbox_5_4.style.backgroundColor = "rgb(157, 152, 135)";
         await checkClearIcon(clearFlag_5, checkbox_5_4, "90vw", "1vh");
     }
