@@ -1,8 +1,8 @@
+const symbol = document.querySelector('#symbol');
 function isDarkMode() {
     return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 }
 async function onload() {
-    const symbol = document.querySelector('#symbol');
     if(nowProgress >= 2) {
         await checkClearIcon(clearFlag_1, checkbox_1_0, "50vw", "calc(75vh + 40px)");
     }
