@@ -39,10 +39,10 @@ const nowProgress = Number(sessionStorage.getItem('progress'));
 let clearFlag_1 = false;
 let clearFlag_2 = false;
 let clearFlag_3 = false;
-let clearFlag_3_0 = Boolean(sessionStorage.getItem('clearFlag_4_0'));
-let clearFlag_3_1 = Boolean(sessionStorage.getItem('clearFlag_4_1'));
-let clearFlag_3_2 = Boolean(sessionStorage.getItem('clearFlag_4_2'));
-let clearFlag_3_3 = Boolean(sessionStorage.getItem('clearFlag_4_3'));
+let clearFlag_3_0 = Boolean(sessionStorage.getItem('clearFlag_3_0'));
+let clearFlag_3_1 = Boolean(sessionStorage.getItem('clearFlag_3_1'));
+let clearFlag_3_2 = Boolean(sessionStorage.getItem('clearFlag_3_2'));
+let clearFlag_3_3 = Boolean(sessionStorage.getItem('clearFlag_3_3'));
 let clearFlag_4 = false;
 let clearFlag_5 = false;
 let clearFlag_5_0 = Boolean(sessionStorage.getItem('clearFlag_5_0'));
@@ -51,9 +51,29 @@ let clearFlag_5_2 = Boolean(sessionStorage.getItem('clearFlag_5_2'));
 let clearFlag_5_3 = Boolean(sessionStorage.getItem('clearFlag_5_3'));
 let clearFlag_5_4 = Boolean(sessionStorage.getItem('clearFlag_5_4'));
 let clearFlag_6 = false;
-let clearFlag_7 = false;
-let clearFlag_8 = false;
-let clearFlag_9 = false;
+let clearFlag_6_0 = Boolean(sessionStorage.getItem('clearFlag_6_0'));
+let clearFlag_6_1 = Boolean(sessionStorage.getItem('clearFlag_6_1'));
+let clearFlag_6_2 = Boolean(sessionStorage.getItem('clearFlag_6_2'));
+// let clearFlag_7 = false;
+// let clearFlag_8 = false;
+// let clearFlag_9 = false;
+
+const checkbox_1_0 = document.getElementById("checkbox_1_0");
+const checkbox_2_0 = document.getElementById("checkbox_2_0");
+const checkbox_3_0 = document.getElementById("checkbox_3_0");
+const checkbox_3_1 = document.getElementById("checkbox_3_1");
+const checkbox_3_2 = document.getElementById("checkbox_3_2");
+const checkbox_3_3 = document.getElementById("checkbox_3_3");
+const checkbox_4_0 = document.getElementById("checkbox_4_0");
+const checkbox_5_0 = document.getElementById("checkbox_5_0");
+const checkbox_5_1 = document.getElementById("checkbox_5_1");
+const checkbox_5_2 = document.getElementById("checkbox_5_2");
+const checkbox_5_3 = document.getElementById("checkbox_5_3");
+const checkbox_5_4 = document.getElementById("checkbox_5_4");
+const checkbox_6_0 = document.getElementById("checkbox_6_0");
+const checkbox_6_1 = document.getElementById("checkbox_6_1");
+const checkbox_6_2 = document.getElementById("checkbox_6_2");
+
 
 document.addEventListener('touchend', (event) => {
     const currentTime = new Date().getTime();
@@ -65,23 +85,3 @@ document.addEventListener('touchend', (event) => {
     
     lastTouchTime = currentTime;
 });
-
-
-const checkbox_1_0 = document.getElementById("checkbox_1_0");
-
-const checkbox_2_0 = document.getElementById("checkbox_2_0");
-const checkbox_2_1 = document.getElementById("checkbox_2_1");
-const checkbox_2_2 = document.getElementById("checkbox_2_2");
-const checkbox_2_3 = document.getElementById("checkbox_2_3");
-
-const checkbox_4_0 = document.getElementById("checkbox_4_0");
-
-const checkbox_5_0 = document.getElementById("checkbox_5_0");
-const checkbox_5_1 = document.getElementById("checkbox_5_1");
-const checkbox_5_2 = document.getElementById("checkbox_5_2");
-const checkbox_5_3 = document.getElementById("checkbox_5_3");
-const checkbox_5_4 = document.getElementById("checkbox_5_4");
-
-const checkbox_6_0 = document.getElementById("checkbox_6_0");
-const checkbox_6_1 = document.getElementById("checkbox_6_1");
-const checkbox_6_2 = document.getElementById("checkbox_6_2");
