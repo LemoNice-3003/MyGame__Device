@@ -61,10 +61,40 @@ async function onload() {
             item.flag2 = false;
             item.flag3 = false;
         });
-
-        checkClearIcon(clearFlag_6, checkbox_6_0, "50vw", "16vh");
-        checkClearIcon(clearFlag_6, checkbox_6_1, "50vw", "34vh");
-        checkClearIcon(clearFlag_6, checkbox_6_2, "50vw", "45vh");
+        if(styleVal == "1" || window.innerHeight < 700) { // スマホ画面
+            checkClearIcon(clearFlag_6, checkbox_6_0, "50vw", "16vh");
+            checkClearIcon(clearFlag_6, checkbox_6_1, "20vw", "50vh");
+            checkClearIcon(clearFlag_6, checkbox_6_2, "80vw", "50vh");
+        }
+        else { // PC画面
+            checkClearIcon(clearFlag_6, checkbox_6_0, "50vw", "16vh");
+            checkClearIcon(clearFlag_6, checkbox_6_1, "50vw", "34vh");
+            checkClearIcon(clearFlag_6, checkbox_6_2, "50vw", "45vh");
+        }
+    }
+    else {
+        if(styleVal == "1" || window.innerHeight < 700) {
+            if(clearFlag_6_0) {
+                checkClearIcon(clearFlag_6, checkbox_6_0, "50vw", "16vh");
+            }
+            if(clearFlag_6_1) {
+                checkClearIcon(clearFlag_6, checkbox_6_1, "20vw", "50vh");
+            }
+            if(clearFlag_6_2) {
+                checkClearIcon(clearFlag_6, checkbox_6_2, "80vw", "50vh");
+            }
+        }
+        else {
+            if(clearFlag_6_0) {
+                checkClearIcon(clearFlag_6, checkbox_6_0, "50vw", "16vh");
+            }
+            if(clearFlag_6_1) {
+                checkClearIcon(clearFlag_6, checkbox_6_1, "50vw", "34vh");
+            }
+            if(clearFlag_6_2) {
+                checkClearIcon(clearFlag_6, checkbox_6_2, "50vw", "45vh");
+            }
+        }
     }
 }
 
@@ -238,9 +268,9 @@ if(styleVal == "1" || window.innerHeight < 700) {
             let hitIndex = null;
 
             rects.forEach((rect, i) => {
-            if(isBallOverlappingRect(ball, rect)) {
-                hitIndex = i;
-            }
+                if(isBallOverlappingRect(ball, rect)) {
+                    hitIndex = i;
+                }
             });
 
             if(hitIndex !== null) {
@@ -254,7 +284,7 @@ if(styleVal == "1" || window.innerHeight < 700) {
                     ball.targetIndex = hitIndex;
                 }
 
-                if(ball.stay >= 2000) {
+                if(ball.stay >= 1000) { // 1000ms経過でクリア
                     targets[hitIndex].stayingBalls++;
                 }
             }
@@ -271,14 +301,20 @@ if(styleVal == "1" || window.innerHeight < 700) {
                 if(i == 0 && data[i].flag3) {
                     checkClearIcon(clearFlag_6, data[i].checkbox, "50vw", "16vh");
                     data[i].flag3 = false;
+                    clearFlag_6_0 = true;
+                    sessionStorage.setItem('clearFlag_6_0', true);
                 }
                 if(i == 1 && data[i].flag3) {
                     checkClearIcon(clearFlag_6, data[i].checkbox, "20vw", "50vh");
                     data[i].flag3 = false;
+                    clearFlag_6_1 = true;
+                    sessionStorage.setItem('clearFlag_6_1', true);
                 }
                 if(i == 2 && data[i].flag3) {
                     checkClearIcon(clearFlag_6, data[i].checkbox, "80vw", "50vh");
                     data[i].flag3 = false;
+                    clearFlag_6_2 = true;
+                    sessionStorage.setItem('clearFlag_6_2', true);
                 }
             }
         });
@@ -286,10 +322,9 @@ if(styleVal == "1" || window.innerHeight < 700) {
         if(!data[0].flag3 && !data[1].flag3 && !data[2].flag3) {
             if(nowProgress == 6) {
                 clearFlag_6 = true;
-                //await sessionStorage.setItem('progress', nowProgress + 1);
+                await sessionStorage.setItem('progress', nowProgress + 1);
             }
         }
-
     });
 }
 
@@ -323,17 +358,28 @@ window.addEventListener('resize', async function() {
             item.flag3 = false;
         }
     });
+    if(!data[0].flag3) {
+        clearFlag_6_0 = true;
+        sessionStorage.setItem('clearFlag_6_0', true);
+    }
+    if(!data[1].flag3) {
+        clearFlag_6_1 = true;
+        sessionStorage.setItem('clearFlag_6_1', true);
+    }
+    if(!data[2].flag3) {
+        clearFlag_6_2 = true;
+        sessionStorage.setItem('clearFlag_6_2', true);
+    }
     
     if(!data[0].flag3 && !data[1].flag3 && !data[2].flag3) {
         if(nowProgress == 6) {
             clearFlag_6 = true;
-            //await sessionStorage.setItem('progress', nowProgress + 1);
+            await sessionStorage.setItem('progress', nowProgress + 1);
         }
     }
 });
 
 /**
- * 
  * @param {実測値} value 
  * @param {目標値} target 
  * @param {許容値} tolerance 
