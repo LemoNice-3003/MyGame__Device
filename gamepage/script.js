@@ -157,7 +157,7 @@ const root = document.documentElement;
 const customElement = document.querySelector('#header_h1');
 try {
     textLength = parseInt(userName.length) + 7;
-} catch { alert("miss"); }
+} catch { alert("ログインしていません"); }
 customElement.style.setProperty('--nameLength', textLength + "em");
 
 document.addEventListener('wheel', function(event) {
@@ -165,3 +165,4 @@ document.addEventListener('wheel', function(event) {
         event.preventDefault();
     }
 }, { passive: false });
+// alert(`name="${userName}"\nprogress="${nowProgress}"\n10${clearFlag_1}\n20${clearFlag_2}\n30${clearFlag_3}\n300${clearFlag_3_0}\n301${clearFlag_3_1}\n302${clearFlag_3_2}\n303${clearFlag_3_3}\n40${clearFlag_4}\n50${clearFlag_5}\n500${clearFlag_5_0}\n501${clearFlag_5_1}\n502${clearFlag_5_2}\n503${clearFlag_5_3}\n504${clearFlag_5_4}\n60${clearFlag_6}\n600${clearFlag_6_0}\n601${clearFlag_6_1}\n602${clearFlag_6_2}\n`);
