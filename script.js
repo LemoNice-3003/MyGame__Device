@@ -27,24 +27,7 @@ function doneNewName() {
         return;
     }
 
-    // テキストエリアより文字列を取得
-    const txt = "name=\"" + newName.value + "\"\nprogress=\"1\"";
-    
-    
-    const blob = new Blob([txt], { type: 'text/plain' });
-    
-    if(innerWidth > 999) { // pcは自動ダウンロード
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'sample.txt';
-        a.click();
-        goToGamepage(newName.value, 1);
-        sessionStorage.setItem('progress', 1)
-        sessionStorage.setItem('name', userName);
-    } else { // スマホは手動ダウンロード
-        // iOS対応：リンクを直接表示してユーザーにタップさせる
-        showDownloadModal(blob);
-    }
+    goToGamepage(newName.value, 1);
 }
 
 var form = document.forms.myGameSite;
@@ -90,20 +73,6 @@ dropArea.addEventListener('drop', async (e) => {
 // }
 
 
-function showDownloadModal(blob) {
-    const url = URL.createObjectURL(blob);
-    const link = document.getElementById("downloadLink");
-    const modal = document.getElementById("downloadModal");
-    link.href = url;
-    link.download = 'DeviceSaveData.txt';
-    modal.style.display = "flex"; // 表示
-}
-
-function closeDownloadModal() {
-    const modal = document.getElementById("downloadModal");
-    modal.style.display = "none"; // 非表示
-}
-
 
 
 
@@ -143,5 +112,3 @@ $('#circle4')
 // $(function(){
 //    $("span").css({"color" : "red", "font-size" : "100px", "border" : "solid 5px"});
 // });
-
-
