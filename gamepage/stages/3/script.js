@@ -1,10 +1,10 @@
 let clockTimer;
 clockTimer = setInterval(updateClock, 1000);
 
-let flag_2_0 = false;
-let flag_2_1 = false;
-let flag_2_2 = false;
-let flag_2_3 = false;
+let flag_3_0 = false;
+let flag_3_1 = false;
+let flag_3_2 = false;
+let flag_3_3 = false;
 
 const secondDial = document.getElementById("second");
 const minuteDial = document.getElementById("minute");
@@ -57,7 +57,21 @@ async function onload() {
         timeCheck(23);
     }
     else {
-        timeCheck(now.getHours()); // 最初に条件を満たしているものがあればクリア判定を出す
+        // 最初に条件を満たしているものがあればクリア判定を出す
+        if(clearFlag_3_0) {
+            timeCheck(5);
+        }
+        if(clearFlag_3_1) {
+            timeCheck(12);
+        }
+        if(clearFlag_3_2) {
+            timeCheck(17);
+        }
+        if(clearFlag_3_3) {
+            timeCheck(23);
+        }
+
+        timeCheck(now.getHours());
     }
     lastHourTime = now.getHours(); // 読み込んだ時の時間を記録しておく
 
@@ -124,26 +138,29 @@ function checkOverflow(type, current, deg) {
 }
 
 async function timeCheck(nowHour) {
-    if(nowHour >= 4 && nowHour <= 7) {
-        await checkClearIcon(clearFlag_2, checkbox_2_0, "30vw", "50vh");
-        flag_2_0 = true;
+    if(nowHour >= 4 && nowHour <= 7 && !flag_3_0) {
+        await checkClearIcon(clearFlag_3, checkbox_3_0, "30vw", "50vh");
+        flag_3_0 = true;
+        await sessionStorage.setItem('clearFlag_3_0', true);
     }
-    if(nowHour >= 11 && nowHour <= 13) {
-        await checkClearIcon(clearFlag_2, checkbox_2_1, "50vw", "10vh");
-        flag_2_1 = true;
+    if(nowHour >= 11 && nowHour <= 13 && !flag_3_1) {
+        await checkClearIcon(clearFlag_3, checkbox_3_1, "50vw", "10vh");
+        flag_3_1 = true;
+        await sessionStorage.setItem('clearFlag_3_1', true);
     }
-    if(nowHour >= 16 && nowHour <= 18) {
-        await checkClearIcon(clearFlag_2, checkbox_2_2, "70vw", "50vh");
-        flag_2_2 = true;
+    if(nowHour >= 16 && nowHour <= 18 && !flag_3_2) {
+        await checkClearIcon(clearFlag_3, checkbox_3_2, "70vw", "50vh");
+        flag_3_2 = true;
+        await sessionStorage.setItem('clearFlag_3_2', true);
     }
-    if(nowHour == 22 || nowHour == 23 || nowHour == 0 || nowHour == 1) {
-        await checkClearIcon(clearFlag_2, checkbox_2_3, "50vw", "90vh");
-        flag_2_3 = true;
+    if(nowHour == 22 || nowHour == 23 || nowHour == 0 || nowHour == 1 && !flag_3_3) {
+        await checkClearIcon(clearFlag_3, checkbox_3_3, "50vw", "90vh");
+        flag_3_3 = true;
+        await sessionStorage.setItem('clearFlag_3_3', true);
     }
 
-    if(flag_2_0 && flag_2_1 && flag_2_2 && flag_2_3 && !clearFlag_2 && nowProgress == 3) {
-        clearFlag_2 = true;
+    if(flag_3_0 && flag_3_1 && flag_3_2 && flag_3_3 && !clearFlag_3 && nowProgress == 3) {
+        clearFlag_3 = true;
         await sessionStorage.setItem('progress', nowProgress + 1);
-        console.log("clear");
     }
 }
