@@ -8,9 +8,9 @@ async function onload() {
     }
     if (isDarkMode()) {
         symbol.classList.toggle('active');
-        console.log('ダークモードです');
+        //console.log('ダークモードです');
     } else {
-        console.log('ライトモードです');
+        //console.log('ライトモードです');
     }
 }
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', async event => {
@@ -23,8 +23,8 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', asy
     }
     console.log(nowProgress);
     if (event.matches) {
-        console.log('ダークモードに変更されました');
+        //console.log('ダークモードに変更されました');
     } else {
-        console.log('ライトモードに変更されました');
+        //console.log('ライトモードに変更されました');
     }
 });
