@@ -8,7 +8,7 @@
     position: sticky;
     top: 23px;
     left: 18px;
-    z-index: 9999;
+    z-index: 99999;
     a {
         position: absolute;
         top: 0;
