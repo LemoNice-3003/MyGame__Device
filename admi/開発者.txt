@@ -1,2 +1,0 @@
-name="開発者"
-progress="9"

@@ -1,2 +1,0 @@
-name="test4"
-progress="4"
