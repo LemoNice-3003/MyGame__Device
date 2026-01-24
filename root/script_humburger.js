@@ -61,14 +61,10 @@ async function checkFileType(text) {
                 alert("すでにログインされています\nログアウトして再度実行してください")
             }
             else {
-                if(userName == "kakapo") {
-                    // kakapo();
-                } else {
-                    await sessionStorage.setItem('loginFlag', true);
-                    await sessionStorage.setItem('progress', userProgress);
-                    await sessionStorage.setItem('name', userName);
-                    goToGamepage(userName, userProgress);
-                }
+                await sessionStorage.setItem('loginFlag', true);
+                await sessionStorage.setItem('progress', userProgress);
+                await sessionStorage.setItem('name', userName);
+                goToGamepage(userName, userProgress);
             }
         }
         return;
