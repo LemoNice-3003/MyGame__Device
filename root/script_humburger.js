@@ -55,6 +55,7 @@ async function checkFileType(text) {
         if (dropContent.slice(0, 5) == "name=") {
             const userName = lines[0].slice(6, lines[0].indexOf('\n')); // ユーザー名
             const userProgress = lines[1].slice(10, lines[1].indexOf('\n')); // 進捗度（ステージがどこまで解放されているか）
+            setProgress(lines);
             // console.log(userName, userProgress);
             if(loginFlag == "true") {
                 alert("すでにログインされています\nログアウトして再度実行してください")
@@ -63,10 +64,10 @@ async function checkFileType(text) {
                 if(userName == "kakapo") {
                     // kakapo();
                 } else {
+                    await sessionStorage.setItem('loginFlag', true);
+                    await sessionStorage.setItem('progress', userProgress);
+                    await sessionStorage.setItem('name', userName);
                     goToGamepage(userName, userProgress);
-                    sessionStorage.setItem('loginFlag', true);
-                    sessionStorage.setItem('progress', userProgress);
-                    sessionStorage.setItem('name', userName);
                 }
             }
         }
@@ -77,6 +78,28 @@ async function checkFileType(text) {
         alert("テキストファイルをアップロードしてください");
     }
 }
+
+async function setProgress(lines) {
+    await sessionStorage.setItem('clearFlag_1', lines[2].slice(2, lines[2].length));
+    await sessionStorage.setItem('clearFlag_2', lines[3].slice(2, lines[3].length));
+    await sessionStorage.setItem('clearFlag_3', lines[4].slice(2, lines[4].length));
+    await sessionStorage.setItem('clearFlag_3_0', lines[5].slice(3, lines[5].length));
+    await sessionStorage.setItem('clearFlag_3_1', lines[6].slice(3, lines[6].length));
+    await sessionStorage.setItem('clearFlag_3_2', lines[7].slice(3, lines[7].length));
+    await sessionStorage.setItem('clearFlag_3_3', lines[8].slice(3, lines[8].length));
+    await sessionStorage.setItem('clearFlag_4', lines[9].slice(2, lines[9].length));
+    await sessionStorage.setItem('clearFlag_5', lines[10].slice(2, lines[10].length));
+    await sessionStorage.setItem('clearFlag_5_0', lines[11].slice(3, lines[11].length));
+    await sessionStorage.setItem('clearFlag_5_1', lines[12].slice(3, lines[12].length));
+    await sessionStorage.setItem('clearFlag_5_2', lines[13].slice(3, lines[13].length));
+    await sessionStorage.setItem('clearFlag_5_3', lines[14].slice(3, lines[14].length));
+    await sessionStorage.setItem('clearFlag_5_4', lines[15].slice(3, lines[15].length));
+    await sessionStorage.setItem('clearFlag_6', lines[16].slice(2, lines[16].length));
+    await sessionStorage.setItem('clearFlag_6_0', lines[17].slice(3, lines[17].length));
+    await sessionStorage.setItem('clearFlag_6_1', lines[18].slice(3, lines[18].length));
+    await sessionStorage.setItem('clearFlag_6_2', lines[19].slice(3, lines[19].length));
+}
+
 function goToGamepage(userName, userProgress) {
     if(pathName == '/MyGame__Device/gamepage/index.html') {
         window.location.reload();
@@ -90,9 +113,11 @@ function goToGamepage(userName, userProgress) {
 function logout() {
     try {
         if(window.confirm("ログアウトしますか？")) {
+            if(window.confirm("ログアウトします。\nセーブデータをダウンロードしますか？")) {
+                downloadSaveData();
+            }
             sessionStorage.clear();
             sessionStorage.setItem('loginFlag', false);
-            alert("ログアウトします");
             if (pathName == '/MyGame__Device/gamepage/index.html' || pathName == '/MyGame__Device/introduction/index.html') {
                 const url = `../index.html`;
                 window.location.href = url;
@@ -109,6 +134,33 @@ function logout() {
     }
 }
 
+function downloadSaveData() {
+    const txt = `name="${userName}"\nprogress="${nowProgress}"\n10${clearFlag_1}\n20${clearFlag_2}\n30${clearFlag_3}\n300${clearFlag_3_0}\n301${clearFlag_3_1}\n302${clearFlag_3_2}\n303${clearFlag_3_3}\n40${clearFlag_4}\n50${clearFlag_5}\n500${clearFlag_5_0}\n501${clearFlag_5_1}\n502${clearFlag_5_2}\n503${clearFlag_5_3}\n504${clearFlag_5_4}\n60${clearFlag_6}\n600${clearFlag_6_0}\n601${clearFlag_6_1}\n602${clearFlag_6_2}\n`;    
+    const blob = new Blob([txt], { type: 'text/plain' });
+    
+    if(innerWidth > 999) { // pcは自動ダウンロード
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'DeviceSaveData.txt';
+        a.click();
+    } else { // スマホは手動ダウンロード
+        // iOS対応：リンクを直接表示してユーザーにタップさせる
+        showDownloadModal(blob);
+    }
+}
+function showDownloadModal(blob) {
+    const url = URL.createObjectURL(blob);
+    const link = document.getElementById("downloadLink");
+    const modal = document.getElementById("downloadModal");
+    link.href = url;
+    link.download = 'DeviceSaveData.txt';
+    modal.style.display = "flex"; // 表示
+}
+
+function closeDownloadModal() {
+    const modal = document.getElementById("downloadModal");
+    modal.style.display = "none"; // 非表示
+}
 
 // ハンバーガーメニューがクリックされたら
 hamburgerMenu.addEventListener('click', function() {
@@ -128,4 +180,3 @@ document.addEventListener('DOMContentLoaded', function () {
     nowUserName.style.setProperty('--nameLength', textLength + "em");
     onload();
 });
-
