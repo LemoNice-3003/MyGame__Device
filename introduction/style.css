@@ -314,12 +314,12 @@ main {
                 width: 85vw;
                 p {
                     margin-bottom: 2px;
-                    font-size: 13px;
+                    font-size: 14px;
                     span {
-                        font-size: 26px;
+                        font-size: 28px;
                     }
                     &#first, &#end {
-                        font-size: 17px;
+                        font-size: 18px;
                     }
                 }
             }
