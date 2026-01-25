@@ -2,29 +2,6 @@ let pathName = '';
 nowUserName.style.setProperty('--nameLength', textLength + "em");
 function onload() {
     pathName = location.pathname;
-    if(loginFlag === "true") {
-        // alert("アカウント認識");
-        $("#nowUserName").text(userName);
-        
-        loginNow.style.opacity = 1;
-        loginNow.style.pointerEvents = 'auto';
-        
-        loginButton.style.opacity = 0;
-        loginButton.style.pointerEvents = 'none';
-    }
-    else if((loginFlag == "false") || (loginFlag === null) || (typeof sessionStorage === "undefined") || (sessionStorage.length === 0)){ // 初期状態または"0"だった場合
-        // alert("アカウントなし");
-        $("#nowUserName").text("");
-        
-        loginNow.style.opacity = 0;
-        loginNow.style.pointerEvents = 'none';
-        
-        loginButton.style.opacity = 1;
-        loginButton.style.pointerEvents = 'auto';
-    }
-    else {
-        alert("error");
-    }
 }
 
 
@@ -111,6 +88,7 @@ function logout() {
         if(window.confirm("ログアウトしますか？")) {
             if(window.confirm("ログアウトします。\nセーブデータをダウンロードしますか？")) {
                 downloadSaveData();
+                return;
             }
             sessionStorage.clear();
             sessionStorage.setItem('loginFlag', false);
@@ -144,25 +122,77 @@ function downloadSaveData() {
         showDownloadModal(blob);
     }
 }
+
+const modal = document.getElementById("downloadModal");
 function showDownloadModal(blob) {
     const url = URL.createObjectURL(blob);
     const link = document.getElementById("downloadLink");
-    const modal = document.getElementById("downloadModal");
     link.href = url;
     link.download = 'DeviceSaveData.txt';
     modal.style.display = "flex"; // 表示
 }
 
 function closeDownloadModal() {
-    const modal = document.getElementById("downloadModal");
     modal.style.display = "none"; // 非表示
+    sessionStorage.clear();
+    sessionStorage.setItem('loginFlag', false);
+    if (pathName == '/MyGame__Device/gamepage/index.html' || pathName == '/MyGame__Device/introduction/index.html') {
+        const url = `../index.html`;
+        window.location.href = url;
+    }
+    else {
+        window.location.reload(); // 現在のページをリロード
+    }
 }
 
 // ハンバーガーメニューがクリックされたら
 hamburgerMenu.addEventListener('click', function() {
     hamburgerMenu.classList.toggle('active');
-    hamburgerItems.classList.toggle('active');
+    const isActive = hamburgerItems.classList.toggle('active');
     container.classList.toggle('active');
+
+    if(loginFlag === "true") {
+        // alert("アカウント認識");
+        if(isActive) {
+            $("#nowUserName").text(userName);
+            
+            loginNow.style.opacity = 1;
+            loginNow.style.pointerEvents = 'auto';
+            
+            loginButton.style.opacity = 0;
+            loginButton.style.pointerEvents = 'none';
+        }
+        else {
+            loginNow.style.opacity = 0;
+            loginNow.style.pointerEvents = 'none';
+            
+            loginButton.style.opacity = 0;
+            loginButton.style.pointerEvents = 'none';
+        }
+    }
+    else if((loginFlag == "false") || (loginFlag === null) || (typeof sessionStorage === "undefined") || (sessionStorage.length === 0)){ // 初期状態または"0"だった場合
+        // alert("アカウントなし");
+        if(isActive) {
+            $("#nowUserName").text("");
+            
+            loginNow.style.opacity = 0;
+            loginNow.style.pointerEvents = 'none';
+            
+            loginButton.style.opacity = 1;
+            loginButton.style.pointerEvents = 'auto';
+        }
+        else {
+            loginNow.style.opacity = 0;
+            loginNow.style.pointerEvents = 'none';
+            
+            loginButton.style.opacity = 0;
+            loginButton.style.pointerEvents = 'none';
+        }
+    }
+    else {
+        alert("error");
+    }
+
 });
 
 document.addEventListener('DOMContentLoaded', function () {
