@@ -5,11 +5,6 @@
 /*--------------------------------------------------*/
 
 
-body, html, a, p {
-    touch-action: auto;
-    overflow: hidden;
-}
-
 /*ここからメイン*/
 main {
     display: flex;
@@ -27,7 +22,7 @@ main {
     transform: translateY(20px);
     transition: opacity .6s ease, transform 1.2s ease;
     z-index: 0;
-    //overflow: hidden;
+    overflow: hidden;
     &:hover {
         opacity: 1;
         transform: translateY(0);
@@ -319,12 +314,12 @@ main {
                 width: 85vw;
                 p {
                     margin-bottom: 2px;
-                    font-size: 14px;
+                    font-size: 13px;
                     span {
-                        font-size: 28px;
+                        font-size: 26px;
                     }
                     &#first, &#end {
-                        font-size: 18px;
+                        font-size: 17px;
                     }
                 }
             }
