@@ -190,16 +190,14 @@ header {
 
 #downloadModal {
     display: none;
-    /* display: flex; */
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     justify-content: center;
     align-items: center;
     background: rgb(0, 0, 0, .2);
-    opacity: 0;
     z-index: 9999;
     &:hover {
         opacity: 1;
@@ -207,8 +205,6 @@ header {
     }
     div {
         width: 85vw;
-        /* background: url(5A5H3OTZwMu6RK31764988954_1764988975.png) no-repeat center rgb(255, 255, 255, .1);
-        background-size: cover; */
         background: rgb(255, 255, 255, .2);
         backdrop-filter: blur(3px);
         box-shadow: 0px 15px 20px rgba(0, 0, 0, .2);
@@ -217,13 +213,32 @@ header {
         padding: 20px;
         text-align: center;
         a, p {
-            font-family: var(--defaultFont-レシート);
+            font-family: var(--defaultFont-もち);
             font-size: 22px;
             text-shadow: 0 0 5px rgb(255, 255, 255, 0.6);
         }
+        button {
+            aspect-ratio: 5 / 2;
+            height: 4vh;
+            left: 70%;
+            margin-top: 2vh;
+            background: rgb(187, 180, 156, .5);
+            filter: drop-shadow(8px 8px 3px rgb(0, 0, 0, .42));
+            border-right: solid 1px rgb(250, 250, 250, .5);
+            border-bottom: solid 1px rgb(250, 250, 250, .6);
+            border-top: solid 1px rgb(250, 250, 250, .3);
+            border-left: solid 1px rgb(250, 250, 250, .3);
+            border-radius: 6px;
+            text-shadow: 0 0 2px rgb(255, 255, 255, .2),
+                        0 0 5px rgb(175, 167, 144, .5);
+            font-family: var(--defaultFont-もち);
+            transition: .3s ease-out;
+            &:hover {
+                filter: drop-shadow(5px 5px 1px rgb(0, 0, 0, .52));
+            }
+        }
     }
 }
-
 
 
 @media (max-width: 999px) { /*スマホモード*/
