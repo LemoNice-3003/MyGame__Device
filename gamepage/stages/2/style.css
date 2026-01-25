@@ -146,7 +146,7 @@ main {
                         height: 90px;
                         background: url(../../../images/stagesImg/2/setting.png) no-repeat;
                         background-size: cover;
-                        margin: 0;
+                        margin: 10px;
                         &::before, &::after {
                             background: none;
                         }
@@ -156,7 +156,7 @@ main {
                         margin: 10px;
                     }
                     #Chrome {
-                        margin: 0;
+                        margin: 10px;
                         width: 80px;
                         height: 80px;
                     }
@@ -166,7 +166,7 @@ main {
                     #VSCode {
                         width: 80px;
                         height: 80px;
-                        margin: 0;
+                        margin: 10px;
                         background: url(../../../images/stagesImg/2/youtube.png) no-repeat;
                         background-size: cover;
                     }
