@@ -1,48 +1,6 @@
-/*基本設定*/
-@import url(../root.css);
-
-@font-face {
-    font-family: 'Foglihtenno';
-    src: url(../fonts/Foglihtenno04-aM2E.otf);
+@import url('../root/root.css');
+:root {
 }
-@font-face {
-    font-family: 'PLENTO-Regular';
-    src: url(../fonts/PLENTO-Regular.ttf);
-}
-@font-face {
-    font-family: 'Bad Script', cursive;
-    src: url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
-}
-@font-face {
-    font-family: 'Grandiflora One', cursive;
-    src: url('https://fonts.googleapis.com/css2?family=Grandiflora+One&display=swap');
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-img {
-    pointer-events: none; /* 画像保存禁止 */
-}
-body, html {
-    height: 100vh;
-    width: 100vw;
-    background: rgb(187, 180, 156);
-}
-body, html, a, p {
-    user-select: none; /* 選択禁止 */
-    -webkit-user-select: none;
-    -moz-user-select: none; /* Firefox向け */
-    -ms-user-select: none;     /* Internet Explorer */
-    -webkit-user-drag: none; /* Webkitブラウザ（ChromeやSafari）向け */
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    touch-action: manipulation;
-    scrollbar-width: none;
-    font-size: 1.8vh;
-}
-
 
 /*--------------------------------------------------*/
 
@@ -62,24 +20,29 @@ main {
     mix-blend-mode: difference;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 1.2s ease;
-}
-.circle:hover {
-    opacity: 1;
-    transform: translateY(0);
+    transition: opacity .6s ease, transform 1.2s ease;
+    z-index: 0;
+    overflow: hidden;
+    &:hover {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 #circle1 {
-    top: 170px;
+    top: 190px;
     left: 95px;
-    width: 90px;
+    width: 110px;
 }
 #circle2 {
     top: 100px;
     left: 110px;
-    width: 130px;
+    width: 160px;
     clip-path: circle(50%);
     background: rgb(157, 152, 135);
 }
+
+
+
 #circle3 {
     bottom: -700px;
     right: -450px;
@@ -95,8 +58,9 @@ main {
 }
 #circle5 {
     position: relative;
-    top: -13vh;
-    right: -97vw;
+    top: calc(50vh - 10vh);
+    left: 50vw;
+    mix-blend-mode: darken;
 }
 .planet {
     aspect-ratio: 1 / 1;
@@ -106,19 +70,26 @@ main {
     left: 0;
 }
 #star {
-    height: 12vh;
-    clip-path: circle(50%);
-    background: rgb(157, 152, 135);
-    top: -6vh;
-    left: -6vh;
+    width: 14vh;
+    height: 14vh;
+    top: -7vh;
+    left: -7vh;
+}
+@media all and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: .001dpcm) {
+    .noise {
+        position: absolute;
+        background: radial-gradient(circle at 50% 50%, rgb(0, 0, 0), rgb(0, 0, 0, 0)), url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        filter: contrast(200%) brightness(900%) invert(0%);
+        mix-blend-mode: multiply;
+    }
 }
 #planet_1 {
     height: 20vh;
-    animation: planet-rotation 3s -11s linear infinite;
+    animation: planet-rotation 5s -11s linear infinite;
 }
 #planet_2 {
     height: 30vh;
-    animation: planet-reverse-rotation 6s -21s linear infinite;
+    animation: planet-reverse-rotation 7s -21s linear infinite;
 }
 #planet_3 {
     height: 36vh;
@@ -154,12 +125,20 @@ main {
 }
 .line1 {
     position: absolute;
-    bottom: 5%;
-    left: 5%;
+    bottom: 5vh;
+    left: 5vw;
     overflow: hidden;
     height: 25px;
     width: 150px;
     display: inline-block;
+    z-index: 0;
+    span {
+        width: 100%;
+        height: 4px;
+        margin-bottom: 5px;
+        display: block;
+        background: rgb(224, 219, 201);
+    }
 }
 .line1 .block {
     position: relative;
@@ -168,136 +147,98 @@ main {
     transform-origin: center center 0;
     transform: rotate(110deg);
 }
-.line1 span {
-    width: 100%;
-    height: 4px;
-    margin-bottom: 5px;
-    display: block;
-    background: rgb(224, 219, 201);
-}
 .box1 {
     position: absolute;
-    top: 8vh;
+    aspect-ratio: 1 / 1;
+    top: 2vw;
     right: 2vw;
-    width: 140px;
-    height: 140px;
+    height: 20vh;
+    z-index: 0;
 }
 .dot {
     background-image: radial-gradient(rgb(157, 152, 135) 6px, rgb(0, 0, 0, 0) 7px);
-    background-size: 20px 20px;
+    background-size: 2.9vh 2.9vh;
     mix-blend-mode: difference;
 }
 
 
-.loginbox {
-    width: 30vw;
-    height: 82vh;
-    border-radius: 100px;
-    text-align: center;
-    border: double 5.5px rgb(110, 106, 92);
-}
 .container{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.container.active{
-    -ms-filter: blur(15px);
-    filter: blur(15px);
+    #content {
+        width: 45vw;
+        mix-blend-mode: difference;
+        p {
+            margin-bottom: 5px;
+            font-family: var(--defaultFont-バッド);
+            font-size: 18px;
+            color: var(--defaultColor-Light);
+            span {
+                font-size: 36px;
+            }
+            &#first {
+                font-size: 36px;
+                text-align: center;
+            }
+            &#end {
+                font-size: 30px;
+                text-align: end;
+            }
+        }
+    }
 }
 
-.gametitle {
-    font-size:8vh;
-    color: aliceblue;
-    text-shadow: 0px 0px 12px #ffffffaa;
-    letter-spacing: -1px;
-    font-weight: 500;
-    animation: rainbow1 .16s linear infinite;
-}
-.welcome {
-    font-size:4vh;
-    color: aliceblue;
-    text-shadow: 0px 0px 12px #ffffffaa;
-    letter-spacing: -1px;
-    font-weight: 400;
-    margin: -12.5vh 0 10vh;
-    animation: rainbow2 .16s linear infinite;
-}
-.kakapo img {
-    width: 0px;
-    position: absolute;
-    top: 25%;
-    left: 47%;
-}
-.prompt {
-    height: 50%;
-    display: flex;
-    flex-direction: column;
+#downloadModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
     align-items: center;
-}
-.upload_button {
-    aspect-ratio: 9 / 1; /*アスペクト比設定*/
-    width: 21vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-    background: rgba(0, 0, 0, 0);
-    box-shadow: 0 0 3px rgb(238, 238, 238, .5) inset;
-    border: solid 2px rgb(110, 106, 92);
-    border-radius: 12px;
-}
-.upload_button img {
-    margin-right: 2%;
-    height: 90%;
-}
-.upload_button_text {
-    margin-left: 2%;
-    font-size: 2vh;
-    color: black;
-}
-.newUserBox {
-    width: 21vw;
-    height: 30vh;
-    margin-top: 5%;
-    text-align: left;
-    background: rgb(0, 0, 0, 0);
-    box-shadow: 0 0 3px rgb(238, 238, 238, .5) inset;
-    border: solid 2px rgb(110, 106, 92);
-    border-radius: 12px;
-}
-.newUserBox_text {
-    margin-left: .8vw;
-    font-size: 2vh;
-    color: black;
-}
-#newName {
-    width: 80%;
-    height: 2.5vh;
-    margin-left: 1.5vw;
-    padding: 1%;
-    font-size: 1.6vh;
-    border: solid 1px rgb(110, 106, 92);
-    border-radius: 5px;
-    background: rgb(255, 253, 236, .6);
-    border: solid .5px rgb(60, 75, 87, 1);
-}
-.done_button {
-    aspect-ratio: 3 / 1;
-    width: 4vw;
-    margin-top: 2vh;
-    border: solid 1px rgb(110, 106, 92);
-    border-radius: 6px;
-    position: relative;
-    left: 70%;
-}
-.done_button_text {
-    font-size: 2vh;
-    margin: 0;
-    color: black;
-}
-.upload_button:focus, #newName:focus, .done_button:focus {
-    outline: 0;
+    background: rgb(0, 0, 0, .2);
+    z-index: 9999;
+    &:hover {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    div {
+        width: 85vw;
+        background: rgb(255, 255, 255, .2);
+        backdrop-filter: blur(3px);
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, .2);
+        border-radius: 20px;
+        border: 1px solid rgb(250, 250, 250, .2);
+        padding: 20px;
+        text-align: center;
+        a, p {
+            font-family: var(--defaultFont-もち);
+            font-size: 22px;
+            text-shadow: 0 0 5px rgb(255, 255, 255, 0.6);
+        }
+        button {
+            aspect-ratio: 5 / 2;
+            height: 4vh;
+            left: 70%;
+            margin-top: 2vh;
+            background: rgb(187, 180, 156, .5);
+            filter: drop-shadow(8px 8px 3px rgb(0, 0, 0, .42));
+            border-right: solid 1px rgb(250, 250, 250, .5);
+            border-bottom: solid 1px rgb(250, 250, 250, .6);
+            border-top: solid 1px rgb(250, 250, 250, .3);
+            border-left: solid 1px rgb(250, 250, 250, .3);
+            border-radius: 6px;
+            text-shadow: 0 0 2px rgb(255, 255, 255, .2),
+                        0 0 5px rgb(175, 167, 144, .5);
+            font-family: var(--defaultFont-もち);
+            transition: .3s ease-out;
+            &:hover {
+                filter: drop-shadow(5px 5px 1px rgb(0, 0, 0, .52));
+            }
+        }
+    }
 }
 
 @keyframes rainbow1 {
@@ -307,76 +248,81 @@ main {
     100% { background-position: -200%; }
 }
 @media (max-width: 999px) { /*スマホモード*/
-    html {
-        width: 100%;
-        height: 100%;
-    }
-    .loginbox {
-        height: 85vh;
-        width: 95vw;
-        /* top: calc(50% - (95vh / 2));
-        left: calc(50% - (95vw / 2)); */
+    .hamburger_button {
+        margin-top: 10%;
     }
     @media (orientation: portrait) {    /*縦向き用（portrait: 肖像画）*/
-        .upload_button_text {
-            font-size: 1.5vh;
+        #circle1 {
+            width: 12vw;
+            top: 23vh;
+            left: 5vw;
         }
-    }
-    @media (orientation: landscape) {   /*横向き用（landscape: 風景）*/
-        .gametitle {
-            margin: 2vh 0vw 10vh 0vw;
-            font-size: 12vh;
+        #circle2 {
+            width: 20vw;
+            top: 16vh;
+            left: 9vw;
         }
-        .welcome {
-            font-size: 6vh;
-            margin: -17vh 0 8vh;
+        #circle3 {
+            width: 115vw;
+            top: 77vh;
+            right: -55vw;
         }
-        .upload_button {
-            width: 50%;
+        #circle4 {
+            width: 47vw;
+            top: -13vh;
+            right: -14vw;
         }
-        .upload_button img {
-            height: 60%;
+        #circle5 {
+            top: calc(50vh - 5.83);
         }
-        .upload_button_text {
-            font-size: 4vh;
+        #star {
+            width: 8.6vh;
+            height: 8.6vh;
+            top: -4.3vh;
+            left: -4.3vh;
+        }
+        #planet_1 {
+            height: 11.67vh;
+        }
+        #planet_2 {
+            height: 17.5vh;
+        }
+        #planet_3 {
+            height: 21vh;
+        }
+        #planet_4 {
+            height: 32.1vh;
+        }
+        #planet_5 {
+            height: 43.75vh;
+        }
+        #planet_6 {
+            height: 51.3vh;
+        }
+        .box1 {
+            height: 10vh;
+        }
+        .dot {
+            background-image: radial-gradient(rgb(157, 152, 135) 5px, rgb(0, 0, 0, 0) 5px);
+            background-size: 1.7vh 1.7vh;
+        }
+        .line1 {
+            bottom: 5%;
+        }
+        .container {
+            #content {
+                width: 85vw;
+                p {
+                    margin-bottom: 2px;
+                    font-size: 14px;
+                    span {
+                        font-size: 28px;
+                    }
+                    &#first, &#end {
+                        font-size: 18px;
+                    }
+                }
+            }
         }
     }
 }
-@media (max-width: 1400px) {    /*パッドモード*/
-    @media(min-width: 1000px) {
-        .loginbox {
-            width: 55vw;
-            /* left: calc(50% - (55vw / 2)); */
-        }
-        .upload_button img {
-            height: 70%;
-        }
-        @media (orientation: portrait) {
-            .loginbox {
-                height: 95vh;
-                width: 95vw;
-                /* top: calc(50% - (95vh / 2));
-                left: calc(50% - (95vw / 2)); */
-            }
-            .upload_button {
-                width: 65%;
-            }
-            .upload_button_text {
-                font-size: 2vh;
-            }
-        }
-        @media (orientation: landscape) {
-            .gametitle {
-                margin: 5vh 0 10vh 0;
-                font-size: 10vh;
-            }
-            .welcome {
-                margin: -16vh 0 12vh;
-            }
-            .upload_button {
-                width: 65%;
-            }
-        }
-    }
-}
-
