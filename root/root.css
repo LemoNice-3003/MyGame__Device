@@ -10,6 +10,10 @@
     src: url('../fonts/レシートフォント.ttf');
 }
 @font-face {
+    font-family: 'NuKinakoMochiFw-Circle-3';
+    src: url('../fonts/NuKinakoMochiFw-Circle-3.otf');
+}
+@font-face {
     font-family: 'PLENTO-Regular';
     src: url('../fonts/PLENTO-Regular.ttf');
 }
@@ -39,6 +43,7 @@
     --defaultColor-Dark: rgb(30, 28, 21);
     --defaultFont-星: 'Canis Minor';
     --defaultFont-レシート: 'Receipt';
+    --defaultFont-もち: 'NuKinakoMochiFw-Circle-3';
     --defaultFont-バッド: 'Bad Script', cursive;
     --transition-move: cubic-bezier(0.87, 0, 0.13, 1);
 }
