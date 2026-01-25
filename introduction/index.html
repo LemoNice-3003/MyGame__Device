@@ -2,24 +2,36 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-compatible" content="ie=Edge">
         <title>Device - introduction</title>
+
         <link rel="stylesheet" href="style.css">
+
         <link rel="icon" href="../images/Device__icon/favicon.ico" sizes="32x32">
         <link rel="icon" href="../images/Device__icon/icon.svg" type="image/svg+xml">
         <link rel="apple-touch-icon" href="../images/Device__icon/apple-touch-icon.png">
+
+        <script src="../root/root.js" defer></script>
         <script src="script.js" defer></script>
+        <script src="../root/script_humburger.js" defer></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
-    <body>
-        <form name="myGameSite">
+    <body oncontextmenu="return false;"> <!-- 右クリック禁止令 -->
+        <form id="myGameSite">
             <div class="hamburger_items" id="js-items">
                 <ul>
                     <li><a href="../index.html">ホーム</a></li>
                     <li><a href="../gamepage/index.html">ステージ選択</a></li>
                     <li><a href="index.html">紹介</a></li>
                 </ul>
+                <div class="temp">
+                    <div id="loginNow">
+                        <p id="nowUserName"></p>
+                        <button type="button" id="logoutButton"  class="stNumber my-contact-btn my-btn-animation" onclick="logout()">Log out</button>
+                    </div>
+                    <button type="button" id="loginButton"  class="stNumber my-contact-btn my-btn-animation" onclick="uploadSaveData()">Log in</button>
+                </div>
             </div>
             <div class="hamburger_button" id="js-hamburger">
                 <span></span>
@@ -29,18 +41,20 @@
             </div>
             
             <div class="" id="circle5">
-                <div class="planet" id="star"></div>
+                <div class="planet noise" id="star"></div>
                 <img class="planet" id="planet_1" src="../images/Planetary_system/small_4.png" alt="">
                 <img class="planet" id="planet_2" src="../images/Planetary_system/big_2.png" alt="">
                 <img class="planet" id="planet_3" src="../images/Planetary_system/big_3.png" alt="">
                 <img class="planet" id="planet_4" src="../images/Planetary_system/big_1.png" alt="">
                 <img class="planet" id="planet_5" src="../images/Planetary_system/big_4.png" alt="">
-                <img class="planet" id="planet_6" src="../images/Planetary_system/small_2.png" alt="">
+                <img class="planet" id="planet_6" src="../images/Planetary_system/ultra_4.png" alt="">
             </div>
             <main class="container" id="js-container">
                 <div class="box1 dot"></div>
                 <div class="circle" id="circle1"></div>
                 <div class="circle" id="circle2"></div>
+
+                    
                 <div class="circle" id="circle3"></div>
                 <div class="circle" id="circle4"></div>
                 <div class="line1">
@@ -58,22 +72,29 @@
                         <span></span>
                     </div>
                 </div>
-                <div class="line1">
-                    <div class="block">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+                <div id="content">
+                    <p id="first"><span>は</span>じめまして、ユーザーの皆さま</p>
+                    <p><span>こ</span>のサイトに興味を持ち、ゲームを楽しんでいただき誠にありがとうございます。</p>
+                    <p><span>こ</span>のゲームサイトのタイトルである「Device」、皆さまもよく知っている「機具」「端末」と言った意味があります。これはこのゲームの売り所の一つである”デバイスやブラウザの機能を使って謎を解く”という事を表しています。ですが「Device」というタイトルにはもう一つ違う意味があります。</p>
+                    <p><span>そ</span>れは「工夫」「仕掛け」「考案」といった意味です。このサイトは謎解きゲームです。皆さまには、イヤに要求されるプレイスキルや大変な努力とは違う、頭をよく回転させ、解けた時の達成感を感じていただきたいと考えております。</p>
+                    <p><span>そ</span>して工夫を凝らし、謎をずっと探求していってほしいという願いを込めて、宇宙や星を連想させるデザインと共にこのゲームタイトルをつけました。</p>
+                    <p><span>ま</span>た、ゲームアイコンはサイト内で見られる装飾をモチーフにしております。この重複が新たな色を生み出すデザインは、謎解きの最中に湧き出るアイデア同士が繋がり、重なった際に、正解にたどり着けることを祈って考えました。</p>
+                    <p><span>苦</span>難に直面することもあるでしょう。ですがじっくり時間をかけ、頭を柔らかくして向き合えば、やがて自然と答えを導き出せるでしょう。</p>
+                    <p><span>皆</span>さまの探求に光明が差しますように</p>
+                    <p id="end">███████</p>
                 </div>
             </main>
         </form>
+        <div id="downloadModal">
+            <div>
+                <p>セーブデータのダウンロード</p>
+                <a id="downloadLink" style="color:rgb(55, 73, 94); border-bottom: solid 1px rgb(55, 73, 94); padding-bottom: 3px;">ここをタップして保存</a>
+                <br><br>
+                <p>保存方法（例 iPhone）</p>
+                <p>その他… → ファイルに保存</p>
+                <br>
+                <button type="button" onclick="closeDownloadModal()">完了</button>
+            </div>
+        </div>
     </body>
 </html>
