@@ -101,6 +101,30 @@ document.addEventListener('touchend', (event) => {
 
 
 
+
+
+
+
+
+
+
+
+
+// ハンバーガーメニューがクリックされたら
+hamburgerMenu.addEventListener('click', function() {
+    hamburgerMenu.classList.toggle('active');
+    hamburgerItems.classList.toggle('active');
+    container.classList.toggle('active');
+    }
+});
+
+
+
+
+
+
+
+
 let lastTouchTime = 0;
 
 newName.form.addEventListener("keydown", (e) => {
