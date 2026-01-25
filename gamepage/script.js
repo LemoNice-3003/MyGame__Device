@@ -71,7 +71,7 @@ $(document).ready(function() {
             stage_2.addClass("active");
         },
         mouseenter : function() {
-            preview.css("background-image", "url(../images/stage_thumbnail/2.jpg)");
+            preview.css("background-image", "url(../images/stage_thumbnail/2.png)");
         },
         mouseleave : function() {
             preview.css("background-image", "none");
