@@ -90,16 +90,6 @@ function logout() {
                 downloadSaveData();
             }
             else { }
-            
-            sessionStorage.clear();
-            sessionStorage.setItem('loginFlag', false);
-            if (pathName == '/MyGame__Device/gamepage/index.html' || pathName == '/MyGame__Device/introduction/index.html') {
-                const url = `../index.html`;
-                window.location.href = url;
-            }
-            else {
-                window.location.reload(); // 現在のページをリロード
-            }
         }
         else {
             alert("ログアウトがキャンセルされました");
@@ -118,6 +108,15 @@ function downloadSaveData() {
         a.href = URL.createObjectURL(blob);
         a.download = 'DeviceSaveData.txt';
         a.click();
+        sessionStorage.clear();
+        sessionStorage.setItem('loginFlag', false);
+        if (pathName == '/MyGame__Device/gamepage/index.html' || pathName == '/MyGame__Device/introduction/index.html') {
+            const url = `../index.html`;
+            window.location.href = url;
+        }
+        else {
+            window.location.reload(); // 現在のページをリロード
+        }
     } else { // スマホは手動ダウンロード
         // iOS対応：リンクを直接表示してユーザーにタップさせる
         showDownloadModal(blob);
@@ -207,4 +206,5 @@ document.addEventListener('DOMContentLoaded', function () {
     nowUserName.style.setProperty('--nameLength', textLength + "em");
     onload();
 });
+
 
