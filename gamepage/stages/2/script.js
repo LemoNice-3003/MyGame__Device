@@ -28,7 +28,7 @@ if(isAppLaunch() || isIOSStandalone) {
     //alert('clear');
     checkClearIcon(clearFlag_2, checkbox_2_0, x, y);
     clearFlag_2 = true;
-    await sessionStorage.setItem('clearFlag_2', true);
+    sessionStorage.setItem('clearFlag_2', true);
     if (clearFlag_2 && nowProgress == 2) {
         sessionStorage.setItem('progress', nowProgress + 1);
     }
