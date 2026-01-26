@@ -88,8 +88,9 @@ function logout() {
         if(window.confirm("ログアウトしますか？")) {
             if(window.confirm("ログアウトします。\nセーブデータをダウンロードしますか？")) {
                 downloadSaveData();
-                return;
             }
+            else { }
+            
             sessionStorage.clear();
             sessionStorage.setItem('loginFlag', false);
             if (pathName == '/MyGame__Device/gamepage/index.html' || pathName == '/MyGame__Device/introduction/index.html') {
@@ -206,3 +207,4 @@ document.addEventListener('DOMContentLoaded', function () {
     nowUserName.style.setProperty('--nameLength', textLength + "em");
     onload();
 });
+
