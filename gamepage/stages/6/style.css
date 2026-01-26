@@ -73,6 +73,7 @@ main {
             border-radius: 6px;
             font-family: var(--defaultFont-バッド);
             font-size: 18px;
+            color: var(--defaultColor-Dark);
             text-shadow: 0 0 2px rgb(255, 255, 255, .2),
                         0 0 5px rgb(175, 167, 144, .5);
             transition: .3s ease-out;
@@ -125,3 +126,4 @@ main {
         }
     }
 }
+
